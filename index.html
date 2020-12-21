@@ -19,17 +19,20 @@
         font-size: 1.6rem;
       }
 
+      .slideInOutLeft {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+
+      .slideInOutLeft[open] {
+        transform: translateX(0);
+      }
+
       #primary_nav {
         font-size: 1.6rem;
         width: 90%;
         max-width: 60ex;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
         background-color: gold;
-      }
-
-      #primary_nav[open] {
-        transform: translateX(0);
       }
     </style>
     <style>
@@ -41,7 +44,15 @@
     </style>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism-tomorrow.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism-tomorrow.min.css"
+      integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg=="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/plugins/line-highlight/prism-line-highlight.min.css"
+      integrity="sha512-/yZlirVRhdToT7oiRODRoRwgYMwFnZYvUdie2MNHpv9XMIeWtwoVBqkkkQPOy9A+ZDYKysodYzr9cqsU7bsH0Q=="
+      crossorigin="anonymous"
     />
   </head>
   <!-- 
@@ -52,12 +63,6 @@
       A JavaScript library for building simple, component-driven interfaces for
       the web.
     </h1>
-    <nav id="secondary_navigation">
-      <ul>
-        <li><a>documentation</a></li>
-        <li><a>tutorials</a></li>
-      </ul>
-    </nav>
     <main>
       <!-- horizontal scroll / 90% -->
       <ul>
@@ -78,15 +83,26 @@
     <button id="hamburger" aria-expanded="false" aria-controls="primary_nav">
       MENU
     </button>
-    <nav id="primary_nav" toggled>
+    <nav
+      id="primary_nav"
+      toggled
+      class="slideInOutLeft"
+      aria-labelledby="primary_nav__title"
+    >
+      <h2 id="primary_nav__title">primary navigation</h2>
       <ul>
         <li>
           documentation
           <ul>
-            <li><a href="">install</a></li>
-            <li><a href="">api</a></li>
-            <li><a href="">template</a></li>
-            <li><a href="">model</a></li>
+            <li><a href="/install">install</a></li>
+            <li><a href="/api">api</a></li>
+            <li><a href="/data-binding">data binding</a></li>
+            <li><a href="/expressions">expressions</a></li>
+            <li><a href="/repeated-blocks">repeated blocks</a></li>
+            <li><a href="/events">events</a></li>
+            <li><a href="/forms">forms</a></li>
+            <li><a href="/side-effects">side effects</a></li>
+            <li><a href="/pre-rendering">pre-rendering</a></li>
           </ul>
         </li>
         <li>
@@ -97,81 +113,16 @@
         </li>
       </ul>
     </nav>
-    <script>
-      let style = document.createElement('style');
-      style.id = 'toggled';
-      style.textContent = `
-        [toggled] {
-            display: none;
-        }
-        [toggled][enter] {
-            display: inherit;
-        }
-      `;
-      document.head.appendChild(style);
-      document.querySelector('html').classList.add('js');
-
-      function waitFrames(n = 1, callback, t = n) {
-        if (t === 0) callback();
-        requestAnimationFrame(() => {
-          return waitFrames(n, callback, t - 1);
-        });
-      }
-
-      const once = { once: true };
-
-      function waitForTransition(target) {
-        return new Promise((resolve) => {
-          let hasTransition = false;
-          let runHandler = () => (hasTransition = true);
-          target.addEventListener('transitionrun', runHandler, once);
-          target.addEventListener('transitionend', resolve, once);
-          waitFrames(2, () => {
-            if (!hasTransition) {
-              target.removeEventListener('transitionrun', runHandler, once);
-              target.removeEventListener('transitionend', resolve, once);
-              resolve();
-            }
-          });
-        });
-      }
-
-      function wait(n) {
-        return Promise((resolve) => waitFrames(n, resolve));
-      }
-
-      function clickHandler({ target }) {
-        if (target.nodeName !== 'BUTTON') return;
-
-        let expanded = target.getAttribute('aria-expanded');
-        if (!expanded) return;
-        //@TODO: support multiple idrefs
-        let id = target.getAttribute('aria-controls');
-        if (!id) return;
-        let content = document.getElementById(id);
-        if (!content) return;
-
-        let opening = !(expanded === 'true');
-
-        if (opening) {
-          content.setAttribute('enter', '');
-          target.setAttribute('aria-expanded', 'true');
-          waitFrames(2, () => {
-            if (target.getAttribute('aria-expanded') !== 'true') return;
-            content.setAttribute('open', '');
-          });
-        } else {
-          target.setAttribute('aria-expanded', 'false');
-          waitForTransition(content).then(() => {
-            if (target.getAttribute('aria-expanded') !== 'false') return;
-            content.removeAttribute('enter');
-          });
-          content.removeAttribute('open');
-        }
-      }
-
-      document.body.addEventListener('click', clickHandler);
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/prism.min.js"></script>
+    <script src="./disclosure.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/prism.min.js"
+      integrity="sha512-9+422Bs3A87UkWfp+qV80Nfv9arhbCXKY1rxrF2seorI36mIIstMiuBfyKLF1yH1nnzQkEWq2xrzT4XU3Z+vrA=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/plugins/line-highlight/prism-line-highlight.min.js"
+      integrity="sha512-bteQ1XlrEhUJh3mGgo0bneDWpfAAfGxE2lIVPNUolk26uqqsMwHiH+CeWCCURtT3yrCsvgQP7xrdjWTMMopObQ=="
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
