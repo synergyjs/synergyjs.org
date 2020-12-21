@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synergy JS</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      body * {
+        font-size: 1.6rem;
+      }
+
+      #primary_nav {
+        font-size: 1.6rem;
+        width: 90%;
+        max-width: 60ex;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        background-color: gold;
+      }
+
+      #primary_nav[open] {
+        transform: translateX(0);
+      }
+    </style>
+    <style>
+      pre[class*='language-'] {
+        /*margin: 1.75em 0;*/
+        font-size: 1.4rem;
+        background: #222;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism-tomorrow.min.css"
+    />
+  </head>
+  <!-- 
+    <pre><code class="language-javascript"></code></pre>
+   -->
+  <body>
+    <h1>
+      A JavaScript library for building simple, component-driven interfaces for
+      the web.
+    </h1>
+    <nav id="secondary_navigation">
+      <ul>
+        <li><a>documentation</a></li>
+        <li><a>tutorials</a></li>
+      </ul>
+    </nav>
+    <main>
+      <!-- horizontal scroll / 90% -->
+      <ul>
+        <li>
+          <h2>Simple</h2>
+          <p></p>
+        </li>
+        <li>
+          <h2>Declarative</h2>
+          <p></p>
+        </li>
+        <li>
+          <h2>Reactive</h2>
+          <p></p>
+        </li>
+      </ul>
+    </main>
+    <button id="hamburger" aria-expanded="false" aria-controls="primary_nav">
+      MENU
+    </button>
+    <nav id="primary_nav" toggled>
+      <ul>
+        <li>
+          documentation
+          <ul>
+            <li><a href="">install</a></li>
+            <li><a href="">api</a></li>
+            <li><a href="">template</a></li>
+            <li><a href="">model</a></li>
+          </ul>
+        </li>
+        <li>
+          tutorials
+          <ul>
+            <li><a href="">todo app</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <script>
+      let style = document.createElement('style');
+      style.id = 'toggled';
+      style.textContent = `
+        [toggled] {
+            display: none;
+        }
+        [toggled][enter] {
+            display: inherit;
+        }
+      `;
+      document.head.appendChild(style);
+      document.querySelector('html').classList.add('js');
+
+      function waitFrames(n = 1, callback, t = n) {
+        if (t === 0) callback();
+        requestAnimationFrame(() => {
+          return waitFrames(n, callback, t - 1);
+        });
+      }
+
+      const once = { once: true };
+
+      function waitForTransition(target) {
+        return new Promise((resolve) => {
+          let hasTransition = false;
+          let runHandler = () => (hasTransition = true);
+          target.addEventListener('transitionrun', runHandler, once);
+          target.addEventListener('transitionend', resolve, once);
+          waitFrames(2, () => {
+            if (!hasTransition) {
+              target.removeEventListener('transitionrun', runHandler, once);
+              target.removeEventListener('transitionend', resolve, once);
+              resolve();
+            }
+          });
+        });
+      }
+
+      function wait(n) {
+        return Promise((resolve) => waitFrames(n, resolve));
+      }
+
+      function clickHandler({ target }) {
+        if (target.nodeName !== 'BUTTON') return;
+
+        let expanded = target.getAttribute('aria-expanded');
+        if (!expanded) return;
+        //@TODO: support multiple idrefs
+        let id = target.getAttribute('aria-controls');
+        if (!id) return;
+        let content = document.getElementById(id);
+        if (!content) return;
+
+        let opening = !(expanded === 'true');
+
+        if (opening) {
+          content.setAttribute('enter', '');
+          target.setAttribute('aria-expanded', 'true');
+          waitFrames(2, () => {
+            if (target.getAttribute('aria-expanded') !== 'true') return;
+            content.setAttribute('open', '');
+          });
+        } else {
+          target.setAttribute('aria-expanded', 'false');
+          waitForTransition(content).then(() => {
+            if (target.getAttribute('aria-expanded') !== 'false') return;
+            content.removeAttribute('enter');
+          });
+          content.removeAttribute('open');
+        }
+      }
+
+      document.body.addEventListener('click', clickHandler);
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/prism.min.js"></script>
+  </body>
+</html>
