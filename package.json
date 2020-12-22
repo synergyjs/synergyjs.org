@@ -1,0 +1,25 @@
+{
+  "name": "synergyjs.org",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "disclosure.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/synergyjs/synergyjs.org.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/synergyjs/synergyjs.org/issues"
+  },
+  "homepage": "https://github.com/synergyjs/synergyjs.org#readme",
+  "devDependencies": {
+    "markdown-it": "^12.0.4",
+    "prettier": "^2.2.1"
+  }
+}
