@@ -1,4 +1,4 @@
-# Repeated Blocks
+## Repeated Blocks
 
 Repeat a block of HTML for each item in an Array by
 surrounding it with the `each` opening (`#`) and closing (`/`) comments.
@@ -34,15 +34,23 @@ Repeated blocks can have multiple top-level nodes
 ```html
 <!-- #each drawer in accordion.drawers -->
 <h3>
-  <button id="{{ id }}" aria-expanded="{{ expanded }}">{{ title }}</button>
+  <button
+    id="{{ id }}"
+    aria-expanded="{{ expanded }}"
+  >
+    {{ title }}
+  </button>
 </h3>
-<div aria-labelledby="{{ id }}" hidden="{{ !expanded }}">
+<div
+  aria-labelledby="{{ id }}"
+  hidden="{{ !expanded }}"
+>
   <!-- ... -->
 </div>
 <!-- /each -->
 ```
 
-## Keyed Arrays
+### Keyed Arrays
 
 Keys help Synergy identify which items in an Array have changed. Using keys improves performance and avoids unexpected behaviour when re-rendering.
 

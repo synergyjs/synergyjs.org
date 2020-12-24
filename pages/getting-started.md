@@ -1,6 +1,6 @@
-# Getting started
+## Getting started
 
-## Install
+### Install
 
 Using npm:
 
@@ -10,7 +10,7 @@ $ npm i synergy
 
 Using unpkg CDN:
 
-```
+```js
 <script type="module">
   import synergy from 'https://unpkg.com/synergy';
 </script>

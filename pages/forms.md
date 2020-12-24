@@ -1,4 +1,4 @@
-# Forms
+## Forms
 
 Named inputs are automatically bound to properties of the same name on your data.
 
@@ -12,7 +12,7 @@ Named inputs are automatically bound to properties of the same name on your data
 }
 ```
 
-## Submitting Form Data
+### Submitting Form Data
 
 By default, a HTML form will browse to a new page when the user submits the form. Submission happens when the user actives either a) an input[type="submit"], or b) a button[type="submit"].
 
@@ -38,14 +38,16 @@ If you wish to override the browsers default behaviour, perhaps to execute some 
 };
 ```
 
-## Select
+### Select
 
 Simply name the `<select>`...
 
 ```html
 <label for="pet-select">Choose a pet:</label>
 <select name="pets" id="pet-select">
-  <option value="">--Please choose an option--</option>
+  <option value="">
+    --Please choose an option--
+  </option>
   <option value="dog">Dog</option>
   <option value="cat">Cat</option>
   <option value="hamster">Hamster</option>
@@ -66,7 +68,11 @@ Simply name the `<select>`...
 The standard HTML `<select>` element also supports the ability to select multiple options, using the **multiple** attribute:
 
 ```html
-<select name="pets" id="pet-select" multiple></select>
+<select
+  name="pets"
+  id="pet-select"
+  multiple
+></select>
 ```
 
 A `<select>` with `[multiple]` binds to an Array on your data:
@@ -77,14 +83,29 @@ A `<select>` with `[multiple]` binds to an Array on your data:
 }
 ```
 
-## Radio Buttons
+### Radio Buttons
 
 Add a name to each radio button to indicate which _group_ it belongs to.
 
 ```html
-<input type="radio" name="filter" value="all" id="filter.all" />
-<input type="radio" name="filter" value="active" id="filter.active" />
-<input type="radio" name="filter" value="complete" id="filter.complete" />
+<input
+  type="radio"
+  name="filter"
+  value="all"
+  id="filter.all"
+/>
+<input
+  type="radio"
+  name="filter"
+  value="active"
+  id="filter.active"
+/>
+<input
+  type="radio"
+  name="filter"
+  value="complete"
+  id="filter.complete"
+/>
 ```
 
 As with `<select>`, the value of the named property will reflect the value of the selected `<input type="radio">`.

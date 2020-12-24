@@ -1,4 +1,4 @@
-# Events
+## Events
 
 Use standard DOM Event names to bind directly to named methods on your data.
 
@@ -42,7 +42,9 @@ If the target of the event is within a repeated block, then the second argument 
 <ul>
   <!-- #each todo in todos -->
   <li>
-    <h3 onclick="todoClicked">{{ todo.title }}</h3>
+    <h3 onclick="todoClicked">
+      {{ todo.title }}
+    </h3>
   </li>
   <!-- /each -->
 </ul>

@@ -1,6 +1,6 @@
-# Side Effects
+## Side Effects
 
-## propertyChangedCallback
+### propertyChangedCallback
 
 Synergy updates the DOM once per animation frame if there are any changes in the viewmodel to reflect.
 

@@ -1,16 +1,16 @@
-# API
+## API
 
-## Define
+### Define
 
 The `define()` function registers your Custom Element.
 
-### Syntax
+#### Syntax
 
 ```js
 define(tagName, factory, template);
 ```
 
-### Parameters
+#### Parameters
 
 - `tagName` Name for the new custom element. Note that custom element names must contain a hyphen.
 
@@ -18,17 +18,21 @@ define(tagName, factory, template);
 
 - `template` (optional) Either an HTML string or a `<template>` element. If omitted, synergy expects your document to include a Template element with an id matching `tagName`.
 
-## Render
+### Render
 
 The `render()` method combines an HTML template with a JavaScript object and then mounts the rendered HTML into an existing DOM node.
 
-### Syntax
+#### Syntax
 
 ```js
-let view = synergy.render(targetNode, viewmodel, template);
+let view = synergy.render(
+  targetNode,
+  viewmodel,
+  template
+);
 ```
 
-### Parameters
+#### Parameters
 
 - `targetNode` An existing HTML element node where the rendered HTML should be mounted.
 
@@ -36,7 +40,7 @@ let view = synergy.render(targetNode, viewmodel, template);
 
 - `template` Either an HTML string or a `<template>` node.
 
-### Return value
+#### Return value
 
 A proxied version of your JavaScript object that will automatically update the UI whenever any of its values change
 
