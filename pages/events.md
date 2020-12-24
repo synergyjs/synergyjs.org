@@ -1,6 +1,7 @@
 ## Events
 
-Use standard DOM Event names to bind directly to named methods on your data.
+Use standard DOM Event names to bind directly to
+named methods on your data.
 
 ```js
 {
@@ -14,7 +15,8 @@ Use standard DOM Event names to bind directly to named methods on your data.
 <button onclick="sayHello">Say hello</button>
 ```
 
-The first argument to your event handler is always a native DOM Event object
+The first argument to your event handler is always
+a native DOM Event object
 
 ```js
 {
@@ -25,7 +27,9 @@ The first argument to your event handler is always a native DOM Event object
 };
 ```
 
-If the target of the event is within a repeated block, then the second argument to your handler will be the datum for that particular item.
+If the target of the event is within a repeated
+block, then the second argument to your handler
+will be the datum for that particular item.
 
 ```js
 {

@@ -1,6 +1,7 @@
 ## Forms
 
-Named inputs are automatically bound to properties of the same name on your data.
+Named inputs are automatically bound to properties
+of the same name on your data.
 
 ```html
 <input name="color" type="color" />
@@ -14,11 +15,25 @@ Named inputs are automatically bound to properties of the same name on your data
 
 ### Submitting Form Data
 
-By default, a HTML form will browse to a new page when the user submits the form. Submission happens when the user actives either a) an input[type="submit"], or b) a button[type="submit"].
+By default, a HTML form will browse to a new page
+when the user submits the form. Submission happens
+when the user actives either a) an
+input[type="submit"], or b) a
+button[type="submit"].
 
-> In some browsers, a button _without_ a [type] will be assumed to be [type="submit"] if it resides within a form element, so you should _always_ set a buttons `type` attribute when it lives within a form.
+> In some browsers, a button _without_ a [type]
+> will be assumed to be [type="submit"] if it
+> resides within a form element, so you should
+> _always_ set a buttons `type` attribute when it
+> lives within a form.
 
-If you wish to override the browsers default behaviour, perhaps to execute some JavaScript before submitting the form data, then you would do that by binding to the forms submit event, and calling `preventDefault` on the event object inside your handler function to stop the browser from submitting the form.
+If you wish to override the browsers default
+behaviour, perhaps to execute some JavaScript
+before submitting the form data, then you would do
+that by binding to the forms submit event, and
+calling `preventDefault` on the event object
+inside your handler function to stop the browser
+from submitting the form.
 
 ```html
 <form onsubmit="handleForm">
@@ -57,7 +72,8 @@ Simply name the `<select>`...
 </select>
 ```
 
-...and the value of the property will reflect the value of the currently selected `<option>`:
+...and the value of the property will reflect the
+value of the currently selected `<option>`:
 
 ```js
 {
@@ -65,7 +81,9 @@ Simply name the `<select>`...
 }
 ```
 
-The standard HTML `<select>` element also supports the ability to select multiple options, using the **multiple** attribute:
+The standard HTML `<select>` element also supports
+the ability to select multiple options, using the
+**multiple** attribute:
 
 ```html
 <select
@@ -75,7 +93,8 @@ The standard HTML `<select>` element also supports the ability to select multipl
 ></select>
 ```
 
-A `<select>` with `[multiple]` binds to an Array on your data:
+A `<select>` with `[multiple]` binds to an Array
+on your data:
 
 ```js
 {
@@ -85,7 +104,8 @@ A `<select>` with `[multiple]` binds to an Array on your data:
 
 ### Radio Buttons
 
-Add a name to each radio button to indicate which _group_ it belongs to.
+Add a name to each radio button to indicate which
+_group_ it belongs to.
 
 ```html
 <input
@@ -108,7 +128,9 @@ Add a name to each radio button to indicate which _group_ it belongs to.
 />
 ```
 
-As with `<select>`, the value of the named property will reflect the value of the selected `<input type="radio">`.
+As with `<select>`, the value of the named
+property will reflect the value of the selected
+`<input type="radio">`.
 
 ```js
 {

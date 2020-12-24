@@ -1,7 +1,8 @@
 ## Repeated Blocks
 
-Repeat a block of HTML for each item in an Array by
-surrounding it with the `each` opening (`#`) and closing (`/`) comments.
+Repeat a block of HTML for each item in an Array
+by surrounding it with the `each` opening (`#`)
+and closing (`/`) comments.
 
 ```js
 {
@@ -17,7 +18,8 @@ surrounding it with the `each` opening (`#`) and closing (`/`) comments.
 </ul>
 ```
 
-Access the current index with the dot character
+You can access the current index with the dot
+character
 
 ```html
 <ul>
@@ -32,7 +34,7 @@ Access the current index with the dot character
 Repeated blocks can have multiple top-level nodes
 
 ```html
-<!-- #each drawer in accordion.drawers -->
+<!-- #each drawer in drawers -->
 <h3>
   <button
     id="{{ id }}"
@@ -52,17 +54,23 @@ Repeated blocks can have multiple top-level nodes
 
 ### Keyed Arrays
 
-Keys help Synergy identify which items in an Array have changed. Using keys improves performance and avoids unexpected behaviour when re-rendering.
+Keys help Synergy identify which items in an Array
+have changed. Using keys improves performance and
+avoids unexpected behaviour when re-rendering.
 
-The key can be any primitive value, as long as it is unique to that item within the Array.
+The key can be any primitive value, as long as it
+is unique to that item within the Array.
 
-By default, if the Array item is an object, then Synergy will look for an `id` property and assume that to be the key if you haven't said otherwise.
+By default, if the Array item is an object, then
+Synergy will look for an `id` property and assume
+that to be the key if you haven't said otherwise.
 
-Set the `key` parameter if you need to override the default behaviour...
+Set the `key` parameter if you need to override
+the default behaviour...
 
 ```html
 <ul>
-  <!-- #each person in people (key=whatever) -->
+  <!-- #each person in people (key=foo) -->
   <li>Hello {{ person.name }}</li>
   <!-- /each -->
 </ul>
