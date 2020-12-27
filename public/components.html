@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/styles/github-gist.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --n1: 1.6;
+        --n2: 2.5600000000000005;
+        --n3: 4.096000000000001;
+        --n4: 6.553600000000003;
+        --n5: 10.485760000000006;
+        --n6: 16.77721600000001;
+        --n7: 26.84354560000002;
+        --n8: 42.949672960000036;
+        --n9: 68.71947673600006;
+        --n10: 109.95116277760012;
+        --dark1: #202020;
+        --dark2: #252525;
+        --dark3: #303030;
+        --dark4: #353535;
+        --light2: #dcdcdc;
+        --light1: #f5f5f5;
+      }
+
+      html {
+        font-size: 62.5%;
+        /* font-size: calc(1em + 1vw); */
+      }
+
+      body {
+        font-family: Georgia, Lucida Grande, Arial, Georgia;
+        background-color: var(--light);
+        /* ... */
+        margin: 0 calc(var(--n1) * 1rem);
+      }
+
+      body * {
+        font-size: calc(var(--n1) * 1rem);
+        line-height: var(--n1);
+        color: var(--dark1);
+      }
+
+      ul {
+        margin-left: calc(var(--n2) * 1rem);
+      }
+
+      * + * {
+        margin-top: calc(var(--n1) * 1rem);
+      }
+
+      header nav {
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: Arial;
+        margin: calc(var(--n2) * 1rem) 0;
+      }
+
+      h1 {
+        font-size: calc(var(--n2) * 1rem);
+        color: var(--dark4);
+      }
+
+      h2 {
+        font-size: calc(var(--n3) * 1rem);
+        color: var(--dark3);
+      }
+
+      h3 {
+        font-size: calc(var(--n2) * 1rem);
+        color: var(--dark2);
+      }
+
+      .synergy {
+        font-family: Verdana, Trebuchet MS, Lucida Grande;
+        /* font-weight: 400; */
+        text-transform: lowercase;
+        font-size: calc(var(--n3) * 1rem);
+        /* color: #009900; */
+        color: #009933;
+      }
+
+      .reset {
+        text-decoration: none;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        margin: calc(var(--n2) * 1rem) 0;
+      }
+
+      main {
+        /* margin: calc(var(--n4) * 1rem) 0; */
+      }
+
+      .readable {
+        width: 100%;
+
+        max-width: 75em;
+        font-size: inherit;
+      }
+    </style>
+    <style>
+      pre[class*="language-"] {
+        /*margin: 1.75em 0;*/
+        margin: calc(var(--n1) * 1rem) 0 0;
+        font-size: calc(var(--n1) * 1rem);
+        background: #222;
+      }
+
+      .hljs {
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><a href="/" class="synergy reset">Synergy</a></h1>
+      <nav>
+        <ul>
+          <li><a href="/documentation">docs</a></li>
+          <!-- <li><a href="/tutorials">tuts</a></li> -->
+        </ul>
+      </nav>
+    </header>
+
+    <main class="readable">
+      <h2>Components</h2>
+      <h3>Example</h3>
+      <pre><code class="language-html">&lt;script type=&quot;module&quot;&gt;
+  import define from 'https://unpkg.com/synergy-web-components@0.4.1';
+
+  let count = 0;
+
+  const factory = ({
+    expanded = false,
+    title,
+    disabled = false,
+  }) =&gt; {
+    return {
+      id: `drawer-${count++}`,
+      title,
+      expanded,
+      disabled,
+      toggle() {
+        this.expanded = !this.expanded;
+      },
+    };
+  };
+
+  factory.observedAttributes = ['expanded'];
+
+  define('x-drawer', factory);
+&lt;/script&gt;
+&lt;template id=&quot;x-drawer&quot;&gt;
+  &lt;style scoped&gt;
+    button {
+      all: inherit;
+    }
+  &lt;/style&gt;
+  &lt;h3&gt;
+    &lt;button
+      id=&quot;{{ id }}&quot;
+      disabled=&quot;{{ disabled }}&quot;
+      aria-expanded=&quot;{{ expanded }}&quot;
+      onclick=&quot;toggle&quot;
+    &gt;
+      {{ title }}
+    &lt;/button&gt;
+  &lt;/h3&gt;
+  &lt;div
+    hidden=&quot;{{ !expanded }}&quot;
+    aria-labelledby=&quot;{{ id }}&quot;
+  &gt;
+    &lt;slot&gt;&lt;/slot&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+      <p>
+        In the example above, we create a new <code>x-drawer</code> Custom
+        Element that can be used anywhere on the page, like so...
+      </p>
+      <pre><code class="language-html">&lt;x-drawer title=&quot;foo&quot;&gt;&lt;/x-drawer&gt;
+</code></pre>
+      <h2>Initial Attributes</h2>
+      <p>
+        An elements initial attribute keys and values will be passed to your
+        factory function during initialisation.
+      </p>
+      <h2>Observed Attributes</h2>
+      <p>
+        Observed attributes are special attributes on your component that you
+        expect to change <em>after</em> initialisation. Your components view
+        will update automatically whenever any of its observed attributes
+        change.
+      </p>
+      <pre><code class="language-js">const factory = (props) =&gt; props;
+
+factory.observedAttributes = ['name'];
+</code></pre>
+      <h2>Shadow Dom</h2>
+      <p>
+        Synergy doesn't support Shadow DOM <em>at the moment</em>. This is to
+        preserve the pre-rendering / hydration capabilities of Synergy. There
+        are open proposals for the Web Platform that intend to make Shadow DOM
+        declarative and serialisable. Until then, SWC provides a polyfill for
+        Slots, as well as a limited CSS scoping mechanism.
+      </p>
+      <h2>Slots</h2>
+      <p>
+        Even though Synergy doesn't support Shadow DOM, it does polyfill
+        (slots)[https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot],
+        so you can use these as per the spec to provide placeholders for custom
+        markup.
+      </p>
+      <h2>Scoped CSS</h2>
+      <p>
+        Synergy provides lightweight, opt-in CSS scoping. Apply the
+        <code>scoped</code> boolean attribute to a style tag within your
+        components template, and all of the selectors will be prefixed with an
+        additional <em>type selector</em> and hoisted up into the document head,
+        giving you one style tag shared between all instances. This effectively
+        stops your component styles from leaking <em>out</em> into the document,
+        but doesn't stop anything from sneaking in, so you'll still need to be
+        careful to use reasonable naming convention with your classes and
+        attributes to keep them &quot;unique&quot; to your component and help to
+        avoid accidental name clashes with other CSS on the page.
+      </p>
+    </main>
+    <script src="./disclosure.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </body>
+</html>

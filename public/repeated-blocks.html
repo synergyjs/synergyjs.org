@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/styles/github-gist.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --n1: 1.6;
+        --n2: 2.16;
+        --n3: 2.9439999999999995;
+        --n4: 4.041599999999999;
+        --n5: 5.578239999999998;
+        --n6: 7.729535999999997;
+        --n7: 10.741350399999995;
+        --n8: 14.957890559999992;
+        --n9: 20.86104678399999;
+        --n10: 29.12546549759998;
+        --dark1: #202020;
+        --dark2: #252525;
+        --dark3: #303030;
+        --dark4: #353535;
+        --light2: #dcdcdc;
+        --light1: #f5f5f5;
+      }
+
+      html {
+        font-size: 62.5%;
+        /* font-size: calc(1em + 1vw); */
+      }
+
+      body {
+        font-family: Georgia, Lucida Grande, Arial, Georgia;
+        background-color: var(--light);
+        /* ... */
+        margin: calc(var(--n2) * 1rem) calc(var(--n1) * 1rem);
+      }
+
+      body * {
+        font-size: calc(var(--n1) * 1rem);
+        line-height: var(--n1);
+        color: var(--dark1);
+      }
+
+      ul {
+        margin-left: calc(var(--n2) * 1rem);
+      }
+
+      * + * {
+        margin-top: calc(var(--n1) * 1rem);
+      }
+
+      header nav {
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: Arial;
+        margin: calc(var(--n2) * 1rem) 0;
+      }
+
+      h1 {
+        font-size: calc(var(--n2) * 1rem);
+        color: var(--dark4);
+      }
+
+      h2 {
+        font-size: calc(var(--n3) * 1rem);
+        color: var(--dark3);
+      }
+
+      h3 {
+        font-size: calc(var(--n2) * 1rem);
+        color: var(--dark2);
+      }
+
+      hr {
+        margin: calc(var(--n3) * 1rem) 0;
+      }
+
+      .synergy {
+        font-family: Verdana, Trebuchet MS, Lucida Grande;
+        /* font-weight: 400; */
+        text-transform: lowercase;
+        font-size: calc(var(--n3) * 1rem);
+        /* color: #009900; */
+        color: #66cc33;
+      }
+
+      .reset {
+        text-decoration: none;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        margin: calc(var(--n2) * 1rem) 0;
+      }
+
+      main {
+        /* margin: calc(var(--n4) * 1rem) 0; */
+      }
+
+      .readable {
+        width: 100%;
+
+        max-width: 75em;
+        font-size: inherit;
+      }
+    </style>
+    <style>
+      pre[class*="language-"] {
+        /*margin: 1.75em 0;*/
+        margin: calc(var(--n1) * 1rem) 0 0;
+        font-size: calc(var(--n1) * 1rem);
+        background: #222;
+      }
+
+      .hljs,
+      code {
+        background-color: var(--light1);
+        padding: 0 3px;
+        border-radius: 0.25em;
+      }
+
+      .hljs {
+        padding: calc(var(--n1) * 1rem) 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><a href="/" class="synergy reset">Synergy</a></h1>
+      <nav>
+        <ul>
+          <li><a href="/documentation">docs</a></li>
+          <!-- <li><a href="/tutorials">tuts</a></li> -->
+        </ul>
+      </nav>
+    </header>
+
+    <main class="readable">
+      <h2>Repeated Blocks</h2>
+      <p>
+        Repeat a block of HTML for each item in an Array by surrounding it with
+        the <code>each</code> opening (<code>#</code>) and closing
+        (<code>/</code>) comments.
+      </p>
+      <pre><code class="language-js">{
+  names: ['kate', 'kevin', 'randall'];
+}
+</code></pre>
+      <pre><code class="language-html">&lt;ul&gt;
+  &lt;!-- #each name in names --&gt;
+  &lt;li&gt;Hello {{ name }}&lt;/li&gt;
+  &lt;!-- /each --&gt;
+&lt;/ul&gt;
+</code></pre>
+      <p>You can access the current index with the dot character</p>
+      <pre><code class="language-html">&lt;ul&gt;
+  &lt;!-- #each todo in todos --&gt;
+  &lt;li&gt;
+    &lt;p&gt;todo {{ . }} of {{ todos.length }}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;!-- /each --&gt;
+&lt;/ul&gt;
+</code></pre>
+      <p>Repeated blocks can have multiple top-level nodes</p>
+      <pre><code class="language-html">&lt;!-- #each drawer in drawers --&gt;
+&lt;h3&gt;
+  &lt;button
+    id=&quot;{{ id }}&quot;
+    aria-expanded=&quot;{{ expanded }}&quot;
+  &gt;
+    {{ title }}
+  &lt;/button&gt;
+&lt;/h3&gt;
+&lt;div
+  aria-labelledby=&quot;{{ id }}&quot;
+  hidden=&quot;{{ !expanded }}&quot;
+&gt;
+  &lt;!-- ... --&gt;
+&lt;/div&gt;
+&lt;!-- /each --&gt;
+</code></pre>
+      <h3>Keyed Arrays</h3>
+      <p>
+        Keys help Synergy identify which items in an Array have changed. Using
+        keys improves performance and avoids unexpected behaviour when
+        re-rendering.
+      </p>
+      <p>
+        The key can be any primitive value, as long as it is unique to that item
+        within the Array.
+      </p>
+      <p>
+        By default, if the Array item is an object, then Synergy will look for
+        an <code>id</code> property and assume that to be the key if you haven't
+        said otherwise.
+      </p>
+      <p>
+        Set the <code>key</code> parameter if you need to override the default
+        behaviour...
+      </p>
+      <pre><code class="language-html">&lt;ul&gt;
+  &lt;!-- #each person in people (key=foo) --&gt;
+  &lt;li&gt;Hello {{ person.name }}&lt;/li&gt;
+  &lt;!-- /each --&gt;
+&lt;/ul&gt;
+</code></pre>
+    </main>
+    <script src="./disclosure.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/styles/github-gist.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --n1: 1.6;
+        --n2: 2.16;
+        --n3: 2.9439999999999995;
+        --n4: 4.041599999999999;
+        --n5: 5.578239999999998;
+        --n6: 7.729535999999997;
+        --n7: 10.741350399999995;
+        --n8: 14.957890559999992;
+        --n9: 20.86104678399999;
+        --n10: 29.12546549759998;
+        --dark1: #202020;
+        --dark2: #252525;
+        --dark3: #303030;
+        --dark4: #353535;
+        --light2: #dcdcdc;
+        --light1: #f5f5f5;
+      }
+
+      html {
+        font-size: 62.5%;
+        /* font-size: calc(1em + 1vw); */
+      }
+
+      body {
+        font-family: Georgia, Lucida Grande, Arial, Georgia;
+        background-color: var(--light);
+        /* ... */
+        margin: calc(var(--n2) * 1rem) calc(var(--n1) * 1rem);
+      }
+
+      body * {
+        font-size: calc(var(--n1) * 1rem);
+        line-height: var(--n1);
+        color: var(--dark1);
+      }
+
+      ul {
+        margin-left: calc(var(--n2) * 1rem);
+      }
+
+      * + * {
+        margin-top: calc(var(--n1) * 1rem);
+      }
+
+      header nav {
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: Arial;
+        margin: calc(var(--n2) * 1rem) 0;
+      }
+
+      h1 {
+        font-size: calc(var(--n2) * 1rem);
+        color: var(--dark4);
+      }
+
+      h2 {
+        font-size: calc(var(--n3) * 1rem);
+        color: var(--dark3);
+      }
+
+      h3 {
+        font-size: calc(var(--n2) * 1rem);
+        color: var(--dark2);
+      }
+
+      hr {
+        margin: calc(var(--n3) * 1rem) 0;
+      }
+
+      .synergy {
+        font-family: Verdana, Trebuchet MS, Lucida Grande;
+        /* font-weight: 400; */
+        text-transform: lowercase;
+        font-size: calc(var(--n3) * 1rem);
+        /* color: #009900; */
+        color: #66cc33;
+      }
+
+      .reset {
+        text-decoration: none;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        margin: calc(var(--n2) * 1rem) 0;
+      }
+
+      main {
+        /* margin: calc(var(--n4) * 1rem) 0; */
+      }
+
+      .readable {
+        width: 100%;
+
+        max-width: 75em;
+        font-size: inherit;
+      }
+    </style>
+    <style>
+      pre[class*="language-"] {
+        /*margin: 1.75em 0;*/
+        margin: calc(var(--n1) * 1rem) 0 0;
+        font-size: calc(var(--n1) * 1rem);
+        background: #222;
+      }
+
+      .hljs,
+      code {
+        background-color: var(--light1);
+        padding: 0 3px;
+        border-radius: 0.25em;
+      }
+
+      .hljs {
+        padding: calc(var(--n1) * 1rem) 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><a href="/" class="synergy reset">Synergy</a></h1>
+      <nav>
+        <ul>
+          <li><a href="/documentation">docs</a></li>
+          <!-- <li><a href="/tutorials">tuts</a></li> -->
+        </ul>
+      </nav>
+    </header>
+
+    <main class="readable">
+      <h2>API</h2>
+      <p>
+        The high-level Synergy API is comprised of just two functions, (<code
+          >define</code
+        >
+        and <code>render</code>). The <code>define</code> function is used to
+        register new custom elements, the reusable blocks that you will use to
+        build your user interface. The lower-level <code>render</code> function
+        is used to bind directly to the DOM. It's used by
+        <code>define</code> under the hood, and you may also find this function
+        useful for rendering the main DOM tree that contains your custom
+        elements.
+      </p>
+      <p>
+        In addition, the instances created by both <code>define</code> and
+        <code>render</code> have a set of lifecycle events available for you to
+        hook into with your own custom handler functions.
+      </p>
+      <h3>define</h3>
+      <p>The <code>define()</code> function registers a new Custom Element.</p>
+      <h4>Syntax</h4>
+      <pre><code class="language-js">define(tagName, factory, template);
+</code></pre>
+      <h4>Parameters</h4>
+      <ul>
+        <li>
+          <p>
+            <code>tagName</code> Name for the new custom element. As per the
+            Custom Element spec, an elements name must include a hyphen.
+          </p>
+        </li>
+        <li>
+          <p>
+            <code>factory</code> A Factory function that returns a plain
+            JavaScript object that will provide the data for your element.
+          </p>
+        </li>
+        <li>
+          <p>
+            <code>template</code> (optional) Either an HTML string or a
+            <code>&lt;template&gt;</code> element. If omitted, synergy expects
+            your document to include a Template element with an id matching
+            <code>tagName</code>.
+          </p>
+        </li>
+      </ul>
+      <h4>Lifecycle Hooks</h4>
+      <pre><code class="language-js">({
+  connectedCallback() {
+    /* Invoked each time the custom 
+    element is appended into a document-
+    connected element */
+  },
+  observedProperties: ['foo', 'bar'],
+  propertyChangedCallback(name, value) {
+    /* Invoked whenever any of the 
+    properties declared in the 
+    observedProperties array have 
+    changed. */
+  },
+  disconnectedCallback() {
+    /* Invoked each time the custom 
+    element is disconnected from the 
+    DOM */
+  },
+});
+</code></pre>
+      <h3>render</h3>
+      <p>
+        The <code>render()</code> method combines an HTML template with a
+        JavaScript object and then appends the rendered HTML to an existing DOM
+        element node.
+      </p>
+      <h4>Syntax</h4>
+      <pre><code class="language-js">let view = synergy.render(
+  element,
+  viewmodel,
+  template
+);
+</code></pre>
+      <h4>Parameters</h4>
+      <ul>
+        <li>
+          <p>
+            <code>element</code> An existing DOM element node to which the
+            rendered HTML should be appended.
+          </p>
+        </li>
+        <li>
+          <p>
+            <code>viewmodel</code> A plain JavaScript object that contains the
+            data for your view.
+          </p>
+        </li>
+        <li>
+          <p>
+            <code>template</code> Either an HTML string or a
+            <code>&lt;template&gt;</code> node.
+          </p>
+        </li>
+      </ul>
+      <h4>Return value</h4>
+      <p>
+        A proxied version of your JavaScript object that will automatically
+        update the UI whenever any of its values change
+      </p>
+      <pre><code class="language-js">let view = synergy.render(
+  document.getElementById('app'),
+  { message: 'Hello World!' },
+  `&lt;p&gt;{{ message }}&lt;/p&gt;`
+);
+
+view.message = '¡Hola Mundo!';
+</code></pre>
+      <p>
+        In the example above, we initialise the view with a paragraph that reads
+        &quot;Hello World!&quot;. We then change the value of message to '¡Hola
+        Mundo!' and Synergy updates the DOM automatically.
+      </p>
+    </main>
+    <script src="./disclosure.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </body>
+</html>
