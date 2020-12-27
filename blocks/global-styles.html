@@ -11,15 +11,15 @@
 
   :root {
     --n1: 1.6;
-    --n2: 2.5600000000000005;
-    --n3: 4.096000000000001;
-    --n4: 6.553600000000003;
-    --n5: 10.485760000000006;
-    --n6: 16.77721600000001;
-    --n7: 26.84354560000002;
-    --n8: 42.949672960000036;
-    --n9: 68.71947673600006;
-    --n10: 109.95116277760012;
+    --n2: 2.16;
+    --n3: 2.9439999999999995;
+    --n4: 4.041599999999999;
+    --n5: 5.578239999999998;
+    --n6: 7.729535999999997;
+    --n7: 10.741350399999995;
+    --n8: 14.957890559999992;
+    --n9: 20.86104678399999;
+    --n10: 29.12546549759998;
     --dark1: #202020;
     --dark2: #252525;
     --dark3: #303030;
@@ -38,7 +38,8 @@
       Georgia;
     background-color: var(--light);
     /* ... */
-    margin: 0 calc(var(--n1) * 1rem);
+    margin: calc(var(--n2) * 1rem)
+      calc(var(--n1) * 1rem);
   }
 
   body * {
@@ -81,6 +82,10 @@
     color: var(--dark2);
   }
 
+  hr {
+    margin: calc(var(--n3) * 1rem) 0;
+  }
+
   .synergy {
     font-family: Verdana, Trebuchet MS,
       Lucida Grande;
@@ -88,7 +93,7 @@
     text-transform: lowercase;
     font-size: calc(var(--n3) * 1rem);
     /* color: #009900; */
-    color: #009933;
+    color: #66cc33;
   }
 
   .reset {
@@ -120,7 +125,14 @@
     background: #222;
   }
 
+  .hljs,
+  code {
+    background-color: var(--light1);
+    padding: 0 3px;
+    border-radius: 0.25em;
+  }
+
   .hljs {
-    padding: 0;
+    padding: calc(var(--n1) * 1rem) 0;
   }
 </style>

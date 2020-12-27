@@ -1,8 +1,24 @@
 ## API
 
-### Define
+The high-level Synergy API is comprised of just
+two functions, (`define` and `render`). The
+`define` function is used to register new custom
+elements, the reusable blocks that you will use to
+build your user interface. The lower-level
+`render` function is used to bind directly to the
+DOM. It's used by `define` under the hood, and you
+may also find this function useful for rendering
+the main DOM tree that contains your custom
+elements.
 
-The `define()` function registers your Custom
+In addition, the instances created by both
+`define` and `render` have a set of lifecycle
+events available for you to hook into with your
+own custom handler functions.
+
+### define
+
+The `define()` function registers a new Custom
 Element.
 
 #### Syntax
@@ -13,8 +29,9 @@ define(tagName, factory, template);
 
 #### Parameters
 
-- `tagName` Name for the new custom element. Note
-  that custom element names must contain a hyphen.
+- `tagName` Name for the new custom element. As
+  per the Custom Element spec, an elements name
+  must include a hyphen.
 
 - `factory` A Factory function that returns a
   plain JavaScript object that will provide the
@@ -25,17 +42,41 @@ define(tagName, factory, template);
   expects your document to include a Template
   element with an id matching `tagName`.
 
-### Render
+#### Lifecycle Hooks
+
+```js
+({
+  connectedCallback() {
+    /* Invoked each time the custom 
+    element is appended into a document-
+    connected element */
+  },
+  observedProperties: ['foo', 'bar'],
+  propertyChangedCallback(name, value) {
+    /* Invoked whenever any of the 
+    properties declared in the 
+    observedProperties array have 
+    changed. */
+  },
+  disconnectedCallback() {
+    /* Invoked each time the custom 
+    element is disconnected from the 
+    DOM */
+  },
+});
+```
+
+### render
 
 The `render()` method combines an HTML template
-with a JavaScript object and then mounts the
-rendered HTML into an existing DOM node.
+with a JavaScript object and then appends the
+rendered HTML to an existing DOM element node.
 
 #### Syntax
 
 ```js
 let view = synergy.render(
-  targetNode,
+  element,
   viewmodel,
   template
 );
@@ -43,8 +84,8 @@ let view = synergy.render(
 
 #### Parameters
 
-- `targetNode` An existing HTML element node where
-  the rendered HTML should be mounted.
+- `element` An existing DOM element node to which
+  the rendered HTML should be appended.
 
 - `viewmodel` A plain JavaScript object that
   contains the data for your view.
