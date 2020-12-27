@@ -4,7 +4,8 @@ import MarkdownIt from 'markdown-it';
 
 const md = new MarkdownIt();
 
-const name = (filepath) => path.basename(filepath, path.extname(filepath));
+const name = (filepath) =>
+  path.basename(filepath, path.extname(filepath));
 
 const build = {
   //port: 4321,
@@ -19,26 +20,33 @@ const build = {
       ...v,
       pages: v.pageHtml.concat(
         v.pageMd.map(({ filepath, content }) => ({
-          filepath: filepath.replace(/.md$/, '.html'),
+          filepath: filepath.replace(
+            /.md$/,
+            '.html'
+          ),
           content: md.render(content),
         }))
       ),
     }),
     (v) => ({
       ...v,
-      pages: v.pages.map(({ filepath, content }) => ({
-        filepath,
-        content: v.template.content.replace(
-          '<!-- {{ main-content }} -->',
-          content
-        ),
-      })),
+      pages: v.pages.map(
+        ({ filepath, content }) => ({
+          filepath,
+          content: v.template.content.replace(
+            '<!-- {{ main-content }} -->',
+            content
+          ),
+        })
+      ),
     }),
     ({ pages, blocks }) =>
       pages.map(({ filepath, content }) => {
         for (let block of blocks) {
           content = content.replace(
-            `<!-- {{ ${name(block.filepath)} }} -->`,
+            `<!-- {{ ${name(
+              block.filepath
+            )} }} -->`,
             block.content
           );
         }
@@ -46,7 +54,10 @@ const build = {
       }),
     (pages) =>
       pages.map(({ filepath, content }) => ({
-        filepath: path.join('public', path.basename(filepath)),
+        filepath: path.join(
+          'docs',
+          path.basename(filepath)
+        ),
         content,
       })),
     (pages) =>
