@@ -62,17 +62,17 @@ const xElementFactory = ({
 
 Remember that, because these values are provided
 by the author of the document, there's no
-guarantee that any attribute will exist, so you
-should always provide the necessary defaults via
-argument destructuring so that your custom element
-will work (or fail gracefully) without them.
+guarantee as to what you will receive, so you
+should _always_...
 
-Always destructure initial props and _never_
-spread everything on to your viewmodel. Aside from
-the fact that you'd have no idea which properties
-you've just added into your viewmodel, none of the
-properties in the spread object will be reactive
-to any subsequent changes.
+1. destructure the initial properties to get only
+   the values you want / expect
+2. provide default values to ensure that your
+   custom element still works (or fails
+   gracefully)
+
+You should _never_ spread the intial props
+straight into your viewmodel.
 
 #### Lifecycle Hooks
 
