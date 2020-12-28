@@ -198,6 +198,33 @@
           </p>
         </li>
       </ul>
+      <h4>Factory</h4>
+      <p>
+        An elements initial attribute keys and values will be passed to your
+        factory function during initialisation.
+      </p>
+      <pre><code class="language-js">const xElementFactory = ({
+  name = '',
+  disabled = false,
+}) =&gt; {
+  return {
+    name,
+    disabled,
+  };
+};
+</code></pre>
+      <p>
+        Remember that, because these values are provided by the author of the
+        document, there's no guarantee that any attribute will exist, so you
+        should always provide the necessary defaults via argument destructuring
+        so that your custom element will work (or fail gracefully) without them.
+      </p>
+      <p>
+        Always destructure initial props and <em>never</em> spread everything on
+        to your viewmodel. Aside from the fact that you'd have no idea which
+        properties you've just added into your viewmodel, none of the properties
+        in the spread object will be reactive to any subsequent changes.
+      </p>
       <h4>Lifecycle Hooks</h4>
       <pre><code class="language-js">({
   connectedCallback() {

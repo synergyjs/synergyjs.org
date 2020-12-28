@@ -3,9 +3,8 @@
 ### Declarative
 
 Express your UI simply in terms of data (JS) and
-templates (HTML & CSS), then let Synergy bind them
-together so that your UI updates efficiently
-whenever your data changes.
+templates (HTML & CSS) and Synergy will update
+your UI efficiently whenever your data changes.
 
 ### Component-driven
 
@@ -13,14 +12,10 @@ Build encapsulated and reusable custom elements
 and then compose them together to make complex
 UIs.
 
-### Interoperable
+## Interoperable
 
-Synergy is a lightweight abstraction over standard
-Custom Elements, giving you all the power to
-extend HTML in the browser. Just like built-in
-HTML elements, your custom elements may expose
-their "API" through their attributes, making them
-interoperable with any other library.
+Create standalone components that will work
+together with any other framework or library.
 
 ---
 

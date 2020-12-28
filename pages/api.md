@@ -42,6 +42,38 @@ define(tagName, factory, template);
   expects your document to include a Template
   element with an id matching `tagName`.
 
+#### Factory
+
+An elements initial attribute keys and values will
+be passed to your factory function during
+initialisation.
+
+```js
+const xElementFactory = ({
+  name = '',
+  disabled = false,
+}) => {
+  return {
+    name,
+    disabled,
+  };
+};
+```
+
+Remember that, because these values are provided
+by the author of the document, there's no
+guarantee that any attribute will exist, so you
+should always provide the necessary defaults via
+argument destructuring so that your custom element
+will work (or fail gracefully) without them.
+
+Always destructure initial props and _never_
+spread everything on to your viewmodel. Aside from
+the fact that you'd have no idea which properties
+you've just added into your viewmodel, none of the
+properties in the spread object will be reactive
+to any subsequent changes.
+
 #### Lifecycle Hooks
 
 ```js
