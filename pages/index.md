@@ -12,7 +12,7 @@ Build encapsulated and reusable custom elements
 and then compose them together to make complex
 UIs.
 
-## Interoperable
+### Interoperable
 
 Create standalone components that will work
 together with any other framework or library.
