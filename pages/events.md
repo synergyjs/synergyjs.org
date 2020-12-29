@@ -1,7 +1,10 @@
 ## Events
 
-Use standard DOM Event names to bind directly to
-named methods on your data.
+Synergy assumes any attribute name prefixed with
+"on" to point to an event handler on your
+viewmodel.
+
+View:
 
 ```js
 {
@@ -10,6 +13,8 @@ named methods on your data.
   }
 };
 ```
+
+Template:
 
 ```html
 <button onclick="sayHello">Say hello</button>

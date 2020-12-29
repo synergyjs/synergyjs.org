@@ -118,15 +118,9 @@
         list-style-type: none;
       }
 
-      main {
-        /* margin: calc(var(--n4) * 1rem) 0; */
-      }
-
       .readable {
         width: 100%;
-
         max-width: 75em;
-        font-size: inherit;
       }
 
       .next {
@@ -141,6 +135,20 @@
         text-transform: uppercase;
         text-decoration: none;
         font-size: calc(var(--n1) * 1rem);
+      }
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      footer a:first-child {
+        display: flex;
+        align-items: flex-start;
+      }
+      footer a:last-child {
+        display: flex;
+        align-items: flex-end;
       }
     </style>
     <style>
@@ -210,6 +218,13 @@
       <pre><code class="language-html">&lt;hello-world name=&quot;kimberley&quot;&gt;&lt;/hello-world&gt;
 </code></pre>
     </main>
+    <footer class="readable">
+      <span></span>
+      <a href="/documentation" class="next">
+        <span>NEXT ></span>
+        documentation
+      </a>
+    </footer>
     <script src="./disclosure.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
     <script>

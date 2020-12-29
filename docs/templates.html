@@ -118,15 +118,9 @@
         list-style-type: none;
       }
 
-      main {
-        /* margin: calc(var(--n4) * 1rem) 0; */
-      }
-
       .readable {
         width: 100%;
-
         max-width: 75em;
-        font-size: inherit;
       }
 
       .next {
@@ -141,6 +135,20 @@
         text-transform: uppercase;
         text-decoration: none;
         font-size: calc(var(--n1) * 1rem);
+      }
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      footer a:first-child {
+        display: flex;
+        align-items: flex-start;
+      }
+      footer a:last-child {
+        display: flex;
+        align-items: flex-end;
       }
     </style>
     <style>
@@ -263,6 +271,17 @@
         </p>
       </blockquote>
     </main>
+    <footer class="readable">
+      <a href="/api" class="next">
+        <span>< PREV</span>
+        api
+      </a>
+
+      <a href="/class-and-style" class="next">
+        <span>NEXT ></span>
+        class and style
+      </a>
+    </footer>
     <script src="./disclosure.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
     <script>

@@ -118,15 +118,9 @@
         list-style-type: none;
       }
 
-      main {
-        /* margin: calc(var(--n4) * 1rem) 0; */
-      }
-
       .readable {
         width: 100%;
-
         max-width: 75em;
-        font-size: inherit;
       }
 
       .next {
@@ -141,6 +135,20 @@
         text-transform: uppercase;
         text-decoration: none;
         font-size: calc(var(--n1) * 1rem);
+      }
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      footer a:first-child {
+        display: flex;
+        align-items: flex-start;
+      }
+      footer a:last-child {
+        display: flex;
+        align-items: flex-end;
       }
     </style>
     <style>
@@ -178,30 +186,37 @@
       <nav>
         <h2>documentation</h2>
         <ul>
-          <li>
-            <a href="/getting-started">getting started</a>
-          </li>
+          <li><a href="/getting-started">getting started</a></li>
+
           <li><a href="/api">api</a></li>
-          <li>
-            <a href="/templates">templates</a>
-          </li>
-          <li>
-            <a href="/class-and-style">class &amp; style</a>
-          </li>
-          <li>
-            <a href="/expressions">expressions</a>
-          </li>
-          <li>
-            <a href="/repeated-blocks">repeated blocks</a>
-          </li>
+
+          <li><a href="/templates">templates</a></li>
+
+          <li><a href="/class-and-style">class and style</a></li>
+
+          <li><a href="/expressions">expressions</a></li>
+
+          <li><a href="/repeated-blocks">repeated blocks</a></li>
+
           <li><a href="/events">events</a></li>
+
           <li><a href="/forms">forms</a></li>
-          <li>
-            <a href="/pre-rendering">pre-rendering</a>
-          </li>
+
+          <li><a href="/prerendering">prerendering</a></li>
         </ul>
       </nav>
     </main>
+    <footer class="readable">
+      <a href="/" class="next">
+        <span>< PREV</span>
+        synergy
+      </a>
+
+      <a href="/getting-started" class="next">
+        <span>NEXT ></span>
+        getting started
+      </a>
+    </footer>
     <script src="./disclosure.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
     <script>

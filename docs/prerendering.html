@@ -183,61 +183,26 @@
     </header>
 
     <main class="readable">
-      <h2>JavaScript Expressions</h2>
+      <h2>Pre-rendering</h2>
       <p>
-        Synergy doesn't allow you to write arbitrary JavaScript expressions
-        inside your templates. This helps to keep a clearer separation of
-        concerns between your JavaScript and your HTML. That being said, there
-        are a couple of simple expressions that are supported to make working
-        with attributes a little easier...
+        Pre-rendering is useful when you need to get content rendered
+        immediately as part of the initial page load, without having to wait for
+        JavaScript to build the page first.
       </p>
-      <h3>Logical Not ( ! )</h3>
       <p>
-        You can prefix a property name with an exclamation mark in order to
-        negate it.
+        Synergy supports pre-rendering and hydration and doesn't care where or
+        how you pre-render your content. In order to pre-render your page, you
+        only need to load it in a browser (or within a synthetic DOM
+        environment) and then save the rendered page. Load that same page again
+        and Synergy will hydrate the bindings without modifying the DOM.
       </p>
-      <pre><code class="language-html">&lt;h3&gt;
-  &lt;button
-    id=&quot;{{ id }}&quot;
-    aria-expanded=&quot;{{ expanded }}&quot;
-  &gt;
-    {{ title }}
-  &lt;/button&gt;
-&lt;/h3&gt;
-&lt;div
-  aria-labelledby=&quot;{{ id }}&quot;
-  hidden=&quot;{{ !expanded }}&quot;
-&gt;
-  &lt;!-- ... --&gt;
-&lt;/div&gt;
-</code></pre>
-      <h3>Object Spread ( ... )</h3>
-      <p>
-        You can prefix a property name with an ellipsis to spread all of the
-        keys and values of an object onto an element as individual attributes.
-      </p>
-      <pre><code class="language-js">      {
-        slider: {
-          name: 'slider',
-          type: 'range',
-          min: '0',
-          max: '360',
-        },
-      }
-</code></pre>
-      <pre><code class="language-html">&lt;input {{ ...slider }} /&gt;
-</code></pre>
     </main>
     <footer class="readable">
-      <a href="/class-and-style" class="next">
+      <a href="/forms" class="next">
         <span>< PREV</span>
-        class and style
+        forms
       </a>
-
-      <a href="/repeated-blocks" class="next">
-        <span>NEXT ></span>
-        repeated blocks
-      </a>
+      <span></span>
     </footer>
     <script src="./disclosure.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>

@@ -58,7 +58,7 @@ View:
 
 ```js
 {
-    hasErrors: false,
+    hasErrors: true,
     get classes() {
         return {
             errors: this.hasErrors
@@ -76,7 +76,7 @@ Template:
 Output:
 
 ```html
-<div class="{{ classes }}"></div>
+<form class="errors"></form>
 ```
 
 ### Inline Styles

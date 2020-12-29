@@ -1,11 +1,10 @@
 ## Forms
 
-Named inputs are automatically bound to properties
-of the same name on your data.
+Synergy makes working with form data a breeze by
+automagically binding named form controls to
+properties of the same name on your viewmodel.
 
-```html
-<input name="color" type="color" />
-```
+View:
 
 ```js
 {
@@ -13,49 +12,27 @@ of the same name on your data.
 }
 ```
 
-### Submitting Form Data
-
-By default, a HTML form will browse to a new page
-when the user submits the form. Submission happens
-when the user actives either a) an
-input[type="submit"], or b) a
-button[type="submit"].
-
-> In some browsers, a button _without_ a [type]
-> will be assumed to be [type="submit"] if it
-> resides within a form element, so you should
-> _always_ set a buttons `type` attribute when it
-> lives within a form.
-
-If you wish to override the browsers default
-behaviour, perhaps to execute some JavaScript
-before submitting the form data, then you would do
-that by binding to the forms submit event, and
-calling `preventDefault` on the event object
-inside your handler function to stop the browser
-from submitting the form.
+Template:
 
 ```html
-<form onsubmit="handleForm">
-  <input name="formData.name" />
-  <input name="formData.email" type="email" />
-  <input type="submit" value="Submit" />
-</form>
-```
-
-```js
-{
-  formData: {},
-  handleForm: function(event) {
-    console.log(this.formData);
-    event.preventDefault();
-  }
-};
+<input name="color" type="color" />
 ```
 
 ### Select
 
-Simply name the `<select>`...
+Attribute a name to your `<select>` and the value
+of the bound property will reflect that of the
+currently selected `<option>`
+
+View:
+
+```js
+{
+  pets: 'hamster';
+}
+```
+
+Template:
 
 ```html
 <label for="pet-select">Choose a pet:</label>
@@ -70,15 +47,6 @@ Simply name the `<select>`...
   <option value="spider">Spider</option>
   <option value="goldfish">Goldfish</option>
 </select>
-```
-
-...and the value of the property will reflect the
-value of the currently selected `<option>`:
-
-```js
-{
-  pets: 'hamster';
-}
 ```
 
 The standard HTML `<select>` element also supports

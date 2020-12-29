@@ -118,15 +118,9 @@
         list-style-type: none;
       }
 
-      main {
-        /* margin: calc(var(--n4) * 1rem) 0; */
-      }
-
       .readable {
         width: 100%;
-
         max-width: 75em;
-        font-size: inherit;
       }
 
       .next {
@@ -141,6 +135,20 @@
         text-transform: uppercase;
         text-decoration: none;
         font-size: calc(var(--n1) * 1rem);
+      }
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      footer a:first-child {
+        display: flex;
+        align-items: flex-start;
+      }
+      footer a:last-child {
+        display: flex;
+        align-items: flex-end;
       }
     </style>
     <style>
@@ -177,52 +185,29 @@
     <main class="readable">
       <h2>Forms</h2>
       <p>
-        Named inputs are automatically bound to properties of the same name on
-        your data.
+        Synergy makes working with form data a breeze by automagically binding
+        named form controls to properties of the same name on your viewmodel.
       </p>
-      <pre><code class="language-html">&lt;input name=&quot;color&quot; type=&quot;color&quot; /&gt;
-</code></pre>
+      <p>View:</p>
       <pre><code class="language-js">{
   color: '#4287f5';
 }
 </code></pre>
-      <h3>Submitting Form Data</h3>
-      <p>
-        By default, a HTML form will browse to a new page when the user submits
-        the form. Submission happens when the user actives either a) an
-        input[type=&quot;submit&quot;], or b) a button[type=&quot;submit&quot;].
-      </p>
-      <blockquote>
-        <p>
-          In some browsers, a button <em>without</em> a [type] will be assumed
-          to be [type=&quot;submit&quot;] if it resides within a form element,
-          so you should <em>always</em> set a buttons
-          <code>type</code> attribute when it lives within a form.
-        </p>
-      </blockquote>
-      <p>
-        If you wish to override the browsers default behaviour, perhaps to
-        execute some JavaScript before submitting the form data, then you would
-        do that by binding to the forms submit event, and calling
-        <code>preventDefault</code> on the event object inside your handler
-        function to stop the browser from submitting the form.
-      </p>
-      <pre><code class="language-html">&lt;form onsubmit=&quot;handleForm&quot;&gt;
-  &lt;input name=&quot;formData.name&quot; /&gt;
-  &lt;input name=&quot;formData.email&quot; type=&quot;email&quot; /&gt;
-  &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
-&lt;/form&gt;
-</code></pre>
-      <pre><code class="language-js">{
-  formData: {},
-  handleForm: function(event) {
-    console.log(this.formData);
-    event.preventDefault();
-  }
-};
+      <p>Template:</p>
+      <pre><code class="language-html">&lt;input name=&quot;color&quot; type=&quot;color&quot; /&gt;
 </code></pre>
       <h3>Select</h3>
-      <p>Simply name the <code>&lt;select&gt;</code>...</p>
+      <p>
+        Attribute a name to your <code>&lt;select&gt;</code> and the value of
+        the bound property will reflect that of the currently selected
+        <code>&lt;option&gt;</code>
+      </p>
+      <p>View:</p>
+      <pre><code class="language-js">{
+  pets: 'hamster';
+}
+</code></pre>
+      <p>Template:</p>
       <pre><code class="language-html">&lt;label for=&quot;pet-select&quot;&gt;Choose a pet:&lt;/label&gt;
 &lt;select name=&quot;pets&quot; id=&quot;pet-select&quot;&gt;
   &lt;option value=&quot;&quot;&gt;
@@ -235,14 +220,6 @@
   &lt;option value=&quot;spider&quot;&gt;Spider&lt;/option&gt;
   &lt;option value=&quot;goldfish&quot;&gt;Goldfish&lt;/option&gt;
 &lt;/select&gt;
-</code></pre>
-      <p>
-        ...and the value of the property will reflect the value of the currently
-        selected <code>&lt;option&gt;</code>:
-      </p>
-      <pre><code class="language-js">{
-  pets: 'hamster';
-}
 </code></pre>
       <p>
         The standard HTML <code>&lt;select&gt;</code> element also supports the
@@ -297,6 +274,17 @@
 }
 </code></pre>
     </main>
+    <footer class="readable">
+      <a href="/events" class="next">
+        <span>< PREV</span>
+        events
+      </a>
+
+      <a href="/prerendering" class="next">
+        <span>NEXT ></span>
+        prerendering
+      </a>
+    </footer>
     <script src="./disclosure.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
     <script>

@@ -118,15 +118,9 @@
         list-style-type: none;
       }
 
-      main {
-        /* margin: calc(var(--n4) * 1rem) 0; */
-      }
-
       .readable {
         width: 100%;
-
         max-width: 75em;
-        font-size: inherit;
       }
 
       .next {
@@ -141,6 +135,20 @@
         text-transform: uppercase;
         text-decoration: none;
         font-size: calc(var(--n1) * 1rem);
+      }
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      footer a:first-child {
+        display: flex;
+        align-items: flex-start;
+      }
+      footer a:last-child {
+        display: flex;
+        align-items: flex-end;
       }
     </style>
     <style>
@@ -177,15 +185,17 @@
     <main class="readable">
       <h2>Events</h2>
       <p>
-        Use standard DOM Event names to bind directly to named methods on your
-        data.
+        Synergy assumes any attribute name prefixed with &quot;on&quot; to point
+        to an event handler on your viewmodel.
       </p>
+      <p>View:</p>
       <pre><code class="language-js">{
   sayHello: function() {
     alert(&quot;hi!&quot;);
   }
 };
 </code></pre>
+      <p>Template:</p>
       <pre><code class="language-html">&lt;button onclick=&quot;sayHello&quot;&gt;Say hello&lt;/button&gt;
 </code></pre>
       <p>
@@ -223,6 +233,17 @@
 &lt;/ul&gt;
 </code></pre>
     </main>
+    <footer class="readable">
+      <a href="/repeated-blocks" class="next">
+        <span>< PREV</span>
+        repeated blocks
+      </a>
+
+      <a href="/forms" class="next">
+        <span>NEXT ></span>
+        forms
+      </a>
+    </footer>
     <script src="./disclosure.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
     <script>

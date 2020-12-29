@@ -29,24 +29,26 @@ define(tagName, factory, template);
 
 #### Parameters
 
-- `tagName` Name for the new custom element. As
-  per the Custom Element spec, an elements name
-  must include a hyphen.
+- `tagName` (string) Name for the new custom
+  element. As per the Custom Element spec, an
+  elements name must include a hyphen.
 
-- `factory` A Factory function that returns a
-  plain JavaScript object that will provide the
-  data for your element.
+- `factory` (function) A Factory function that
+  accepts a single argument (an object containing
+  the elements initial attribute name/value pairs)
+  . Returns a plain JavaScript object to provide
+  the viewmodel for your custom element.
 
-- `template` (optional) Either an HTML string or a
-  `<template>` element. If omitted, synergy
-  expects your document to include a Template
-  element with an id matching `tagName`.
+- `template` (string|element) Either an HTML
+  string or a `<template>` element. If omitted,
+  synergy expects your document to include a
+  Template element with an id matching `tagName`.
 
 #### Factory
 
-An elements initial attribute keys and values will
-be passed to your factory function during
-initialisation.
+Your custom elements initial attribute names and
+values will be passed to your factory function as
+a single object argument during initialisation.
 
 ```js
 const xElementFactory = ({
@@ -60,6 +62,11 @@ const xElementFactory = ({
 };
 ```
 
+The properties you accept here form your custom
+elements _observed attributes_ and your viewmodel
+will be updated automatically whenever any of
+those attributes change.
+
 Remember that, because these values are provided
 by the author of the document, there's no
 guarantee as to what you will receive, so you
@@ -69,9 +76,6 @@ should _always_...
   the values you want / expect
 - provide default values to ensure that your
   custom element still works (or fails gracefully)
-
-You should _never_ spread the intial props
-straight into your viewmodel.
 
 #### Lifecycle Hooks
 
