@@ -105,8 +105,17 @@
 
       header {
         display: flex;
-        justify-content: space-between;
+        justify-content: start;
+        align-items: baseline;
         margin: calc(var(--n2) * 1rem) 0;
+      }
+
+      header nav a {
+        color: var(--dark4);
+      }
+
+      header nav ul {
+        list-style-type: none;
       }
 
       main {
@@ -118,6 +127,20 @@
 
         max-width: 75em;
         font-size: inherit;
+      }
+
+      .next {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        font-size: calc(var(--n2) * 1rem);
+        margin: calc(var(--n4) * 1rem) 0;
+      }
+
+      .next span {
+        text-transform: uppercase;
+        text-decoration: none;
+        font-size: calc(var(--n1) * 1rem);
       }
     </style>
     <style>
@@ -158,10 +181,12 @@
         the <code>each</code> opening (<code>#</code>) and closing
         (<code>/</code>) comments.
       </p>
+      <p>View:</p>
       <pre><code class="language-js">{
   names: ['kate', 'kevin', 'randall'];
 }
 </code></pre>
+      <p>Template:</p>
       <pre><code class="language-html">&lt;ul&gt;
   &lt;!-- #each name in names --&gt;
   &lt;li&gt;Hello {{ name }}&lt;/li&gt;
@@ -176,24 +201,6 @@
   &lt;/li&gt;
   &lt;!-- /each --&gt;
 &lt;/ul&gt;
-</code></pre>
-      <p>Repeated blocks can have multiple top-level nodes</p>
-      <pre><code class="language-html">&lt;!-- #each drawer in drawers --&gt;
-&lt;h3&gt;
-  &lt;button
-    id=&quot;{{ id }}&quot;
-    aria-expanded=&quot;{{ expanded }}&quot;
-  &gt;
-    {{ title }}
-  &lt;/button&gt;
-&lt;/h3&gt;
-&lt;div
-  aria-labelledby=&quot;{{ id }}&quot;
-  hidden=&quot;{{ !expanded }}&quot;
-&gt;
-  &lt;!-- ... --&gt;
-&lt;/div&gt;
-&lt;!-- /each --&gt;
 </code></pre>
       <h3>Keyed Arrays</h3>
       <p>

@@ -175,19 +175,93 @@
     </header>
 
     <main class="readable">
-      <h2>Pre-rendering</h2>
+      <h2>templates</h2>
       <p>
-        Pre-rendering is useful when you need to get content rendered
-        immediately as part of the initial page load, without having to wait for
-        JavaScript to build the page first.
+        Synergy's main purpose is <em>data binding</em>; taking your HTML
+        template and replacing the &quot;tokens&quot; inside it with data from
+        your JavaScript object, then updating your UI whenever that data
+        changes.
       </p>
       <p>
-        Synergy supports pre-rendering and hydration and doesn't care where or
-        how you pre-render your content. In order to pre-render your page, you
-        only need to load it in a browser (or within a synthetic DOM
-        environment) and then save the rendered page. Load that same page again
-        and Synergy will hydrate the bindings without modifying the DOM.
+        In a Synergy template, a <strong>token</strong> is identified by
+        surrounding it with double curly braces.
       </p>
+      <h3>Text</h3>
+      <p>
+        Let's take a look at how token replacement works with some simple text.
+      </p>
+      <p>View:</p>
+      <pre><code class="language-js">{
+  name: 'Ericka';
+}
+</code></pre>
+      <p>Template:</p>
+      <pre><code class="language-html">&lt;p&gt;hello {{ name }}!&lt;/p&gt;
+</code></pre>
+      <p>Output:</p>
+      <pre><code class="language-html">&lt;p&gt;hello Ericka!&lt;/p&gt;
+</code></pre>
+      <h3>Attributes</h3>
+      <p>
+        You can use tokens in the same way for both text and attribute nodes.
+      </p>
+      <p>View:</p>
+      <pre><code class="language-js">{
+  textColor: 'gold',
+};
+</code></pre>
+      <p>Template:</p>
+      <pre><code class="language-html">&lt;p style=&quot;color: {{ textColor }}&quot;&gt;ok&lt;/p&gt;
+</code></pre>
+      <p>Output:</p>
+      <pre><code class="language-html">&lt;p style=&quot;color: gold;&quot;&gt;ok&lt;/p&gt;
+</code></pre>
+      <h3>Boolean attributes</h3>
+      <p>
+        Some HTML attributes are known as boolean attributes, which means that
+        they're considered to be <em>true</em> if present, or <em>false</em> if
+        absent.
+      </p>
+      <p>Boolean values can be toggled by binding to a boolean value.</p>
+      <p>View:</p>
+      <pre><code class="language-js">{
+  hidden: true;
+}
+</code></pre>
+      <p>Template:</p>
+      <pre><code class="language-html">&lt;div hidden=&quot;{{ hidden }}&quot;&gt;&lt;/div&gt;
+</code></pre>
+      <p>Output:</p>
+      <pre><code class="language-html">&lt;div hidden&gt;&lt;/div&gt;
+</code></pre>
+      <h3>ARIA attributes</h3>
+      <p>
+        Some ARIA attribute values can be &quot;true&quot; or &quot;false&quot;.
+        You can also bind these to a boolean value and Synergy will treat them
+        accordingly.
+      </p>
+      <p>View:</p>
+      <pre><code class="language-js">{
+  title: 'more information';
+  expanded: false;
+}
+</code></pre>
+      <p>Template:</p>
+      <pre><code class="language-html">&lt;button aria-expanded=&quot;{{ expanded }}&quot;&gt;
+  {{ title }}
+&lt;/button&gt;
+&lt;div hidden=&quot;{{ !expanded }}&quot;&gt;&lt;/div&gt;
+</code></pre>
+      <p>Output:</p>
+      <pre><code class="language-html">&lt;button aria-expanded=&quot;false&quot;&gt;{{ title }}&lt;/button&gt;
+&lt;div hidden&gt;&lt;/div&gt;
+</code></pre>
+      <blockquote>
+        <p>
+          Note how a value can be negated by prefixing it with the
+          <code>!</code> character.
+        </p>
+      </blockquote>
     </main>
     <script src="./disclosure.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>

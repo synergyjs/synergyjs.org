@@ -65,11 +65,10 @@ by the author of the document, there's no
 guarantee as to what you will receive, so you
 should _always_...
 
-1. destructure the initial properties to get only
-   the values you want / expect
-2. provide default values to ensure that your
-   custom element still works (or fails
-   gracefully)
+- destructure the initial properties to get only
+  the values you want / expect
+- provide default values to ensure that your
+  custom element still works (or fails gracefully)
 
 You should _never_ spread the intial props
 straight into your viewmodel.

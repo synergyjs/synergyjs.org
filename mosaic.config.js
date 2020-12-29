@@ -8,7 +8,6 @@ const name = (filepath) =>
   path.basename(filepath, path.extname(filepath));
 
 const build = {
-  //port: 4321,
   input: {
     pageHtml: './pages/*.html',
     pageMd: './pages/*.md',

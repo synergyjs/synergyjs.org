@@ -4,11 +4,15 @@ Repeat a block of HTML for each item in an Array
 by surrounding it with the `each` opening (`#`)
 and closing (`/`) comments.
 
+View:
+
 ```js
 {
   names: ['kate', 'kevin', 'randall'];
 }
 ```
+
+Template:
 
 ```html
 <ul>
@@ -29,27 +33,6 @@ character
   </li>
   <!-- /each -->
 </ul>
-```
-
-Repeated blocks can have multiple top-level nodes
-
-```html
-<!-- #each drawer in drawers -->
-<h3>
-  <button
-    id="{{ id }}"
-    aria-expanded="{{ expanded }}"
-  >
-    {{ title }}
-  </button>
-</h3>
-<div
-  aria-labelledby="{{ id }}"
-  hidden="{{ !expanded }}"
->
-  <!-- ... -->
-</div>
-<!-- /each -->
 ```
 
 ### Keyed Arrays
