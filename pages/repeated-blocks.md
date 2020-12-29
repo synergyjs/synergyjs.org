@@ -8,7 +8,7 @@ View:
 
 ```js
 {
-  names: ['kate', 'kevin', 'randall'];
+  names: ["kate", "kevin", "randall"];
 }
 ```
 
@@ -22,14 +22,14 @@ Template:
 </ul>
 ```
 
-You can access the current index with the dot
+You can access the current index with the hash
 character
 
 ```html
 <ul>
   <!-- #each todo in todos -->
   <li>
-    <p>todo {{ . }} of {{ todos.length }}</p>
+    <p>todo {{ # }} of {{ todos.length }}</p>
   </li>
   <!-- /each -->
 </ul>

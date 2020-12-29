@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>repeated blocks</title>
     <link
       rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/styles/github-gist.min.css"
@@ -191,7 +191,7 @@
       </p>
       <p>View:</p>
       <pre><code class="language-js">{
-  names: ['kate', 'kevin', 'randall'];
+  names: [&quot;kate&quot;, &quot;kevin&quot;, &quot;randall&quot;];
 }
 </code></pre>
       <p>Template:</p>
@@ -201,11 +201,11 @@
   &lt;!-- /each --&gt;
 &lt;/ul&gt;
 </code></pre>
-      <p>You can access the current index with the dot character</p>
+      <p>You can access the current index with the hash character</p>
       <pre><code class="language-html">&lt;ul&gt;
   &lt;!-- #each todo in todos --&gt;
   &lt;li&gt;
-    &lt;p&gt;todo {{ . }} of {{ todos.length }}&lt;/p&gt;
+    &lt;p&gt;todo {{ # }} of {{ todos.length }}&lt;/p&gt;
   &lt;/li&gt;
   &lt;!-- /each --&gt;
 &lt;/ul&gt;
@@ -237,17 +237,16 @@
 </code></pre>
     </main>
     <footer class="readable">
-      <a href="/expressions" class="next">
+      <a href="class-and-style" class="next">
         <span>< PREV</span>
-        expressions
+        class and style
       </a>
 
-      <a href="/events" class="next">
+      <a href="events" class="next">
         <span>NEXT ></span>
         events
       </a>
     </footer>
-    <script src="./disclosure.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
     <script>
       hljs.initHighlightingOnLoad();

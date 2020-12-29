@@ -1,22 +1,20 @@
-import path from 'path';
-import prettier from 'prettier';
-import MarkdownIt from 'markdown-it';
+import path from "path";
+import prettier from "prettier";
+import MarkdownIt from "markdown-it";
 
 const md = new MarkdownIt();
 
 const name = (filepath) =>
   path.basename(filepath, path.extname(filepath));
 
-/* @TODO auto parse .json */
-
 const build = {
   //port: 4321,
   input: {
-    pageHtml: './pages/*.html',
-    pageMd: './pages/*.md',
-    template: './template.html',
-    blocks: './blocks/*.html',
-    menuJSON: './menu.json',
+    pageHtml: "./pages/*.html",
+    pageMd: "./pages/*.md",
+    template: "./template.html",
+    blocks: "./blocks/*.html",
+    menuJSON: "./menu.json",
   },
   output: [
     (v) => ({
@@ -28,20 +26,20 @@ const build = {
       let { blocks, menuItems } = v;
 
       let block = {
-        filepath: 'docs-menu',
+        filepath: "docs-menu",
         content: menuItems
           .filter(
-            ({ section }) => section === 'docs'
+            ({ section }) => section === "docs"
           )
           .map(
             ({ title }) => `
           <li><a href="/${title.replace(
             /\s+/g,
-            '-'
+            "-"
           )}">${title}</a></li>
         `
           )
-          .join('\n'),
+          .join("\n"),
       };
 
       return {
@@ -55,7 +53,7 @@ const build = {
         v.pageMd.map(({ filepath, content }) => ({
           filepath: filepath.replace(
             /.md$/,
-            '.html'
+            ".html"
           ),
           content: md.render(content),
         }))
@@ -67,70 +65,100 @@ const build = {
         ({ filepath, content }) => ({
           filepath,
           content: v.template.content.replace(
-            '<!-- {{ main-content }} -->',
+            "<!-- {{ main-content }} -->",
             content
           ),
         })
       ),
     }),
+
     (v) => {
-      let { pages, menuItems } = v;
+      let pages = v.pages.map((page) => {
+        let n = name(page.filepath);
 
-      console.log(menuItems);
+        let index = v.menuItems.findIndex(
+          ({ slug, file }) => {
+            return slug === n || file === n;
+          }
+        );
 
-      pages = pages.map(
-        ({ filepath, content }) => {
-          let n = name(filepath).replace(
-            /-/g,
-            ' '
-          );
+        return {
+          ...page,
+          menuItem: {
+            index,
+            ...v.menuItems[index],
+          },
+        };
+      });
 
-          let i = menuItems.findIndex(
-            ({ title, file }) => {
-              return title === n || file === n;
-            }
-          );
+      return {
+        ...v,
+        pages,
+      };
+    },
+    (v) => {
+      // let { pages, menuItems } = v;
 
-          // console.log(n, i);
+      let pages = v.pages.map((page) => {
+        let {
+          filepath,
+          content,
+          menuItem,
+        } = page;
+        let i = menuItem.index;
+        let prev = v.menuItems[i - 1];
+        let next = v.menuItems[i + 1];
 
-          let prev = menuItems[i - 1];
-          let next = menuItems[i + 1];
+        let html = "";
 
-          // console.log(n, prev, next);
-
-          let html = '';
-
-          if (prev) {
-            html += `
+        if (prev) {
+          html += `
           <a href="${prev.slug}" class="next">
             <span>< PREV</span>
             ${prev.title}
           </a>
           `;
-          } else {
-            html += '<span></span>';
-          }
+        } else {
+          html += "<span></span>";
+        }
 
-          if (next) {
-            html += `
+        if (next) {
+          html += `
           <a href="${next.slug}" class="next">
             <span>NEXT ></span>
             ${next.title}
           </a>
           `;
-          } else {
-            html += '<span></span>';
-          }
-
-          return {
-            filepath,
-            content: content.replace(
-              '<!-- {{ pagination }} -->',
-              html
-            ),
-          };
+        } else {
+          html += "<span></span>";
         }
-      );
+
+        return {
+          ...page,
+          content: content.replace(
+            "<!-- {{ pagination }} -->",
+            html
+          ),
+        };
+      });
+
+      return {
+        ...v,
+        pages,
+      };
+    },
+    (v) => {
+      let pages = v.pages.map((page) => {
+        let { menuItem } = page;
+
+        return {
+          ...page,
+          content: page.content.replace(
+            "<!-- {{ title }} -->",
+            menuItem.title
+          ),
+        };
+      });
 
       return {
         ...v,
@@ -152,7 +180,7 @@ const build = {
     (pages) =>
       pages.map(({ filepath, content }) => ({
         filepath: path.join(
-          'docs',
+          "docs",
           path.basename(filepath)
         ),
         content,
@@ -161,7 +189,7 @@ const build = {
       pages.map(({ filepath, content }) => ({
         filepath,
         content: prettier.format(content, {
-          parser: 'html',
+          parser: "html",
         }),
       })),
   ],

@@ -89,9 +89,10 @@ Output:
 
 ### ARIA attributes
 
-Some ARIA attribute values can be "true" or
-"false". You can also bind these to a boolean
-value and Synergy will treat them accordingly.
+Some ARIA attributes accept the string values
+"true" and "false". These aren't boolean
+attributes, but Synergy let's you bind to booleans
+and it will treat them accordingly.
 
 View:
 
@@ -118,5 +119,29 @@ Output:
 <div hidden></div>
 ```
 
-> Note how a value can be negated by prefixing it
-> with the `!` character.
+### Logical NOT (!)
+
+As per the example above, you can prefix boolean
+properties with the exclamation mark to convert a
+truthy value to a falsy value, and vice versa.
+
+View:
+
+```js
+{
+  authenticated: true;
+}
+```
+
+Template:
+
+```html
+<div hidden="{{ authenticated }}">Log in</div>
+<div hidden="{{ !authenticated }}">Log out</div>
+```
+
+Output:
+
+```html
+<span hidden>Log in</span><span>Log out</span>
+```
