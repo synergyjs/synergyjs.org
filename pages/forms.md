@@ -8,7 +8,7 @@ View:
 
 ```js
 {
-  color: '#4287f5';
+  color: "#4287f5";
 }
 ```
 
@@ -28,7 +28,7 @@ View:
 
 ```js
 {
-  pets: 'hamster';
+  pets: "hamster";
 }
 ```
 
@@ -66,7 +66,7 @@ on your data:
 
 ```js
 {
-  pets: ['hamster', 'spider'];
+  pets: ["hamster", "spider"];
 }
 ```
 
@@ -102,6 +102,6 @@ property will reflect the value of the selected
 
 ```js
 {
-  filter: 'active';
+  filter: "active";
 }
 ```
