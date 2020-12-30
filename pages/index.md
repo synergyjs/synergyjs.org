@@ -23,9 +23,11 @@ together with any other framework or library.
 
 ```html
 <script type="module">
-  import define from 'https://unpkg.com/synergy@1.5.0';
+  import synergy from 'https://unpkg.com/synergy@1.5.0';
 
-  define('hello-world', ({ name }) => ({ name }));
+  synergy.define('hello-world', ({ name }) => ({
+    name,
+  }));
 </script>
 <template id="hello-world">
   <p>Hello {{ name }}</p>
