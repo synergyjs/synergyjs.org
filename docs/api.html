@@ -224,8 +224,8 @@
         </li>
         <li>
           <p>
-            <code>template</code> Either an HTML string or a
-            <code>&lt;template&gt;</code> node.
+            <code>template</code> (string|node) Either an HTML string or a
+            <code>&lt;template&gt;</code> element node.
           </p>
         </li>
         <li>
@@ -255,23 +255,17 @@
 };
 </code></pre>
       <p>
-        The properties you accept here form your custom elements
-        <em>observed attributes</em> and your viewmodel will be updated
-        automatically whenever any of those attributes change.
-      </p>
-      <p>
         Remember that, because these values are provided by the author of the
         document, there's no guarantee as to what you will receive, so you
         should <em>always</em>...
       </p>
       <ul>
         <li>
-          destructure the initial properties to get only the values you want /
-          expect
+          destructure the initial properties to get only the values you want
         </li>
         <li>
           provide default values to ensure that your custom element still works
-          (or fails gracefully)
+          or fails gracefully
         </li>
       </ul>
       <h4>Lifecycle Hooks</h4>
@@ -312,20 +306,20 @@
       <ul>
         <li>
           <p>
-            <code>element</code> An existing DOM element node to which the
-            rendered HTML should be appended.
+            <code>element</code> (node) An existing DOM element node to which
+            the rendered HTML should be appended.
           </p>
         </li>
         <li>
           <p>
-            <code>viewmodel</code> A plain JavaScript object that contains the
-            data for your view.
+            <code>viewmodel</code> (object) A plain JavaScript object that
+            contains the data for your view.
           </p>
         </li>
         <li>
           <p>
-            <code>template</code> Either an HTML string or a
-            <code>&lt;template&gt;</code> node.
+            <code>template</code> (string|node) Either an HTML string or a
+            <code>&lt;template&gt;</code> element node.
           </p>
         </li>
       </ul>

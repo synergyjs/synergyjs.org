@@ -39,8 +39,8 @@ define(tagName, factory, options);
   . Returns a plain JavaScript object to provide
   the viewmodel for your custom element.
 
-- `template` Either an HTML string or a
-  `<template>` node.
+- `template` (string|node) Either an HTML string
+  or a `<template>` element node.
 
 - `options` (object) The available options are:
 
@@ -66,20 +66,15 @@ const xElementFactory = ({
 };
 ```
 
-The properties you accept here form your custom
-elements _observed attributes_ and your viewmodel
-will be updated automatically whenever any of
-those attributes change.
-
 Remember that, because these values are provided
 by the author of the document, there's no
 guarantee as to what you will receive, so you
 should _always_...
 
 - destructure the initial properties to get only
-  the values you want / expect
+  the values you want
 - provide default values to ensure that your
-  custom element still works (or fails gracefully)
+  custom element still works or fails gracefully
 
 #### Lifecycle Hooks
 
@@ -123,14 +118,14 @@ let view = synergy.render(
 
 #### Parameters
 
-- `element` An existing DOM element node to which
-  the rendered HTML should be appended.
+- `element` (node) An existing DOM element node to
+  which the rendered HTML should be appended.
 
-- `viewmodel` A plain JavaScript object that
-  contains the data for your view.
+- `viewmodel` (object) A plain JavaScript object
+  that contains the data for your view.
 
-- `template` Either an HTML string or a
-  `<template>` node.
+- `template` (string|node) Either an HTML string
+  or a `<template>` element node.
 
 #### Return value
 
