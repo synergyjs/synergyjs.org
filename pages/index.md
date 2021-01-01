@@ -23,7 +23,7 @@ together with any other framework or library.
 
 ```html
 <script type="module">
-  import synergy from 'https://unpkg.com/synergy@1.5.3';
+  import synergy from 'https://unpkg.com/synergy';
 
   synergy.define(
     'hello-world',
