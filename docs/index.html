@@ -203,15 +203,16 @@
       <hr />
       <h3>A Simple Custom Element</h3>
       <pre><code class="language-html">&lt;script type=&quot;module&quot;&gt;
-  import synergy from 'https://unpkg.com/synergy@1.5.0';
+  import synergy from 'https://unpkg.com/synergy@1.5.3';
 
-  synergy.define('hello-world', ({ name }) =&gt; ({
-    name,
-  }));
+  synergy.define(
+    'hello-world',
+    ({ name }) =&gt; ({
+      name,
+    }),
+    '&lt;p&gt;Hello {{ name }}&lt;/p&gt;'
+  );
 &lt;/script&gt;
-&lt;template id=&quot;hello-world&quot;&gt;
-  &lt;p&gt;Hello {{ name }}&lt;/p&gt;
-&lt;/template&gt;
 </code></pre>
       <p>
         Now that your custom element is defined, you can use it anywhere inside
