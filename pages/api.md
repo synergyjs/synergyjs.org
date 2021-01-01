@@ -24,7 +24,7 @@ Element.
 #### Syntax
 
 ```js
-define(tagName, factory, template);
+define(tagName, factory, options);
 ```
 
 #### Parameters
@@ -39,10 +39,14 @@ define(tagName, factory, template);
   . Returns a plain JavaScript object to provide
   the viewmodel for your custom element.
 
-- `template` (string|element) Either an HTML
-  string or a `<template>` element. If omitted,
-  synergy expects your document to include a
-  Template element with an id matching `tagName`.
+- `template` Either an HTML string or a
+  `<template>` node.
+
+- `options` (object) The available options are:
+
+  - `observedAttributes` (array) An array
+    containing the element attributes that you
+    want to observe.
 
 #### Factory
 

@@ -204,7 +204,7 @@
       <h3>define</h3>
       <p>The <code>define()</code> function registers a new Custom Element.</p>
       <h4>Syntax</h4>
-      <pre><code class="language-js">define(tagName, factory, template);
+      <pre><code class="language-js">define(tagName, factory, options);
 </code></pre>
       <h4>Parameters</h4>
       <ul>
@@ -224,11 +224,18 @@
         </li>
         <li>
           <p>
-            <code>template</code> (string|element) Either an HTML string or a
-            <code>&lt;template&gt;</code> element. If omitted, synergy expects
-            your document to include a Template element with an id matching
-            <code>tagName</code>.
+            <code>template</code> Either an HTML string or a
+            <code>&lt;template&gt;</code> node.
           </p>
+        </li>
+        <li>
+          <p><code>options</code> (object) The available options are:</p>
+          <ul>
+            <li>
+              <code>observedAttributes</code> (array) An array containing the
+              element attributes that you want to observe.
+            </li>
+          </ul>
         </li>
       </ul>
       <h4>Factory</h4>
