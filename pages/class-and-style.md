@@ -7,10 +7,10 @@ View:
 ```js
 {
   classes: [
-    'w32',
-    'h32',
-    'rounded-full',
-    'mx-auto',
+    "w32",
+    "h32",
+    "rounded-full",
+    "mx-auto",
   ];
 }
 ```
@@ -24,7 +24,9 @@ Template:
 Output:
 
 ```html
-<img class="w32 h32 rounded-full mx-auto" />
+<img
+  class="w32 h32 rounded-full mx-auto"
+/>
 ```
 
 ### Static Conditional Classes with Object
@@ -43,7 +45,9 @@ View:
 Template:
 
 ```html
-<div class="{{ classes }}"></div>
+<div
+  class="{{ classes }}"
+></div>
 ```
 
 Output:
@@ -70,7 +74,9 @@ View:
 Template:
 
 ```html
-<form class="{{ classes }}"></form>
+<form
+  class="{{ classes }}"
+></form>
 ```
 
 Output:
@@ -98,7 +104,10 @@ View:
 Template:
 
 ```html
-<button primary style="{{ styles }}"></button>
+<button
+  primary
+  style="{{ styles }}"
+></button>
 ```
 
 Output:

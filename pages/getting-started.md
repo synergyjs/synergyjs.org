@@ -12,7 +12,7 @@ Synergy package directly from a CDN.
 
 ```html
 <script type="module">
-  import synergy from 'https://unpkg.com/synergy';
+  import synergy from "https://unpkg.com/synergy";
 </script>
 ```
 

@@ -191,7 +191,11 @@
       </p>
       <p>View:</p>
       <pre><code class="language-js">{
-  names: [&quot;kate&quot;, &quot;kevin&quot;, &quot;randall&quot;];
+  names: [
+    &quot;kate&quot;,
+    &quot;kevin&quot;,
+    &quot;randall&quot;,
+  ];
 }
 </code></pre>
       <p>Template:</p>
@@ -205,7 +209,10 @@
       <pre><code class="language-html">&lt;ul&gt;
   &lt;!-- #each todo in todos --&gt;
   &lt;li&gt;
-    &lt;p&gt;todo {{ # }} of {{ todos.length }}&lt;/p&gt;
+    &lt;p&gt;
+      todo {{ # }} of {{
+      todos.length }}
+    &lt;/p&gt;
   &lt;/li&gt;
   &lt;!-- /each --&gt;
 &lt;/ul&gt;
@@ -231,7 +238,9 @@
       </p>
       <pre><code class="language-html">&lt;ul&gt;
   &lt;!-- #each person in people (key=foo) --&gt;
-  &lt;li&gt;Hello {{ person.name }}&lt;/li&gt;
+  &lt;li&gt;
+    Hello {{ person.name }}
+  &lt;/li&gt;
   &lt;!-- /each --&gt;
 &lt;/ul&gt;
 </code></pre>

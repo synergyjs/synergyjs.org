@@ -188,10 +188,10 @@
       <p>View:</p>
       <pre><code class="language-js">{
   classes: [
-    'w32',
-    'h32',
-    'rounded-full',
-    'mx-auto',
+    &quot;w32&quot;,
+    &quot;h32&quot;,
+    &quot;rounded-full&quot;,
+    &quot;mx-auto&quot;,
   ];
 }
 </code></pre>
@@ -199,7 +199,9 @@
       <pre><code class="language-html">&lt;img class=&quot;{{ classes }}&quot; /&gt;
 </code></pre>
       <p>Output:</p>
-      <pre><code class="language-html">&lt;img class=&quot;w32 h32 rounded-full mx-auto&quot; /&gt;
+      <pre><code class="language-html">&lt;img
+  class=&quot;w32 h32 rounded-full mx-auto&quot;
+/&gt;
 </code></pre>
       <h3>Static Conditional Classes with Object</h3>
       <p>View:</p>
@@ -211,7 +213,9 @@
 }
 </code></pre>
       <p>Template:</p>
-      <pre><code class="language-html">&lt;div class=&quot;{{ classes }}&quot;&gt;&lt;/div&gt;
+      <pre><code class="language-html">&lt;div
+  class=&quot;{{ classes }}&quot;
+&gt;&lt;/div&gt;
 </code></pre>
       <p>Output:</p>
       <pre><code class="language-html">&lt;div class=&quot;mx-auto&quot;&gt;&lt;/div&gt;
@@ -228,7 +232,9 @@
 }
 </code></pre>
       <p>Template:</p>
-      <pre><code class="language-html">&lt;form class=&quot;{{ classes }}&quot;&gt;&lt;/form&gt;
+      <pre><code class="language-html">&lt;form
+  class=&quot;{{ classes }}&quot;
+&gt;&lt;/form&gt;
 </code></pre>
       <p>Output:</p>
       <pre><code class="language-html">&lt;form class=&quot;errors&quot;&gt;&lt;/form&gt;
@@ -246,7 +252,10 @@
 }
 </code></pre>
       <p>Template:</p>
-      <pre><code class="language-html">&lt;button primary style=&quot;{{ styles }}&quot;&gt;&lt;/button&gt;
+      <pre><code class="language-html">&lt;button
+  primary
+  style=&quot;{{ styles }}&quot;
+&gt;&lt;/button&gt;
 </code></pre>
       <p>Output:</p>
       <pre><code class="language-html">&lt;button

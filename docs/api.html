@@ -245,7 +245,7 @@
         initialisation.
       </p>
       <pre><code class="language-js">const xElementFactory = ({
-  name = '',
+  name = &quot;&quot;,
   disabled = false,
 }) =&gt; {
   return {
@@ -275,20 +275,44 @@
     element is appended into a document-
     connected element */
   },
-  observedProperties: ['foo', 'bar'],
-  propertyChangedCallback(name, value) {
-    /* Invoked whenever any of the 
-    properties declared in the 
-    observedProperties array have 
-    changed. */
-  },
   disconnectedCallback() {
     /* Invoked each time the custom 
     element is disconnected from the 
     DOM */
   },
+  adoptedCallback() {
+    /* Invoked each time the custom 
+    element is moved to a new document */
+  },
 });
 </code></pre>
+      <h4>watchProperties</h4>
+      <p>
+        Watch functions provide a convenient way for you to trigger side-effects
+        such as persisting data to storage, raising events, fetching new data,
+        etc.
+      </p>
+      <pre><code class="language-js">({
+  watchProperties: {
+    foo(value) {
+      console.log(
+        &quot;the value of foo has changed to&quot;,
+        value
+      );
+    },
+    bar(value) {
+      console.log(
+        &quot;the value of bar has changed to&quot;,
+        value
+      );
+    },
+  },
+});
+</code></pre>
+      <p>
+        Property watchers are recursive and can be used with primitive values,
+        arrays and plain objects.
+      </p>
       <h3>render</h3>
       <p>
         The <code>render()</code> method combines an HTML template with a
@@ -329,12 +353,14 @@
         update the UI whenever any of its values change
       </p>
       <pre><code class="language-js">let view = synergy.render(
-  document.getElementById('app'),
-  { message: 'Hello World!' },
+  document.getElementById(
+    &quot;app&quot;
+  ),
+  { message: &quot;Hello World!&quot; },
   `&lt;p&gt;{{ message }}&lt;/p&gt;`
 );
 
-view.message = '¡Hola Mundo!';
+view.message = &quot;¡Hola Mundo!&quot;;
 </code></pre>
       <p>
         In the example above, we initialise the view with a paragraph that reads

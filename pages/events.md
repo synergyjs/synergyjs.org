@@ -17,7 +17,9 @@ View:
 Template:
 
 ```html
-<button onclick="sayHello">Say hello</button>
+<button onclick="sayHello">
+  Say hello
+</button>
 ```
 
 The first argument to your event handler is always
