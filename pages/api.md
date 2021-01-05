@@ -70,7 +70,7 @@ there's no guarantee as to what you will receive, so you should _always_...
     element is appended into a document-
     connected element */
   },
-  postupdateCallback(prevState) {
+  updatedCallback(prevState) {
     /* Invoked each time the view is 
     updated. This method is not called 
     after the initial render. prevState is 
