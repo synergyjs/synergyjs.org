@@ -219,11 +219,7 @@
 };
 </code></pre>
       <p>Template:</p>
-      <pre><code class="language-html">&lt;p
-  style=&quot;color: {{ textColor }}&quot;
-&gt;
-  ok
-&lt;/p&gt;
+      <pre><code class="language-html">&lt;p style=&quot;color: {{ textColor }}&quot;&gt;ok&lt;/p&gt;
 </code></pre>
       <p>Output:</p>
       <pre><code class="language-html">&lt;p style=&quot;color: gold;&quot;&gt;ok&lt;/p&gt;
@@ -241,9 +237,7 @@
 }
 </code></pre>
       <p>Template:</p>
-      <pre><code class="language-html">&lt;div
-  hidden=&quot;{{ hidden }}&quot;
-&gt;&lt;/div&gt;
+      <pre><code class="language-html">&lt;div hidden=&quot;{{ hidden }}&quot;&gt;&lt;/div&gt;
 </code></pre>
       <p>Output:</p>
       <pre><code class="language-html">&lt;div hidden&gt;&lt;/div&gt;
@@ -261,14 +255,10 @@
 }
 </code></pre>
       <p>Template:</p>
-      <pre><code class="language-html">&lt;button
-  aria-expanded=&quot;{{ expanded }}&quot;
-&gt;
+      <pre><code class="language-html">&lt;button aria-expanded=&quot;{{ expanded }}&quot;&gt;
   {{ title }}
 &lt;/button&gt;
-&lt;div
-  hidden=&quot;{{ !expanded }}&quot;
-&gt;&lt;/div&gt;
+&lt;div hidden=&quot;{{ !expanded }}&quot;&gt;&lt;/div&gt;
 </code></pre>
       <p>Output:</p>
       <pre><code class="language-html">&lt;button aria-expanded=&quot;false&quot;&gt;
@@ -288,14 +278,10 @@
 }
 </code></pre>
       <p>Template:</p>
-      <pre><code class="language-html">&lt;div
-  hidden=&quot;{{ authenticated }}&quot;
-&gt;
+      <pre><code class="language-html">&lt;div hidden=&quot;{{ authenticated }}&quot;&gt;
   Log in
 &lt;/div&gt;
-&lt;div
-  hidden=&quot;{{ !authenticated }}&quot;
-&gt;
+&lt;div hidden=&quot;{{ !authenticated }}&quot;&gt;
   Log out
 &lt;/div&gt;
 </code></pre>

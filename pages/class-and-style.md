@@ -45,9 +45,7 @@ View:
 Template:
 
 ```html
-<div
-  class="{{ classes }}"
-></div>
+<div class="{{ classes }}"></div>
 ```
 
 Output:
@@ -74,9 +72,7 @@ View:
 Template:
 
 ```html
-<form
-  class="{{ classes }}"
-></form>
+<form class="{{ classes }}"></form>
 ```
 
 Output:

@@ -38,6 +38,8 @@ If the target of the event is within a repeated
 block, then the second argument to your handler
 will be the datum for that particular item.
 
+View:
+
 ```js
 {
   todos: [
@@ -48,6 +50,8 @@ will be the datum for that particular item.
   };
 }
 ```
+
+Template:
 
 ```html
 <ul>

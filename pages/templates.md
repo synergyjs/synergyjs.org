@@ -49,11 +49,7 @@ View:
 Template:
 
 ```html
-<p
-  style="color: {{ textColor }}"
->
-  ok
-</p>
+<p style="color: {{ textColor }}">ok</p>
 ```
 
 Output:
@@ -82,9 +78,7 @@ View:
 Template:
 
 ```html
-<div
-  hidden="{{ hidden }}"
-></div>
+<div hidden="{{ hidden }}"></div>
 ```
 
 Output:
@@ -112,14 +106,10 @@ View:
 Template:
 
 ```html
-<button
-  aria-expanded="{{ expanded }}"
->
+<button aria-expanded="{{ expanded }}">
   {{ title }}
 </button>
-<div
-  hidden="{{ !expanded }}"
-></div>
+<div hidden="{{ !expanded }}"></div>
 ```
 
 Output:
@@ -148,14 +138,10 @@ View:
 Template:
 
 ```html
-<div
-  hidden="{{ authenticated }}"
->
+<div hidden="{{ authenticated }}">
   Log in
 </div>
-<div
-  hidden="{{ !authenticated }}"
->
+<div hidden="{{ !authenticated }}">
   Log out
 </div>
 ```

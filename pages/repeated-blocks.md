@@ -8,11 +8,7 @@ View:
 
 ```js
 {
-  names: [
-    "kate",
-    "kevin",
-    "randall",
-  ];
+  names: ["kate", "kevin", "randall"];
 }
 ```
 
@@ -34,8 +30,7 @@ character
   <!-- #each todo in todos -->
   <li>
     <p>
-      todo {{ # }} of {{
-      todos.length }}
+      todo {{ # }} of {{ todos.length }}
     </p>
   </li>
   <!-- /each -->
@@ -61,9 +56,7 @@ the default behaviour...
 ```html
 <ul>
   <!-- #each person in people (key=foo) -->
-  <li>
-    Hello {{ person.name }}
-  </li>
+  <li>Hello {{ person.name }}</li>
   <!-- /each -->
 </ul>
 ```

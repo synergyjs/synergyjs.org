@@ -70,6 +70,13 @@ there's no guarantee as to what you will receive, so you should _always_...
     element is appended into a document-
     connected element */
   },
+  postupdateCallback(prevState) {
+    /* Invoked each time the view is 
+    updated. This method is not called 
+    after the initial render. prevState is 
+    an object representing the state of 
+    the viewmodel prior to the last update */
+  },
   disconnectedCallback() {
     /* Invoked each time the custom 
     element is disconnected from the 
@@ -81,33 +88,6 @@ there's no guarantee as to what you will receive, so you should _always_...
   },
 });
 ```
-
-#### Watch
-
-Watch functions provide a convenient way for you to trigger side-effects such as
-persisting data to storage, raising events, fetching new data, etc.
-
-```js
-({
-  watch: {
-    foo(value) {
-      console.log(
-        "the value of foo has changed to",
-        value
-      );
-    },
-    bar(value) {
-      console.log(
-        "the value of bar has changed to",
-        value
-      );
-    },
-  },
-});
-```
-
-Property watchers are recursive and can be used with primitive values, arrays
-and plain objects.
 
 ### render
 
@@ -141,9 +121,7 @@ UI whenever any of its values change
 
 ```js
 let view = synergy.render(
-  document.getElementById(
-    "app"
-  ),
+  document.getElementById("app"),
   { message: "Hello World!" },
   `<p>{{ message }}</p>`
 );
