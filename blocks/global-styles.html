@@ -34,8 +34,8 @@
   }
 
   body {
-    font-family: Georgia, Lucida Grande, Arial,
-      Georgia;
+    font-family: Georgia, Lucida Grande,
+      Arial, Georgia;
     background-color: var(--light);
     /* ... */
     margin: calc(var(--n2) * 1rem)
@@ -113,6 +113,12 @@
 
   header nav ul {
     list-style-type: none;
+    display: flex;
+    align-items: baseline;
+  }
+
+  header nav ul li {
+    padding: 0 calc(var(--n1) * 1rem);
   }
 
   .readable {
@@ -149,7 +155,7 @@
   }
 </style>
 <style>
-  pre[class*='language-'] {
+  pre[class*="language-"] {
     /*margin: 1.75em 0;*/
     margin: calc(var(--n1) * 1rem) 0 0;
     font-size: calc(var(--n1) * 1rem);
