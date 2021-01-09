@@ -36,6 +36,7 @@ define(tagName, factory, options);
 
   - `observedAttributes` (array) An array containing the element attributes that
     you want to observe.
+  - `shadowRoot` (string) A string representing the shadow _mode_. Can be one of either "open" or "closed". If this option is omitted, then Shadow DOM is not used.
 
 #### Factory
 
