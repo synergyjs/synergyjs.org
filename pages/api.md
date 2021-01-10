@@ -26,9 +26,7 @@ define(tagName, factory, template, options);
 - `tagName` (string) Name for the new custom element. As per the Custom Element
   spec, an elements name must include a hyphen.
 
-- `factory` (function) A Factory function that accepts a single argument (an
-  object containing the elements initial attribute name/value pairs) . Returns a
-  plain JavaScript object to provide the viewmodel for your custom element.
+- `factory` (function) A factory function that will be called whenever a new instance of your custom element is created. It will be provided with two arguments: an object representing the elements initial attribute name/value pairs, and the element node itself. Returns a plain JavaScript object to provide the viewmodel for your custom element.
 
 - `template` (string|node) Either an HTML string or a `<template>` element node.
 
@@ -38,13 +36,13 @@ define(tagName, factory, template, options);
     you want to observe.
   - `shadowRoot` (string) A string representing the shadow _mode_. Can be one of either "open" or "closed". If this option is omitted, then Shadow DOM is not used.
 
-#### Factory
+#### factory
 
-Your custom elements initial attribute names and values will be passed to your
-factory function as a single object argument during initialisation.
+Your custom elements initial attribute names and values are passed to your
+factory function as the first argument when an instance of the element is created.
 
 ```js
-const xElementFactory = ({
+const fooFactory = ({
   name = "",
   disabled = false,
 }) => {

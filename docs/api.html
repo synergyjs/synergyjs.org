@@ -229,10 +229,12 @@
         </li>
         <li>
           <p>
-            <code>factory</code> (function) A Factory function that accepts a
-            single argument (an object containing the elements initial attribute
-            name/value pairs) . Returns a plain JavaScript object to provide the
-            viewmodel for your custom element.
+            <code>factory</code> (function) A factory function that will be
+            called whenever a new instance of your custom element is created. It
+            will be provided with two arguments: an object representing the
+            elements initial attribute name/value pairs, and the element node
+            itself. Returns a plain JavaScript object to provide the viewmodel
+            for your custom element.
           </p>
         </li>
         <li>
@@ -257,13 +259,13 @@
           </ul>
         </li>
       </ul>
-      <h4>Factory</h4>
+      <h4>factory</h4>
       <p>
-        Your custom elements initial attribute names and values will be passed
-        to your factory function as a single object argument during
-        initialisation.
+        Your custom elements initial attribute names and values are passed to
+        your factory function as the first argument when an instance of the
+        element is created.
       </p>
-      <pre><code class="language-js">const xElementFactory = ({
+      <pre><code class="language-js">const fooFactory = ({
   name = &quot;&quot;,
   disabled = false,
 }) =&gt; {
