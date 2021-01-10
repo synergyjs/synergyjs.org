@@ -18,7 +18,7 @@ The `define()` function registers a new Custom Element.
 #### Syntax
 
 ```js
-define(tagName, factory, options);
+define(tagName, factory, template, options);
 ```
 
 #### Parameters
