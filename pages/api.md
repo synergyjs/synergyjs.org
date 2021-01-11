@@ -44,7 +44,7 @@ factory function as the first argument when an instance of the element is create
 ```js
 const fooFactory = ({
   name = "",
-  disabled = false,
+  disabled,
 }) => {
   return {
     name,
@@ -54,11 +54,13 @@ const fooFactory = ({
 ```
 
 Remember that, because these values are provided by the author of the document,
-there's no guarantee as to what you will receive, so you should _always_...
+there's no guarantee as to what you will receive, so you should _always_ destructure the initial properties to get only the values you want (as opposed to spreading everything into your viewmodel).
 
-- destructure the initial properties to get only the values you want
-- provide default values to ensure that your custom element still works or fails
-  gracefully
+When destructuring your elements initial attributes...
+
+- **_Do_** provide default values for non-boolean properties to ensure that your element has what it needs, regardless of what it's provided with.
+
+- **_Don't_** provide default values for boolean attributes, - if it's not present on the element then it _should_ be undefined.
 
 #### Lifecycle Hooks
 
