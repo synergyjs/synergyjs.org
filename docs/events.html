@@ -240,13 +240,13 @@
 </code></pre>
       <p>Template:</p>
       <pre><code class="language-html">&lt;ul&gt;
-  &lt;!-- #each todo in todos --&gt;
-  &lt;li&gt;
-    &lt;h3 onclick=&quot;todoClicked&quot;&gt;
-      {{ todo.title }}
-    &lt;/h3&gt;
-  &lt;/li&gt;
-  &lt;!-- /each --&gt;
+  &lt;template each=&quot;todo in todos&quot;&gt;
+    &lt;li&gt;
+      &lt;h3 onclick=&quot;todoClicked&quot;&gt;
+        {{ todo.title }}
+      &lt;/h3&gt;
+    &lt;/li&gt;
+  &lt;/template&gt;
 &lt;/ul&gt;
 </code></pre>
     </main>

@@ -55,12 +55,12 @@ Template:
 
 ```html
 <ul>
-  <!-- #each todo in todos -->
-  <li>
-    <h3 onclick="todoClicked">
-      {{ todo.title }}
-    </h3>
-  </li>
-  <!-- /each -->
+  <template each="todo in todos">
+    <li>
+      <h3 onclick="todoClicked">
+        {{ todo.title }}
+      </h3>
+    </li>
+  </template>
 </ul>
 ```

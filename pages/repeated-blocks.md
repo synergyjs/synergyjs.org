@@ -1,8 +1,6 @@
 ## Repeated Blocks
 
-Repeat a block of HTML for each item in an Array
-by surrounding it with the `each` opening (`#`)
-and closing (`/`) comments.
+Repeat a block of HTML for each item in an array using a template element together with the `each` attribute.
 
 View:
 
@@ -16,9 +14,9 @@ Template:
 
 ```html
 <ul>
-  <!-- #each name in names -->
-  <li>Hello {{ name }}</li>
-  <!-- /each -->
+  <template each="name in names">
+    <li>Hello {{ name }}</li>
+  </template>
 </ul>
 ```
 
@@ -27,36 +25,33 @@ character
 
 ```html
 <ul>
-  <!-- #each todo in todos -->
-  <li>
-    <p>
+  <template each="todo in todos">
+    <li>
       todo {{ # }} of {{ todos.length }}
-    </p>
-  </li>
-  <!-- /each -->
+    </li>
+  </template>
 </ul>
 ```
 
 ### Keyed Arrays
 
-Keys help Synergy identify which items in an Array
-have changed. Using keys improves performance and
-avoids unexpected behaviour when re-rendering.
+Keys help Synergy identify which items in an array of objects
+have changed.
 
-The key can be any primitive value, as long as it
-is unique to that item within the Array.
+Using keys improves performance and
+avoids unexpected behaviour when re-rendering so it's always best to use them.
 
-By default, if the Array item is an object, then
-Synergy will look for an `id` property and assume
-that to be the key if you haven't said otherwise.
+By default, Synergy assumes the `id` property (if there is one) to be the key.
 
-Set the `key` parameter if you need to override
-the default behaviour...
+If you need to nominate another property then you can do so with the `key` attribute. The best way to pick a key is to use a primitive value that is unique to that item within the array.
 
 ```html
 <ul>
-  <!-- #each person in people (key=foo) -->
-  <li>Hello {{ person.name }}</li>
-  <!-- /each -->
+  <template
+    each="person in people"
+    key="foo"
+  >
+    <li>Hello {{ person.name }}</li>
+  </template>
 </ul>
 ```
