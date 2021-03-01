@@ -2,16 +2,11 @@
 
 ### Multiple classes with Array
 
-View:
+Viewmodel:
 
 ```js
 {
-  classes: [
-    "w32",
-    "h32",
-    "rounded-full",
-    "mx-auto",
-  ];
+  classes: ["w32", "h32", "rounded-full", "mx-auto"];
 }
 ```
 
@@ -24,14 +19,12 @@ Template:
 Output:
 
 ```html
-<img
-  class="w32 h32 rounded-full mx-auto"
-/>
+<img class="w32 h32 rounded-full mx-auto" />
 ```
 
 ### Static Conditional Classes with Object
 
-View:
+Viewmodel:
 
 ```js
 {
@@ -56,7 +49,7 @@ Output:
 
 ### Dynamic Conditional Classes with Getter + Object
 
-View:
+Viewmodel:
 
 ```js
 {
@@ -83,7 +76,7 @@ Output:
 
 ### Inline Styles
 
-View:
+Viewmodel:
 
 ```js
 {
@@ -100,10 +93,7 @@ View:
 Template:
 
 ```html
-<button
-  primary
-  style="{{ styles }}"
-></button>
+<button primary style="{{ styles }}"></button>
 ```
 
 Output:

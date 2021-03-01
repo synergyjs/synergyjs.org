@@ -2,7 +2,7 @@
 
 Repeat a block of HTML for each item in an array using a template element together with the `each` attribute.
 
-View:
+Viewmodel:
 
 ```js
 {
@@ -26,9 +26,7 @@ character
 ```html
 <ul>
   <template each="todo in todos">
-    <li>
-      todo {{ # }} of {{ todos.length }}
-    </li>
+    <li>todo {{ # }} of {{ todos.length }}</li>
   </template>
 </ul>
 ```
@@ -47,10 +45,7 @@ If you need to nominate another property then you can do so with the `key` attri
 
 ```html
 <ul>
-  <template
-    each="person in people"
-    key="foo"
-  >
+  <template each="person in people" key="foo">
     <li>Hello {{ person.name }}</li>
   </template>
 </ul>

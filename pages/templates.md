@@ -1,19 +1,15 @@
 ## templates
 
-Synergy's main purpose is _data binding_; taking
-your HTML template and replacing the "tokens"
-inside it with data from your JavaScript object,
-then updating your UI whenever that data changes.
+Synergy's main purpose is _data binding_; taking your HTML template and replacing the "tokens"
+inside it with data from your JavaScript object, then updating your UI whenever that data changes.
 
-In a Synergy template, a **token** is identified
-by surrounding it with double curly braces.
+In a Synergy template, a **token** is identified by surrounding it with double curly braces.
 
 ### Text
 
-Let's take a look at how token replacement works
-with some simple text.
+Let's take a look at how token replacement works with some simple text.
 
-View:
+Viewmodel:
 
 ```js
 {
@@ -38,7 +34,7 @@ Output:
 You can use tokens in the same way for both text
 and attribute nodes.
 
-View:
+Viewmodel:
 
 ```js
 {
@@ -67,7 +63,7 @@ be _true_ if present, or _false_ if absent.
 Boolean values can be toggled by binding to a
 boolean value.
 
-View:
+Viewmodel:
 
 ```js
 {
@@ -94,7 +90,7 @@ Some ARIA attributes accept the string values
 attributes, but Synergy let's you bind to booleans
 and it will treat them accordingly.
 
-View:
+Viewmodel:
 
 ```js
 {
@@ -106,18 +102,14 @@ View:
 Template:
 
 ```html
-<button aria-expanded="{{ expanded }}">
-  {{ title }}
-</button>
+<button aria-expanded="{{ expanded }}">{{ title }}</button>
 <div hidden="{{ !expanded }}"></div>
 ```
 
 Output:
 
 ```html
-<button aria-expanded="false">
-  {{ title }}
-</button>
+<button aria-expanded="false">{{ title }}</button>
 <div hidden></div>
 ```
 
@@ -127,7 +119,7 @@ As per the example above, you can prefix boolean
 properties with the exclamation mark to convert a
 truthy value to a falsy value, and vice versa.
 
-View:
+Viewmodel:
 
 ```js
 {
@@ -138,17 +130,12 @@ View:
 Template:
 
 ```html
-<div hidden="{{ authenticated }}">
-  Log in
-</div>
-<div hidden="{{ !authenticated }}">
-  Log out
-</div>
+<div hidden="{{ authenticated }}">Log in</div>
+<div hidden="{{ !authenticated }}">Log out</div>
 ```
 
 Output:
 
 ```html
-<span hidden>Log in</span
-><span>Log out</span>
+<span hidden>Log in</span><span>Log out</span>
 ```
