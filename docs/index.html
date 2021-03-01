@@ -216,24 +216,18 @@
       <hr />
       <h3>A Simple Custom Element</h3>
       <pre><code class="language-html">&lt;script type=&quot;module&quot;&gt;
-  import synergy from &quot;https://unpkg.com/synergy&quot;;
+  import { define } from &quot;https://unpkg.com/synergy&quot;;
 
-  synergy.define(
-    &quot;hello-world&quot;,
-    ({ name }) =&gt; ({
-      name,
-    }),
-    &quot;&lt;p&gt;Hello {{ name }}&lt;/p&gt;&quot;
-  );
+  define(&quot;hello-world&quot;, ({ name }) =&gt; ({
+    name,
+  }), &quot;&lt;p&gt;Hello {{ name }}&lt;/p&gt;&quot;);
 &lt;/script&gt;
 </code></pre>
       <p>
         Now that your custom element is defined, you can use it anywhere inside
         the document...
       </p>
-      <pre><code class="language-html">&lt;hello-world
-  name=&quot;kimberley&quot;
-&gt;&lt;/hello-world&gt;
+      <pre><code class="language-html">&lt;hello-world name=&quot;kimberley&quot;&gt;&lt;/hello-world&gt;
 </code></pre>
     </main>
     <footer class="readable">

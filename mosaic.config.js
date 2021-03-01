@@ -16,11 +16,10 @@ const build = {
     blocks: "./blocks/*.html",
     menuJSON: "./menu.json",
   },
-  output: [
+  transform: [
     (v) => ({
       ...v,
-      menuItems: JSON.parse(v.menuJSON.content)
-        .items,
+      menuItems: JSON.parse(v.menuJSON.content).items,
     }),
     (v) => {
       let { blocks, menuItems } = v;
@@ -28,9 +27,7 @@ const build = {
       let block = {
         filepath: "docs-menu",
         content: menuItems
-          .filter(
-            ({ section }) => section === "docs"
-          )
+          .filter(({ section }) => section === "docs")
           .map(
             ({ title }) => `
           <li><a href="/${title.replace(
@@ -51,36 +48,29 @@ const build = {
       ...v,
       pages: v.pageHtml.concat(
         v.pageMd.map(({ filepath, content }) => ({
-          filepath: filepath.replace(
-            /.md$/,
-            ".html"
-          ),
+          filepath: filepath.replace(/.md$/, ".html"),
           content: md.render(content),
         }))
       ),
     }),
     (v) => ({
       ...v,
-      pages: v.pages.map(
-        ({ filepath, content }) => ({
-          filepath,
-          content: v.template.content.replace(
-            "<!-- {{ main-content }} -->",
-            content
-          ),
-        })
-      ),
+      pages: v.pages.map(({ filepath, content }) => ({
+        filepath,
+        content: v.template.content.replace(
+          "<!-- {{ main-content }} -->",
+          content
+        ),
+      })),
     }),
 
     (v) => {
       let pages = v.pages.map((page) => {
         let n = name(page.filepath);
 
-        let index = v.menuItems.findIndex(
-          ({ slug, file }) => {
-            return slug === n || file === n;
-          }
-        );
+        let index = v.menuItems.findIndex(({ slug, file }) => {
+          return slug === n || file === n;
+        });
 
         return {
           ...page,
@@ -100,11 +90,7 @@ const build = {
       // let { pages, menuItems } = v;
 
       let pages = v.pages.map((page) => {
-        let {
-          filepath,
-          content,
-          menuItem,
-        } = page;
+        let { filepath, content, menuItem } = page;
         let i = menuItem.index;
         let prev = v.menuItems[i - 1];
         let next = v.menuItems[i + 1];
@@ -135,10 +121,7 @@ const build = {
 
         return {
           ...page,
-          content: content.replace(
-            "<!-- {{ pagination }} -->",
-            html
-          ),
+          content: content.replace("<!-- {{ pagination }} -->", html),
         };
       });
 
@@ -169,22 +152,12 @@ const build = {
       pages.map(({ filepath, content }) => {
         for (let block of blocks) {
           content = content.replace(
-            `<!-- {{ ${name(
-              block.filepath
-            )} }} -->`,
+            `<!-- {{ ${name(block.filepath)} }} -->`,
             block.content
           );
         }
         return { filepath, content };
       }),
-    (pages) =>
-      pages.map(({ filepath, content }) => ({
-        filepath: path.join(
-          "docs",
-          path.basename(filepath)
-        ),
-        content,
-      })),
     (pages) =>
       pages.map(({ filepath, content }) => ({
         filepath,
@@ -193,6 +166,13 @@ const build = {
         }),
       })),
   ],
+  output: {
+    map: (pages) =>
+      pages.map(({ filepath, content }) => ({
+        filepath: path.join("docs", path.basename(filepath)),
+        content,
+      })),
+  },
 };
 
 export default { build };

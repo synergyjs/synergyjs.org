@@ -59,7 +59,7 @@ The `render()` method combines an HTML template with a JavaScript object and the
 #### Syntax
 
 ```js
-let view = render(element, viewmodel, template);
+let view = render(element, viewmodel, template, options);
 ```
 
 #### Parameters

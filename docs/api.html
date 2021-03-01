@@ -209,11 +209,6 @@
         useful for rendering the main DOM tree that contains your custom
         elements.
       </p>
-      <p>
-        In addition, the instances created by both <code>define</code> and
-        <code>render</code> have a set of lifecycle events available for you to
-        hook into with your own custom handler functions.
-      </p>
       <h3>define</h3>
       <p>The <code>define()</code> function registers a new Custom Element.</p>
       <h4>Syntax</h4>
@@ -223,13 +218,13 @@
       <ul>
         <li>
           <p>
-            <code>tagName</code> (string) Name for the new custom element. As
+            <code>tagName</code> (string) - Name for the new custom element. As
             per the Custom Element spec, an elements name must include a hyphen.
           </p>
         </li>
         <li>
           <p>
-            <code>factory</code> (function) A factory function that will be
+            <code>factory</code> (function) - A factory function that will be
             called whenever a new instance of your custom element is created. It
             will be provided with two arguments: an object representing the
             elements initial attribute name/value pairs, and the element node
@@ -239,23 +234,32 @@
         </li>
         <li>
           <p>
-            <code>template</code> (string|node) Either an HTML string or a
-            <code>&lt;template&gt;</code> element node.
+            <code>template</code> (HTMLTemplateElement|string) - The HTML for
+            your view.
           </p>
         </li>
         <li>
-          <p><code>options</code> (object) The available options are:</p>
+          <p><code>options</code> (object) - The available options are:</p>
           <ul>
             <li>
-              <code>observedAttributes</code> (array) An array containing the
-              element attributes that you want to observe.
+              <p>
+                <code>observe</code> (array) - An array containing the element
+                attributes and properties that you want to observe.
+              </p>
             </li>
             <li>
-              <code>shadowRoot</code> (string) A string representing the shadow
-              <em>mode</em>. Can be one of either &quot;open&quot; or
-              &quot;closed&quot;. If this option is omitted, then Shadow DOM is
-              not used and <code>&lt;slot&gt;</code> functionality is
-              polyfilled.
+              <p>
+                <code>shadow</code> (&quot;open&quot; | &quot;closed&quot;) - A
+                string representing the shadow <em>mode</em>. If this option is
+                omitted, then Shadow DOM is not used and
+                <code>&lt;slot&gt;</code> functionality is polyfilled.
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>lifecycle</code> (object) - An object containing one or
+                more lifecycle hooks.
+              </p>
             </li>
           </ul>
         </li>
@@ -266,10 +270,7 @@
         your factory function as the first argument when an instance of the
         element is created.
       </p>
-      <pre><code class="language-js">const fooFactory = ({
-  name = &quot;&quot;,
-  disabled,
-}) =&gt; {
+      <pre><code class="language-js">const fooFactory = ({ name = &quot;&quot;, disabled }) =&gt; {
   return {
     name,
     disabled,
@@ -300,31 +301,6 @@
           </p>
         </li>
       </ul>
-      <h4>Lifecycle Hooks</h4>
-      <pre><code class="language-js">({
-  connectedCallback() {
-    /* Invoked each time the custom 
-    element is appended into a document-
-    connected element */
-  },
-  updatedCallback(prevState) {
-    /* Invoked each time the view is 
-    updated. This method is not called 
-    after the initial render. prevState is 
-    an object representing the state of 
-    the viewmodel prior to the last update */
-  },
-  disconnectedCallback() {
-    /* Invoked each time the custom 
-    element is disconnected from the 
-    DOM */
-  },
-  adoptedCallback() {
-    /* Invoked each time the custom 
-    element is moved to a new document */
-  },
-});
-</code></pre>
       <h3>render</h3>
       <p>
         The <code>render()</code> method combines an HTML template with a
@@ -332,11 +308,7 @@
         element node.
       </p>
       <h4>Syntax</h4>
-      <pre><code class="language-js">let view = synergy.render(
-  element,
-  viewmodel,
-  template
-);
+      <pre><code class="language-js">let view = render(element, viewmodel, template, options);
 </code></pre>
       <h4>Parameters</h4>
       <ul>
@@ -354,9 +326,18 @@
         </li>
         <li>
           <p>
-            <code>template</code> (string|node) Either an HTML string or a
-            <code>&lt;template&gt;</code> element node.
+            <code>template</code> (HTMLTemplateElement|string) - The HTML for
+            your view.
           </p>
+        </li>
+        <li>
+          <p><code>options</code> (object) - The available options are:</p>
+          <ul>
+            <li>
+              <code>lifecycle</code> (object) - An object containing one or more
+              lifecycle hooks.
+            </li>
+          </ul>
         </li>
       </ul>
       <h4>Return value</h4>
@@ -364,7 +345,7 @@
         A proxied version of your JavaScript object that will automatically
         update the UI whenever any of its values change
       </p>
-      <pre><code class="language-js">let view = synergy.render(
+      <pre><code class="language-js">let view = render(
   document.getElementById(&quot;app&quot;),
   { message: &quot;Hello World!&quot; },
   `&lt;p&gt;{{ message }}&lt;/p&gt;`
@@ -377,6 +358,34 @@ view.message = &quot;¡Hola Mundo!&quot;;
         &quot;Hello World!&quot;. We then change the value of message to '¡Hola
         Mundo!' and Synergy updates the DOM automatically.
       </p>
+      <h4>Lifecycle Callbacks</h4>
+      <p>
+        This section lists all of the lifecycle callbacks tht you can define.
+      </p>
+      <pre><code class="language-js">({
+  connectedCallback(viewmodel) {
+    /* Invoked each time the custom 
+    element is appended into a document-
+    connected element */
+  },
+  updatedCallback(viewmodel, prevState) {
+    /* Invoked each time the viewmodel is 
+    updated. This method is not called 
+    after the initial render. prevState is 
+    an object representing the state of 
+    the viewmodel prior to the last update */
+  },
+  disconnectedCallback(viewmodel) {
+    /* Invoked each time the custom 
+    element is disconnected from the 
+    DOM */
+  },
+  adoptedCallback(viewmodel) {
+    /* Invoked each time the custom 
+    element is moved to a new document */
+  },
+});
+</code></pre>
     </main>
     <footer class="readable">
       <a href="getting-started" class="next">

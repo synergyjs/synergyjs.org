@@ -198,10 +198,8 @@
     <main class="readable">
       <h2>templates</h2>
       <p>
-        Synergy's main purpose is <em>data binding</em>; taking your HTML
-        template and replacing the &quot;tokens&quot; inside it with data from
-        your JavaScript object, then updating your UI whenever that data
-        changes.
+        Synergy takes your HTML template and replaces the tokens inside it with
+        data from your viewmodel, updating your UI whenever that data changes.
       </p>
       <p>
         In a Synergy template, a <strong>token</strong> is identified by
@@ -211,7 +209,7 @@
       <p>
         Let's take a look at how token replacement works with some simple text.
       </p>
-      <p>View:</p>
+      <p>Viewmodel:</p>
       <pre><code class="language-js">{
   name: &quot;Ericka&quot;;
 }
@@ -226,7 +224,7 @@
       <p>
         You can use tokens in the same way for both text and attribute nodes.
       </p>
-      <p>View:</p>
+      <p>Viewmodel:</p>
       <pre><code class="language-js">{
   textColor: 'gold',
 };
@@ -244,7 +242,7 @@
         absent.
       </p>
       <p>Boolean values can be toggled by binding to a boolean value.</p>
-      <p>View:</p>
+      <p>Viewmodel:</p>
       <pre><code class="language-js">{
   hidden: true;
 }
@@ -261,22 +259,18 @@
         &quot;false&quot;. These aren't boolean attributes, but Synergy let's
         you bind to booleans and it will treat them accordingly.
       </p>
-      <p>View:</p>
+      <p>Viewmodel:</p>
       <pre><code class="language-js">{
   title: &quot;more information&quot;;
   expanded: false;
 }
 </code></pre>
       <p>Template:</p>
-      <pre><code class="language-html">&lt;button aria-expanded=&quot;{{ expanded }}&quot;&gt;
-  {{ title }}
-&lt;/button&gt;
+      <pre><code class="language-html">&lt;button aria-expanded=&quot;{{ expanded }}&quot;&gt;{{ title }}&lt;/button&gt;
 &lt;div hidden=&quot;{{ !expanded }}&quot;&gt;&lt;/div&gt;
 </code></pre>
       <p>Output:</p>
-      <pre><code class="language-html">&lt;button aria-expanded=&quot;false&quot;&gt;
-  {{ title }}
-&lt;/button&gt;
+      <pre><code class="language-html">&lt;button aria-expanded=&quot;false&quot;&gt;{{ title }}&lt;/button&gt;
 &lt;div hidden&gt;&lt;/div&gt;
 </code></pre>
       <h3>Logical NOT (!)</h3>
@@ -285,22 +279,17 @@
         exclamation mark to convert a truthy value to a falsy value, and vice
         versa.
       </p>
-      <p>View:</p>
+      <p>Viewmodel:</p>
       <pre><code class="language-js">{
   authenticated: true;
 }
 </code></pre>
       <p>Template:</p>
-      <pre><code class="language-html">&lt;div hidden=&quot;{{ authenticated }}&quot;&gt;
-  Log in
-&lt;/div&gt;
-&lt;div hidden=&quot;{{ !authenticated }}&quot;&gt;
-  Log out
-&lt;/div&gt;
+      <pre><code class="language-html">&lt;div hidden=&quot;{{ authenticated }}&quot;&gt;Log in&lt;/div&gt;
+&lt;div hidden=&quot;{{ !authenticated }}&quot;&gt;Log out&lt;/div&gt;
 </code></pre>
       <p>Output:</p>
-      <pre><code class="language-html">&lt;span hidden&gt;Log in&lt;/span
-&gt;&lt;span&gt;Log out&lt;/span&gt;
+      <pre><code class="language-html">&lt;span hidden&gt;Log in&lt;/span&gt;&lt;span&gt;Log out&lt;/span&gt;
 </code></pre>
     </main>
     <footer class="readable">

@@ -201,7 +201,7 @@
         Synergy assumes any attribute name prefixed with &quot;on&quot; to point
         to an event handler on your viewmodel.
       </p>
-      <p>View:</p>
+      <p>Viewmodel:</p>
       <pre><code class="language-js">{
   sayHello: function() {
     alert(&quot;hi!&quot;);
@@ -209,45 +209,59 @@
 };
 </code></pre>
       <p>Template:</p>
-      <pre><code class="language-html">&lt;button onclick=&quot;sayHello&quot;&gt;
-  Say hello
-&lt;/button&gt;
+      <pre><code class="language-html">&lt;button onclick=&quot;sayHello&quot;&gt;Say hello&lt;/button&gt;
 </code></pre>
+      <h3>Function arguments</h3>
       <p>
-        The first argument to your event handler is always a native DOM Event
-        object
+        When triggering events from within repeated blocks it can be useful to
+        pass data back into your viewmodel so that you have direct access to the
+        relevant list item. You can do this using the function invocation
+        syntax...
       </p>
+      <p>Viewmodel:</p>
       <pre><code class="language-js">{
-  handleClick: function(event) {
-    event.preventDefault();
-    console.log(&quot;the link was clicked&quot;);
-  }
-};
-</code></pre>
-      <p>
-        If the target of the event is within a repeated block, then the second
-        argument to your handler will be the datum for that particular item.
-      </p>
-      <p>View:</p>
-      <pre><code class="language-js">{
-  todos: [
-    /* ... */
+  artists: [
+    {
+      name: 'pablo picasso',
+      tags: [
+        'painter',
+        'sculptor',
+        'printmaker',
+        'ceramicist',
+        'theatre designer',
+      ],
+    },
+    {
+      name: 'salvador dali',
+      tags: [
+        'painter',
+        'sculptor',
+        'photographer',
+        'writer'
+      ],
+    },
   ],
-  todoClicked: function(event, todo) {
-    /*... */
-  };
+  select(artist, tag) {
+    //...
+  },
 }
 </code></pre>
       <p>Template:</p>
-      <pre><code class="language-html">&lt;ul&gt;
-  &lt;template each=&quot;todo in todos&quot;&gt;
-    &lt;li&gt;
-      &lt;h3 onclick=&quot;todoClicked&quot;&gt;
-        {{ todo.title }}
-      &lt;/h3&gt;
-    &lt;/li&gt;
-  &lt;/template&gt;
-&lt;/ul&gt;
+      <pre><code class="language-html">&lt;template each=&quot;artist in artists&quot;&gt;
+  &lt;article&gt;
+    &lt;h4&gt;{{ artist.name }}&lt;/h4&gt;
+    &lt;ul&gt;
+      &lt;template each=&quot;tag in artist.tags&quot;&gt;
+        &lt;li onclick=&quot;select(artist, tag)&quot;&gt;{{ tag }}&lt;/li&gt;
+      &lt;/template&gt;
+    &lt;/ul&gt;
+  &lt;/article&gt;
+&lt;/template&gt;
+</code></pre>
+      <h3>Event object</h3>
+      <p>You can access the native event object using the fat arrow syntax:</p>
+      <p>Viewmodel:</p>
+      <pre><code class="language-html">&lt;button onclick=&quot;e =&gt; sayHello(e)&quot;&gt;Say hello&lt;/button&gt;
 </code></pre>
     </main>
     <footer class="readable">

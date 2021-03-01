@@ -1,7 +1,6 @@
 ## templates
 
-Synergy's main purpose is _data binding_; taking your HTML template and replacing the "tokens"
-inside it with data from your JavaScript object, then updating your UI whenever that data changes.
+Synergy takes your HTML template and replaces the tokens inside it with data from your viewmodel, updating your UI whenever that data changes.
 
 In a Synergy template, a **token** is identified by surrounding it with double curly braces.
 
@@ -60,8 +59,7 @@ Some HTML attributes are known as boolean
 attributes, which means that they're considered to
 be _true_ if present, or _false_ if absent.
 
-Boolean values can be toggled by binding to a
-boolean value.
+Boolean values can be toggled by binding to a boolean value.
 
 Viewmodel:
 

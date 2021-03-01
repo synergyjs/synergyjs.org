@@ -201,7 +201,7 @@
         Repeat a block of HTML for each item in an array using a template
         element together with the <code>each</code> attribute.
       </p>
-      <p>View:</p>
+      <p>Viewmodel:</p>
       <pre><code class="language-js">{
   names: [&quot;kate&quot;, &quot;kevin&quot;, &quot;randall&quot;];
 }
@@ -216,9 +216,7 @@
       <p>You can access the current index with the hash character</p>
       <pre><code class="language-html">&lt;ul&gt;
   &lt;template each=&quot;todo in todos&quot;&gt;
-    &lt;li&gt;
-      todo {{ # }} of {{ todos.length }}
-    &lt;/li&gt;
+    &lt;li&gt;todo {{ # }} of {{ todos.length }}&lt;/li&gt;
   &lt;/template&gt;
 &lt;/ul&gt;
 </code></pre>
@@ -241,10 +239,7 @@
         primitive value that is unique to that item within the array.
       </p>
       <pre><code class="language-html">&lt;ul&gt;
-  &lt;template
-    each=&quot;person in people&quot;
-    key=&quot;foo&quot;
-  &gt;
+  &lt;template each=&quot;person in people&quot; key=&quot;foo&quot;&gt;
     &lt;li&gt;Hello {{ person.name }}&lt;/li&gt;
   &lt;/template&gt;
 &lt;/ul&gt;

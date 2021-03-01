@@ -23,15 +23,11 @@ together with any other framework or library.
 
 ```html
 <script type="module">
-  import synergy from "https://unpkg.com/synergy";
+  import { define } from "https://unpkg.com/synergy";
 
-  synergy.define(
-    "hello-world",
-    ({ name }) => ({
-      name,
-    }),
-    "<p>Hello {{ name }}</p>"
-  );
+  define("hello-world", ({ name }) => ({
+    name,
+  }), "<p>Hello {{ name }}</p>");
 </script>
 ```
 
@@ -39,7 +35,5 @@ Now that your custom element is defined, you can
 use it anywhere inside the document...
 
 ```html
-<hello-world
-  name="kimberley"
-></hello-world>
+<hello-world name="kimberley"></hello-world>
 ```
