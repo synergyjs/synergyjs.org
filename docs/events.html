@@ -49,7 +49,7 @@
       body * {
         font-size: calc(var(--n1) * 1rem);
         line-height: var(--n1);
-        color: var(--dark1);
+        color: var(--dark2);
       }
 
       ul {
@@ -209,11 +209,11 @@
 };
 </code></pre>
       <p>Template:</p>
-      <pre><code class="language-html">&lt;button onclick=&quot;sayHello&quot;&gt;Say hello&lt;/button&gt;
+      <pre><code class="language-html">&lt;button onclick=&quot;sayHello()&quot;&gt;Say hello&lt;/button&gt;
 </code></pre>
       <h3>Function arguments</h3>
       <p>
-        When triggering events from within repeated blocks it can be useful to
+        When invoking functions from within a repeated block it can be useful to
         pass data back into your viewmodel so that you have direct access to the
         relevant list item. You can do this using the function invocation
         syntax...

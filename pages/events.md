@@ -15,12 +15,12 @@ Viewmodel:
 Template:
 
 ```html
-<button onclick="sayHello">Say hello</button>
+<button onclick="sayHello()">Say hello</button>
 ```
 
 ### Function arguments
 
-When triggering events from within repeated blocks it can be useful to pass data back into your viewmodel so that you have direct access to the relevant list item. You can do this using the function invocation syntax...
+When invoking functions from within a repeated block it can be useful to pass data back into your viewmodel so that you have direct access to the relevant list item. You can do this using the function invocation syntax...
 
 Viewmodel:
 
