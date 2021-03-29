@@ -196,25 +196,17 @@
     </header>
 
     <main class="readable">
-      <h2>API</h2>
+      <h1>API</h1>
       <p>
-        The high-level Synergy API is comprised of just two functions, (<code
-          >define</code
-        >
-        and <code>render</code>). The <code>define</code> function is used to
-        register new custom elements, the reusable blocks that you will use to
-        build your user interface. The lower-level <code>render</code> function
-        is used to bind directly to the DOM. It's used by
-        <code>define</code> under the hood, and you may also find this function
-        useful for rendering the main DOM tree that contains your custom
-        elements.
+        Synergy exposes the <code>define</code> function that you can use to
+        create a new custom element.
       </p>
-      <h3>define</h3>
+      <h2>define</h2>
       <p>The <code>define()</code> function registers a new Custom Element.</p>
-      <h4>Syntax</h4>
+      <h3>Syntax</h3>
       <pre><code class="language-js">define(tagName, factory, template, options);
 </code></pre>
-      <h4>Parameters</h4>
+      <h3>Parameters</h3>
       <ul>
         <li>
           <p>
@@ -226,12 +218,22 @@
           <p>
             <code>factory</code> (function) - A factory function that will be
             called whenever a new instance of your custom element is created. It
-            will be provided with two arguments: an object representing the
-            elements initial attribute name/value pairs, and the element node
-            itself. Returns a plain JavaScript object to provide the viewmodel
-            for your custom element.
+            will be provided with two arguments:
           </p>
+          <ol>
+            <li>
+              An object of key/value pairs sourced from the elements attributes
+              or properties (in that order)
+            </li>
+            <li>The element node itself.</li>
+          </ol>
         </li>
+      </ul>
+      <p>
+        Returns a plain JavaScript object to provide the model for your custom
+        element, either synchronously or asynchronously with a Promise.
+      </p>
+      <ul>
         <li>
           <p>
             <code>template</code> (HTMLTemplateElement|string) - The HTML for
@@ -242,33 +244,19 @@
           <p><code>options</code> (object) - The available options are:</p>
           <ul>
             <li>
-              <p>
-                <code>observe</code> (array) - An array containing the element
-                attributes and properties that you want to observe.
-              </p>
-            </li>
-            <li>
-              <p>
-                <code>shadow</code> (&quot;open&quot; | &quot;closed&quot;) - A
-                string representing the shadow <em>mode</em>. If this option is
-                omitted, then Shadow DOM is not used and
-                <code>&lt;slot&gt;</code> functionality is polyfilled.
-              </p>
-            </li>
-            <li>
-              <p>
-                <code>lifecycle</code> (object) - An object containing one or
-                more lifecycle hooks.
-              </p>
+              <code>shadow</code> (&quot;open&quot; | &quot;closed&quot;) - A
+              string representing the shadow <em>mode</em>. If this option is
+              omitted, then Shadow DOM is not used and
+              <code>&lt;slot&gt;</code> functionality is polyfilled.
             </li>
           </ul>
         </li>
       </ul>
-      <h4>factory</h4>
+      <h3>factory</h3>
       <p>
-        Your custom elements initial attribute names and values are passed to
-        your factory function as the first argument when an instance of the
-        element is created.
+        Your custom elements initial attribute and property names and values are
+        passed to your factory function when a new instance of the element is
+        created.
       </p>
       <pre><code class="language-js">const fooFactory = ({ name = &quot;&quot;, disabled }) =&gt; {
   return {
@@ -278,111 +266,58 @@
 };
 </code></pre>
       <p>
-        Remember that, because these values are provided by the author of the
-        document, there's no guarantee as to what you will receive, so you
-        should <em>always</em> destructure the initial properties to get only
-        the values you want (as opposed to spreading everything into your
-        viewmodel).
+        These values are provided by the author of the document so there's no
+        guarantee as to what you will receive, so you should
+        <em>always</em> destructure the initial properties to get only the
+        values you want (as opposed to spreading everything into your model).
       </p>
       <p>When destructuring your elements initial attributes...</p>
       <ul>
         <li>
           <p>
             <strong><em>Do</em></strong> provide default values for non-boolean
-            properties to ensure that your element has what it needs, regardless
-            of what it's provided with.
+            properties to ensure that your element has what it needs in case
+            nothing is provided.
           </p>
         </li>
         <li>
           <p>
             <strong><em>Don't</em></strong> provide default values for boolean
             attributes, - if it's not present on the element then it
-            <em>should</em> be undefined.
+            <em>should be falsy</em>.
           </p>
         </li>
       </ul>
-      <h3>render</h3>
+      <blockquote>
+        <p>
+          The properties you read from your factory functions object argument
+          are automagically initialised as reactive properties and attributes so
+          that, whenever they change on the Custom Element instance, your model
+          will be updated automatically.
+        </p>
+      </blockquote>
+      <h3>Lifecycle Callbacks</h3>
       <p>
-        The <code>render()</code> method combines an HTML template with a
-        JavaScript object and then appends the rendered HTML to an existing DOM
-        element node.
-      </p>
-      <h4>Syntax</h4>
-      <pre><code class="language-js">let view = render(element, viewmodel, template, options);
-</code></pre>
-      <h4>Parameters</h4>
-      <ul>
-        <li>
-          <p>
-            <code>element</code> (node) An existing DOM element node to which
-            the rendered HTML should be appended.
-          </p>
-        </li>
-        <li>
-          <p>
-            <code>viewmodel</code> (object) A plain JavaScript object that
-            contains the data for your view.
-          </p>
-        </li>
-        <li>
-          <p>
-            <code>template</code> (HTMLTemplateElement|string) - The HTML for
-            your view.
-          </p>
-        </li>
-        <li>
-          <p><code>options</code> (object) - The available options are:</p>
-          <ul>
-            <li>
-              <code>lifecycle</code> (object) - An object containing one or more
-              lifecycle hooks.
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <h4>Return value</h4>
-      <p>
-        A proxied version of your JavaScript object that will automatically
-        update the UI whenever any of its values change
-      </p>
-      <pre><code class="language-js">let view = render(
-  document.getElementById(&quot;app&quot;),
-  { message: &quot;Hello World!&quot; },
-  `&lt;p&gt;{{ message }}&lt;/p&gt;`
-);
-
-view.message = &quot;¡Hola Mundo!&quot;;
-</code></pre>
-      <p>
-        In the example above, we initialise the view with a paragraph that reads
-        &quot;Hello World!&quot;. We then change the value of message to '¡Hola
-        Mundo!' and Synergy updates the DOM automatically.
-      </p>
-      <h4>Lifecycle Callbacks</h4>
-      <p>
-        This section lists all of the lifecycle callbacks tht you can define.
+        This section lists all of the lifecycle callbacks that you can define on
+        your model.
       </p>
       <pre><code class="language-js">({
-  connectedCallback(viewmodel) {
+  connectedCallback(model) {
     /* Invoked each time the custom 
     element is appended into a document-
     connected element */
   },
-  updatedCallback(viewmodel, prevState) {
-    /* Invoked each time the viewmodel is 
+  updatedCallback(model, previousState) {
+    /* Invoked each time the model is 
     updated. This method is not called 
-    after the initial render. prevState is 
+    after the initial render. previousState is 
     an object representing the state of 
-    the viewmodel prior to the last update */
+    the model prior to the last update */
   },
-  disconnectedCallback(viewmodel) {
+  disconnectedCallback(model) {
     /* Invoked each time the custom 
     element is disconnected from the 
     DOM */
-  },
-  adoptedCallback(viewmodel) {
-    /* Invoked each time the custom 
-    element is moved to a new document */
   },
 });
 </code></pre>

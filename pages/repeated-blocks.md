@@ -1,12 +1,12 @@
-## Repeated Blocks
+# Repeated Blocks
 
 Repeat a block of HTML for each item in an array using a template element together with the `each` attribute.
 
-Viewmodel:
+Model:
 
 ```js
 {
-  names: ["kate", "kevin", "randall"];
+  names: ['kate', 'kevin', 'randall'];
 }
 ```
 
@@ -20,18 +20,17 @@ Template:
 </ul>
 ```
 
-You can access the current index with the hash
-character
+You can also provide a second argument for the index of the current item.
 
 ```html
 <ul>
-  <template each="todo in todos">
-    <li>todo {{ # }} of {{ todos.length }}</li>
+  <template each="(todo, i) in todos">
+    <li>todo {{ i }} of {{ todos.length }}</li>
   </template>
 </ul>
 ```
 
-### Keyed Arrays
+## Keyed Arrays
 
 Keys help Synergy identify which items in an array of objects
 have changed.

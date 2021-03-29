@@ -196,14 +196,14 @@
     </header>
 
     <main class="readable">
-      <h2>Repeated Blocks</h2>
+      <h1>Repeated Blocks</h1>
       <p>
         Repeat a block of HTML for each item in an array using a template
         element together with the <code>each</code> attribute.
       </p>
-      <p>Viewmodel:</p>
+      <p>Model:</p>
       <pre><code class="language-js">{
-  names: [&quot;kate&quot;, &quot;kevin&quot;, &quot;randall&quot;];
+  names: ['kate', 'kevin', 'randall'];
 }
 </code></pre>
       <p>Template:</p>
@@ -213,14 +213,17 @@
   &lt;/template&gt;
 &lt;/ul&gt;
 </code></pre>
-      <p>You can access the current index with the hash character</p>
+      <p>
+        You can also provide a second argument for the index of the current
+        item.
+      </p>
       <pre><code class="language-html">&lt;ul&gt;
-  &lt;template each=&quot;todo in todos&quot;&gt;
-    &lt;li&gt;todo {{ # }} of {{ todos.length }}&lt;/li&gt;
+  &lt;template each=&quot;(todo, i) in todos&quot;&gt;
+    &lt;li&gt;todo {{ i }} of {{ todos.length }}&lt;/li&gt;
   &lt;/template&gt;
 &lt;/ul&gt;
 </code></pre>
-      <h3>Keyed Arrays</h3>
+      <h2>Keyed Arrays</h2>
       <p>
         Keys help Synergy identify which items in an array of objects have
         changed.

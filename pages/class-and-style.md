@@ -1,12 +1,12 @@
-## class & style
+# Class & Style
 
-### Multiple classes with Array
+## Multiple classes with Array
 
-Viewmodel:
+Model:
 
 ```js
 {
-  classes: ["w32", "h32", "rounded-full", "mx-auto"];
+  classes: ['w32', 'h32', 'rounded-full', 'mx-auto'];
 }
 ```
 
@@ -22,9 +22,9 @@ Output:
 <img class="w32 h32 rounded-full mx-auto" />
 ```
 
-### Static Conditional Classes with Object
+## Static Conditional Classes with Object
 
-Viewmodel:
+Model:
 
 ```js
 {
@@ -47,9 +47,9 @@ Output:
 <div class="mx-auto"></div>
 ```
 
-### Dynamic Conditional Classes with Getter + Object
+## Dynamic Conditional Classes with Getter + Object
 
-Viewmodel:
+Model:
 
 ```js
 {
@@ -74,12 +74,13 @@ Output:
 <form class="errors"></form>
 ```
 
-### Inline Styles
+## Inline Styles
 
-Viewmodel:
+Model:
 
 ```js
 {
+    //...
    styles: {
         display: "inline-block",
         borderRadius: "3px",

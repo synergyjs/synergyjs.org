@@ -196,12 +196,12 @@
     </header>
 
     <main class="readable">
-      <h2>Events</h2>
+      <h1>Events</h1>
       <p>
         Synergy assumes any attribute name prefixed with &quot;on&quot; to point
-        to an event handler on your viewmodel.
+        to an event handler on your model.
       </p>
-      <p>Viewmodel:</p>
+      <p>Model:</p>
       <pre><code class="language-js">{
   sayHello: function() {
     alert(&quot;hi!&quot;);
@@ -209,16 +209,16 @@
 };
 </code></pre>
       <p>Template:</p>
-      <pre><code class="language-html">&lt;button onclick=&quot;sayHello()&quot;&gt;Say hello&lt;/button&gt;
+      <pre><code class="language-html">&lt;button onclick=&quot;sayHello&quot;&gt;Say hello&lt;/button&gt;
 </code></pre>
-      <h3>Function arguments</h3>
+      <h2>Function arguments</h2>
       <p>
-        When invoking functions from within a repeated block it can be useful to
-        pass data back into your viewmodel so that you have direct access to the
+        When triggering events from within repeated blocks it can be useful to
+        pass data back into your model so that you have direct access to the
         relevant list item. You can do this using the function invocation
         syntax...
       </p>
-      <p>Viewmodel:</p>
+      <p>Model:</p>
       <pre><code class="language-js">{
   artists: [
     {
@@ -258,9 +258,9 @@
   &lt;/article&gt;
 &lt;/template&gt;
 </code></pre>
-      <h3>Event object</h3>
+      <h2>Event object</h2>
       <p>You can access the native event object using the fat arrow syntax:</p>
-      <p>Viewmodel:</p>
+      <p>Model:</p>
       <pre><code class="language-html">&lt;button onclick=&quot;e =&gt; sayHello(e)&quot;&gt;Say hello&lt;/button&gt;
 </code></pre>
     </main>

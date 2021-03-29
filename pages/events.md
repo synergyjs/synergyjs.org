@@ -1,8 +1,8 @@
-## Events
+# Events
 
-Synergy assumes any attribute name prefixed with "on" to point to an event handler on your viewmodel.
+Synergy assumes any attribute name prefixed with "on" to point to an event handler on your model.
 
-Viewmodel:
+Model:
 
 ```js
 {
@@ -15,14 +15,14 @@ Viewmodel:
 Template:
 
 ```html
-<button onclick="sayHello()">Say hello</button>
+<button onclick="sayHello">Say hello</button>
 ```
 
-### Function arguments
+## Function arguments
 
-When invoking functions from within a repeated block it can be useful to pass data back into your viewmodel so that you have direct access to the relevant list item. You can do this using the function invocation syntax...
+When triggering events from within repeated blocks it can be useful to pass data back into your model so that you have direct access to the relevant list item. You can do this using the function invocation syntax...
 
-Viewmodel:
+Model:
 
 ```js
 {
@@ -68,11 +68,11 @@ Template:
 </template>
 ```
 
-### Event object
+## Event object
 
 You can access the native event object using the fat arrow syntax:
 
-Viewmodel:
+Model:
 
 ```html
 <button onclick="e => sayHello(e)">Say hello</button>

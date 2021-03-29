@@ -196,11 +196,11 @@
     </header>
 
     <main class="readable">
-      <h2>class &amp; style</h2>
-      <h3>Multiple classes with Array</h3>
-      <p>Viewmodel:</p>
+      <h1>Class &amp; Style</h1>
+      <h2>Multiple classes with Array</h2>
+      <p>Model:</p>
       <pre><code class="language-js">{
-  classes: [&quot;w32&quot;, &quot;h32&quot;, &quot;rounded-full&quot;, &quot;mx-auto&quot;];
+  classes: ['w32', 'h32', 'rounded-full', 'mx-auto'];
 }
 </code></pre>
       <p>Template:</p>
@@ -209,8 +209,8 @@
       <p>Output:</p>
       <pre><code class="language-html">&lt;img class=&quot;w32 h32 rounded-full mx-auto&quot; /&gt;
 </code></pre>
-      <h3>Static Conditional Classes with Object</h3>
-      <p>Viewmodel:</p>
+      <h2>Static Conditional Classes with Object</h2>
+      <p>Model:</p>
       <pre><code class="language-js">{
     classes: {
         'mx-auto': true,
@@ -224,8 +224,8 @@
       <p>Output:</p>
       <pre><code class="language-html">&lt;div class=&quot;mx-auto&quot;&gt;&lt;/div&gt;
 </code></pre>
-      <h3>Dynamic Conditional Classes with Getter + Object</h3>
-      <p>Viewmodel:</p>
+      <h2>Dynamic Conditional Classes with Getter + Object</h2>
+      <p>Model:</p>
       <pre><code class="language-js">{
     hasErrors: true,
     get classes() {
@@ -241,9 +241,10 @@
       <p>Output:</p>
       <pre><code class="language-html">&lt;form class=&quot;errors&quot;&gt;&lt;/form&gt;
 </code></pre>
-      <h3>Inline Styles</h3>
-      <p>Viewmodel:</p>
+      <h2>Inline Styles</h2>
+      <p>Model:</p>
       <pre><code class="language-js">{
+    //...
    styles: {
         display: &quot;inline-block&quot;,
         borderRadius: &quot;3px&quot;,

@@ -196,22 +196,22 @@
     </header>
 
     <main class="readable">
-      <h2>templates</h2>
+      <h1>Templates</h1>
       <p>
         Synergy takes your HTML template and replaces the tokens inside it with
-        data from your viewmodel, updating your UI whenever that data changes.
+        data from your model, updating your UI whenever that data changes.
       </p>
       <p>
         In a Synergy template, a <strong>token</strong> is identified by
         surrounding it with double curly braces.
       </p>
-      <h3>Text</h3>
+      <h2>Text</h2>
       <p>
         Let's take a look at how token replacement works with some simple text.
       </p>
-      <p>Viewmodel:</p>
+      <p>Model:</p>
       <pre><code class="language-js">{
-  name: &quot;Ericka&quot;;
+  name: 'Ericka';
 }
 </code></pre>
       <p>Template:</p>
@@ -220,11 +220,11 @@
       <p>Output:</p>
       <pre><code class="language-html">&lt;p&gt;hello Ericka!&lt;/p&gt;
 </code></pre>
-      <h3>Attributes</h3>
+      <h2>Attributes</h2>
       <p>
         You can use tokens in the same way for both text and attribute nodes.
       </p>
-      <p>Viewmodel:</p>
+      <p>Model:</p>
       <pre><code class="language-js">{
   textColor: 'gold',
 };
@@ -235,14 +235,14 @@
       <p>Output:</p>
       <pre><code class="language-html">&lt;p style=&quot;color: gold;&quot;&gt;ok&lt;/p&gt;
 </code></pre>
-      <h3>Boolean attributes</h3>
+      <h2>Boolean attributes</h2>
       <p>
         Some HTML attributes are known as boolean attributes, which means that
         they're considered to be <em>true</em> if present, or <em>false</em> if
         absent.
       </p>
       <p>Boolean values can be toggled by binding to a boolean value.</p>
-      <p>Viewmodel:</p>
+      <p>Model:</p>
       <pre><code class="language-js">{
   hidden: true;
 }
@@ -253,15 +253,15 @@
       <p>Output:</p>
       <pre><code class="language-html">&lt;div hidden&gt;&lt;/div&gt;
 </code></pre>
-      <h3>ARIA attributes</h3>
+      <h2>ARIA attributes</h2>
       <p>
         Some ARIA attributes accept the string values &quot;true&quot; and
         &quot;false&quot;. These aren't boolean attributes, but Synergy let's
         you bind to booleans and it will treat them accordingly.
       </p>
-      <p>Viewmodel:</p>
+      <p>Model:</p>
       <pre><code class="language-js">{
-  title: &quot;more information&quot;;
+  title: 'more information';
   expanded: false;
 }
 </code></pre>
@@ -273,13 +273,13 @@
       <pre><code class="language-html">&lt;button aria-expanded=&quot;false&quot;&gt;{{ title }}&lt;/button&gt;
 &lt;div hidden&gt;&lt;/div&gt;
 </code></pre>
-      <h3>Logical NOT (!)</h3>
+      <h2>Logical NOT (!)</h2>
       <p>
         As per the example above, you can prefix boolean properties with the
         exclamation mark to convert a truthy value to a falsy value, and vice
         versa.
       </p>
-      <p>Viewmodel:</p>
+      <p>Model:</p>
       <pre><code class="language-js">{
   authenticated: true;
 }

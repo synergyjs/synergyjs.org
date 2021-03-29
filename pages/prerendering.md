@@ -1,6 +1,6 @@
-## Pre-rendering
+# Prerendering
 
-Pre-rendering is useful when you need to get
+Prerendering is useful when you need to get
 content rendered immediately as part of the
 initial page load, without having to wait for
 JavaScript to build the page first.

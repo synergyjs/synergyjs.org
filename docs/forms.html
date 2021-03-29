@@ -196,28 +196,28 @@
     </header>
 
     <main class="readable">
-      <h2>Forms</h2>
+      <h1>Forms</h1>
       <p>
         Synergy makes working with form data a breeze by automagically binding
-        named form controls to properties of the same name on your viewmodel.
+        named form controls to properties of the same name on your model.
       </p>
-      <p>Viewmodel:</p>
+      <p>Model:</p>
       <pre><code class="language-js">{
-  color: &quot;#4287f5&quot;;
+  color: '#4287f5';
 }
 </code></pre>
       <p>Template:</p>
       <pre><code class="language-html">&lt;input name=&quot;color&quot; type=&quot;color&quot; /&gt;
 </code></pre>
-      <h3>Select</h3>
+      <h2>Select</h2>
       <p>
         Attribute a name to your <code>&lt;select&gt;</code> and the value of
         the bound property will reflect that of the currently selected
         <code>&lt;option&gt;</code>
       </p>
-      <p>Viewmodel:</p>
+      <p>Model:</p>
       <pre><code class="language-js">{
-  pets: &quot;hamster&quot;;
+  pets: 'hamster';
 }
 </code></pre>
       <p>Template:</p>
@@ -244,22 +244,17 @@
         Array on your data:
       </p>
       <pre><code class="language-js">{
-  pets: [&quot;hamster&quot;, &quot;spider&quot;];
+  pets: ['hamster', 'spider'];
 }
 </code></pre>
-      <h3>Radio Buttons</h3>
+      <h2>Radio Buttons</h2>
       <p>
         Add a name to each radio button to indicate which <em>group</em> it
         belongs to.
       </p>
       <pre><code class="language-html">&lt;input type=&quot;radio&quot; name=&quot;filter&quot; value=&quot;all&quot; id=&quot;filter.all&quot; /&gt;
 &lt;input type=&quot;radio&quot; name=&quot;filter&quot; value=&quot;active&quot; id=&quot;filter.active&quot; /&gt;
-&lt;input
-  type=&quot;radio&quot;
-  name=&quot;filter&quot;
-  value=&quot;complete&quot;
-  id=&quot;filter.complete&quot;
-/&gt;
+&lt;input type=&quot;radio&quot; name=&quot;filter&quot; value=&quot;complete&quot; id=&quot;filter.complete&quot; /&gt;
 </code></pre>
       <p>
         As with <code>&lt;select&gt;</code>, the value of the named property
@@ -267,7 +262,7 @@
         <code>&lt;input type=&quot;radio&quot;&gt;</code>.
       </p>
       <pre><code class="language-js">{
-  filter: &quot;active&quot;;
+  filter: 'active';
 }
 </code></pre>
     </main>

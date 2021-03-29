@@ -1,12 +1,12 @@
-## Forms
+# Forms
 
-Synergy makes working with form data a breeze by automagically binding named form controls to properties of the same name on your viewmodel.
+Synergy makes working with form data a breeze by automagically binding named form controls to properties of the same name on your model.
 
-Viewmodel:
+Model:
 
 ```js
 {
-  color: "#4287f5";
+  color: '#4287f5';
 }
 ```
 
@@ -16,17 +16,17 @@ Template:
 <input name="color" type="color" />
 ```
 
-### Select
+## Select
 
 Attribute a name to your `<select>` and the value
 of the bound property will reflect that of the
 currently selected `<option>`
 
-Viewmodel:
+Model:
 
 ```js
 {
-  pets: "hamster";
+  pets: 'hamster';
 }
 ```
 
@@ -58,11 +58,11 @@ on your data:
 
 ```js
 {
-  pets: ["hamster", "spider"];
+  pets: ['hamster', 'spider'];
 }
 ```
 
-### Radio Buttons
+## Radio Buttons
 
 Add a name to each radio button to indicate which
 _group_ it belongs to.
@@ -70,12 +70,7 @@ _group_ it belongs to.
 ```html
 <input type="radio" name="filter" value="all" id="filter.all" />
 <input type="radio" name="filter" value="active" id="filter.active" />
-<input
-  type="radio"
-  name="filter"
-  value="complete"
-  id="filter.complete"
-/>
+<input type="radio" name="filter" value="complete" id="filter.complete" />
 ```
 
 As with `<select>`, the value of the named
@@ -84,6 +79,6 @@ property will reflect the value of the selected
 
 ```js
 {
-  filter: "active";
+  filter: 'active';
 }
 ```
