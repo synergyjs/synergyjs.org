@@ -1,25 +1,22 @@
 {
   "name": "synergyjs.org",
   "type": "module",
-  "version": "1.0.0",
-  "description": "",
+  "version": "2.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm docs/*.html && mosaic build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/synergyjs/synergyjs.org.git"
+    "dev": "danza dev",
+    "build": "danza build",
+    "test": "danza test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/synergyjs/synergyjs.org/issues"
-  },
-  "homepage": "https://github.com/synergyjs/synergyjs.org#readme",
-  "devDependencies": {
+  "dependencies": {
+    "highlight.js": "^10.7.1",
     "markdown-it": "^12.0.4",
-    "prettier": "^2.2.1"
+    "synergy": "^3.0.2"
+  },
+  "description": "",
+  "devDependencies": {
+    "jsdom": "^16.5.3"
   }
 }

@@ -1,0 +1,29 @@
+.button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.button {
+  padding: var(--s1);
+}
+
+.synergy {
+  font-size: var(--s2);
+  text-decoration: none;
+  display: block;
+  padding: var(--s2) 0;
+}
+
+.github {
+  display: block;
+  padding: var(--s2) 0;
+}
+
+.github svg {
+  height: var(--s3);
+}
+
+.flex-list {
+  list-style-type: none;
+}
