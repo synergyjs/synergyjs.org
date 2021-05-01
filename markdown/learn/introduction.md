@@ -8,7 +8,7 @@ Web components are relatively low-level and, as such, require a non-trivial amou
 - keeping your data and view in sync
 - working with user input
 
-## The Synergy.js Framework
+## The Synergy.js Library
 
 Synergy.js provides a minimal abstraction to all of the above problems. Most importantly, it allows you to think more about _what_ your components should do, and less about _how_ they do it. In this sense it's no different from React or Vue, however there are some important advantages to using Web Components under the hood that we just couldn't access otherwise...
 
@@ -21,4 +21,4 @@ In this tutorial, you'll learn Synergy.js by creating several small example comp
 
 Let's get started!
 
-> This tutorial assumes basic knowledge of HTML, CSS, and JavaScript. If you're totally new to frontend development, it might not be the best idea to jump right into a framework as your first step - grasp the basics then come back!
+> This tutorial assumes basic knowledge of HTML, CSS, and JavaScript. If you're totally new to frontend development, it might not be the best idea to jump right into Synergy.js as your first step - grasp the basics then come back!

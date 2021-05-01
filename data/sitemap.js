@@ -30,8 +30,8 @@ export const sitemap = {
       slug: "docs",
       pages: [
         {
-          title: "Getting Started",
-          slug: "getting-started",
+          title: "Install",
+          slug: "install",
         },
         {
           title: "API",
@@ -88,7 +88,9 @@ export function withPaginationData(locationPathname) {
 
   let currentPage =
     pages[currentIndex] ||
-    sitemap.sections.find(({ pathname }) => pathname === locationPathname);
+    sitemap.sections.find(
+      ({ pathname }) => pathname === locationPathname
+    );
 
   let previousPage = currentIndex > 1 && pages[currentIndex - 1]; // omit prev link to home page
 
