@@ -1,0 +1,13 @@
+x-branch {
+  text-align: center;
+}
+
+.section-list {
+  list-style-type: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .section-list {
+    display: none;
+  }
+}

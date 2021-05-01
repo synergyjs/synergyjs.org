@@ -1,0 +1,27 @@
+<a href="{{ next.pathname }}" hidden="{{ !next }}">
+  <span>NEXT</span>
+  {{ next.title }}
+  <svg
+    width="10"
+    height="16"
+    viewBox="0 0 10 16"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <polyline fill="none" vector-effect="non-scaling-stroke" points="2,2 8,8 2,14"></polyline>
+  </svg>
+</a>
+
+<a href="{{ prev.pathname }}" hidden="{{ !prev }}">
+  <span> PREVIOUS</span>
+  {{ prev.title }}
+  <svg
+    width="10"
+    height="16"
+    viewBox="0 0 10 16"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <polyline fill="none" vector-effect="non-scaling-stroke" points="8,2 2,8 8,14"></polyline>
+  </svg>
+</a>

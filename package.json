@@ -15,7 +15,7 @@
     "highlight.js": "^10.7.1",
     "markdown-it": "^12.0.4",
     "node-fetch": "^2.6.1",
-    "synergy": "^3.0.2"
+    "synergy": "5.0.0"
   },
   "description": "",
   "devDependencies": {

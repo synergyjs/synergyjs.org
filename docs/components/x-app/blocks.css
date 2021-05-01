@@ -1,0 +1,13 @@
+x-home #middle-column {
+  text-align: center;
+}
+
+.hljs {
+  border-radius: 7px;
+  background-color: rgb(51, 51, 51) !important;
+}
+
+#right-column > x-headings {
+  display: block;
+  margin-top: var(--s9);
+}

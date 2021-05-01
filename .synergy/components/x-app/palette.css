@@ -1,0 +1,38 @@
+:root {
+  --c1: rgb(242, 242, 242);
+  --c2: rgb(230, 230, 230);
+}
+
+body {
+  background-color: var(--c1);
+}
+
+#left-column {
+  background-color: var(--c2);
+}
+
+#middle-column {
+  background-color: var(--c1);
+}
+#right-column {
+  background-color: var(--c2);
+}
+
+#left-column [aria-current="page"] {
+  background-color: var(--c1);
+}
+
+#right-column [aria-current="true"] {
+  background-color: var(--c1);
+}
+
+code:not(pre > code) {
+  padding: 0.1em 0.15em;
+  border-radius: 3px;
+  background-color: var(--c2);
+}
+
+/* pre code {
+  padding: 0.1em 0.15em;
+  background-color: inherit;
+} */
