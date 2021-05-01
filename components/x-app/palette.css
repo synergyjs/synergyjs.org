@@ -26,12 +26,13 @@ body {
   background-color: var(--c1);
 }
 
-/* code:not(pre code) {
+code:not(pre > code) {
   padding: 0.1em 0.15em;
+  border-radius: 3px;
   background-color: var(--c2);
-} */
+}
 
-pre code {
+/* pre code {
   padding: 0.1em 0.15em;
   background-color: inherit;
-}
+} */

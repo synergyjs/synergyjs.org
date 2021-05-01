@@ -1,18 +1,16 @@
 {
-  "name": "dox",
+  "name": "synergyjs.org",
   "type": "module",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "index.js",
   "scripts": {
     "dev": "danza dev",
     "build": "danza build",
-    "test": "danza test",
-    "render": "danza render",
-    "lts": "cp ~/Projects/synergy/dist/synergy.js tmp ; cp ~/Projects/synergy/dist/synergy.js public"
+    "test": "danza test"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "highlight.js": "^10.7.1",
     "markdown-it": "^12.0.4",
@@ -21,6 +19,7 @@
   },
   "description": "",
   "devDependencies": {
-    "jsdom": "^16.5.3"
+    "jsdom": "^16.5.3",
+    "prettier": "2.2.1"
   }
 }
