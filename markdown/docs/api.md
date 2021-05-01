@@ -34,7 +34,7 @@ Returns a plain JavaScript object to provide the model for your custom element.
 Your custom elements initial attribute and property names and values are passed to your factory function when a new instance of the element is created.
 
 ```js
-const fooFactory = ({ name = '', disabled }) => {
+const fooFactory = ({ name = "", disabled }) => {
   return {
     name,
     disabled,
@@ -70,7 +70,7 @@ This section lists all of the lifecycle callbacks that you can define on your mo
     an object representing the state of 
     the model prior to the last update */
   },
-  disconnectedCallback() {
+  disconnectedCallback(model) {
     /* Invoked each time the custom 
     element is disconnected from the 
     DOM */
