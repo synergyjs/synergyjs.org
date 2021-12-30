@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:title" content="undefined | Synergy: A JavaScript Library for building Web Components" />
+        <meta property="og:url" content="https://synergyjs.orgundefined" />
+        <title>undefined | Synergy: A JavaScript Library for building Web Components</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/base16/tomorrow.min.css" integrity="sha512-5D/fcZ3y3nuaeHSxDbFwWDEy1Fvj5qQKsU0tilD7bhWAA+IN/Jl9fzGdUotzvA7wgXtsnZmafcuunH+6nyuA0A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="/index.css"></link>
+      </head>
+      <body>
+      <div id="container">
+      <div id="first-column">
+      <a href="/" class="synergy">synergy</a>
+        <nav id="top-nav">
+          <ul>
+          <li><a href="/learn">learn</a></li><li><a href="/docs">docs</a></li></ul>
+        </nav>
+        <nav id="side-nav">
+          
+          <ul>
+          
+            <li>learn
+            <ul>
+              
+                <li><a href="/learn/introduction" >Introduction</a></li>
+              
+                <li><a href="/learn/hello-world" >Hello World!</a></li>
+              
+            </ul>
+            </li>
+          
+            <li>docs
+            <ul>
+              
+                <li><a href="/docs/getting-started" >Install</a></li>
+              
+                <li><a href="/docs/api" >API</a></li>
+              
+                <li><a href="/docs/templates" >Templates</a></li>
+              
+                <li><a href="/docs/class-and-style" >Class & Style</a></li>
+              
+                <li><a href="/docs/repeated-blocks" >Repeated Blocks</a></li>
+              
+                <li><a href="/docs/events" >Events</a></li>
+              
+                <li><a href="/docs/forms" >Forms</a></li>
+              
+            </ul>
+            </li>
+          
+
+          </ul>
+          
+        </nav>
+        <a
+            href="https://github.com/defx/synergy"
+            class="github"
+            aria-label="Synergy.js on GitHub"
+            rel="noopener noreferrer"
+            target="_blank"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 17 16"
+              fill="none"
+            >
+              <g clip-path="url(githublogo)">
+                <path
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  d="M8.18391.249268C3.82241.249268.253906 3.81777.253906 8.17927c0 3.46933 2.279874 6.44313 5.451874 7.53353.3965.0991.49563-.1983.49563-.3965v-1.3878c-2.18075.4956-2.67638-.9912-2.67638-.9912-.3965-.8922-.89212-1.1895-.89212-1.1895-.69388-.4957.09912-.4957.09912-.4957.793.0992 1.1895.793 1.1895.793.69388 1.2887 1.88338.8922 2.27988.6939.09912-.4956.29737-.8921.49562-1.0904-1.78425-.1982-3.5685-.8921-3.5685-3.96496 0-.89212.29738-1.586.793-2.08162-.09912-.19825-.3965-.99125.09913-2.08163 0 0 .69387-.19825 2.18075.793.59475-.19825 1.28862-.29737 1.9825-.29737.69387 0 1.38775.09912 1.98249.29737 1.4869-.99125 2.1808-.793 2.1808-.793.3965 1.09038.1982 1.88338.0991 2.08163.4956.59475.793 1.28862.793 2.08162 0 3.07286-1.8834 3.66766-3.66764 3.86586.29737.3965.59474.8921.59474 1.586v2.1808c0 .1982.0991.4956.5948.3965 3.172-1.0904 5.4518-4.0642 5.4518-7.53353-.0991-4.3615-3.6676-7.930002-8.02909-7.930002z"
+                  clip-rule="evenodd"
+                ></path>
+              </g>
+              <defs>
+                <clipPath id="githublogo">
+                  <path
+                    fill="transparent"
+                    d="M0 0h15.86v15.86H0z"
+                    transform="translate(.253906 .0493164)"
+                  ></path>
+                </clipPath>
+              </defs></svg
+          ></a>
+        </div>
+        <div id="middle-column">
+          <main><h1>CLI</h1>
+<p>The Synergy CLI aims to provide an exceptional developer experience and outstanding performance for building websites using Web Components. While Synergy itself gives you everything you need to build runtime web components without a compilation step, the CLI takes things a step further and simplifies the process of building websites with Synergy web components.</p>
+<h2>TL;DR</h2>
+<p>The CLI expects that you will have two things:</p>
+<ol>
+<li>
+<p>a <code>components</code> folder, containing a directory for each of your projects Custom Elements. Inside a component folder you may have...</p>
+<ul>
+<li><code>index.js</code> - the default export is your components factory function</li>
+<li><code>index.html</code> - your components HTML template</li>
+<li><code>index.css</code> - your components CSS</li>
+</ul>
+</li>
+<li>
+<p>a <code>synergy.config.js</code> file, where you will configure routes, data sourcing, and also component-level render strategies.</p>
+</li>
+</ol>
+<p>Here are a few of the things that you get for free in return;</p>
+<h2>Scoped CSS</h2>
+<p>There's <a href="">no Shadow DOM by default</a>, but selectors in a components' CSS file are automatically prefixed with an element selector, effectively stopping styles from leaking out whilst still allowing styles to cascade down. If you need to include style rules for the root element, you can use the element selector yourself to do that as the CLI won't prefix those.</p>
+<h2>Minification</h2>
+<p>All of the HTML, CSS, and JS gets minified when the <code>build</code> script is run.</p>
+<h2>Optimisation</h2>
+<p>...</p>
+<h2>Nested Components</h2>
+<p>You can use any local component within your component templates. There's no need to import anything; the CLI checks each template and automatically loads definitions for any local component that is used in any template.</p>
+<h2>Routes</h2>
+<p>Routes are defined inside your <code>synergy.config.js</code> module along the lines of &quot;when matching route pattern <code>X</code>, load component <code>Y</code>&quot;.</p>
+<h2>Page Data</h2>
+<p>When it comes to sourcing the data for your website, the CLI is influenced by Next.js, but it's also different in several ways. If you're familiar with Next.js, you'll instantly recognise the role of the <code>getStaticPaths</code> and <code>getStaticProps</code> functions to generate dynamic routes and source your page data.</p>
+<h2>Component-level Render Strategies</h2>
+<p>Synergy understands 3 different types of rendering strategy:</p>
+<ol>
+<li><code>static</code> - component is only loaded during the prerender</li>
+<li><code>hydrate</code> - component is loaded during prerender and hydrated efficiently when the user loads your page.</li>
+<li><code>enhance</code> - (read <em>progressive enhancement</em>) component is not loaded during the prerender, only when the page is served to the user.</li>
+</ol>
+<p>Synergy trivialises this fine-grained control over component rendering strategies, making it easier for you to build performant and resilient websites that...</p>
+<ul>
+<li>achieve excellent TTFB and TTFI</li>
+<li>progressively enhance pages with JS-dependent components at runtime</li>
+</ul>
+<h2>install</h2>
+<pre class="hljs"><code>npm i --D @synergy/cli
+</code></pre>
+<h2>project anatomy</h2>
+<pre class="hljs"><code>project
+|
+└───synergy.config.js
+│
+└───components
+│   │
+│   └───x-foo
+│       └───index.js
+│       └───index.html
+│       └───index.css
+
+</code></pre>
+<h2>synergy.config.js</h2>
+<p>Your configuration file should export a JavaScript object. Within this object, you can define several different configuration options.</p>
+<pre class="hljs"><code><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  <span class="hljs-comment">//configuration options</span>
+}
+</code></pre>
+<h3>Configuration options</h3>
+<p>Options available to set within synergy.config.js include:</p>
+<ul>
+<li><code>routes</code> (array)</li>
+<li><code>components</code> (object)</li>
+</ul>
+<h3>routes</h3>
+<pre class="hljs"><code><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  <span class="hljs-attr">routes</span>: [
+    <span class="hljs-comment">// static route</span>
+    {
+      <span class="hljs-attr">match</span>: <span class="hljs-string">&#x27;/&#x27;</span>,
+      <span class="hljs-attr">component</span>: <span class="hljs-string">&#x27;x-home&#x27;</span>,
+      <span class="hljs-attr">getStaticProps</span>: <span class="hljs-keyword">async</span> (context) =&gt; {
+        <span class="hljs-comment">// called once for the page matching &#x27;/&#x27;</span>
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">props</span>: {}, <span class="hljs-comment">// will be passed to the page component as props</span>
+          }
+      },
+    },
+    <span class="hljs-comment">// dynamic routes</span>
+    {
+      <span class="hljs-attr">match</span>: <span class="hljs-string">&#x27;posts/[id]&#x27;</span>,
+      <span class="hljs-attr">component</span>: <span class="hljs-string">&#x27;x-post&#x27;</span>,
+      <span class="hljs-attr">getStaticPaths</span>: <span class="hljs-keyword">async</span> () =&gt; {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">paths</span>: [
+              { <span class="hljs-attr">params</span>: { ... } } <span class="hljs-comment">// See the &quot;paths&quot; section below</span>
+            ]
+          };
+      },
+      <span class="hljs-attr">getStaticProps</span>: <span class="hljs-keyword">async</span> (context) =&gt; {
+        <span class="hljs-comment">// called for each path returned from getStaticPaths</span>
+        <span class="hljs-keyword">return</span> {
+          <span class="hljs-attr">props</span>: {}, <span class="hljs-comment">// will be passed to the page component as props</span>
+        }
+      },
+    },
+  ],
+};
+</code></pre>
+<h3>components</h3>
+<h2>commands</h2>
+<ul>
+<li><code>dev</code>
+Starts a development server on port 3000 that will auto-reload whenever you change any of your components</li>
+<li><code>test</code></li>
+<li><code>build</code></li>
+</ul>
+</main>
+          <div id="pager"><a href="/learn/introduction"><span>NEXT</span>Introduction
+  <svg
+    width="10"
+    height="16"
+    viewBox="0 0 10 16"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <polyline
+      fill="none"
+      vector-effect="non-scaling-stroke"
+      points="2,2 8,8 2,14"
+    ></polyline>
+  </svg>
+</a></div>
+        </div>
+       <div id="last-column"></div>
+      </body>
+    </html>
