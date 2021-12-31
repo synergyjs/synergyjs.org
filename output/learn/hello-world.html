@@ -89,9 +89,7 @@
         <div id="middle-column">
           <main><h1>hello world!</h1>
 <p>All you need to try Synergy out is a code editor and a browser.</p>
-<ol>
-<li>start by creating an HTML file and add a script so that you can import the Synergy library.</li>
-</ol>
+<p>Let's start by creating an HTML file and add a script so that we can import Synergy into our document.</p>
 <pre class="hljs"><code><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
@@ -105,26 +103,12 @@
   <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </code></pre>
-<blockquote>
-<p>You can also install Synergy as a project dependency using NPM or Yarn. For the purposes of this tutorial however we're just going to load Synergy directly from a CDN.</p>
-</blockquote>
-<p>The <code>define</code> function accepts four arguments, but for now, we'll just concentrate on the first three...</p>
-<pre class="hljs"><code><span class="hljs-title function_">define</span>(<span class="hljs-comment">/*name, factory, template*/</span>)
-</code></pre>
-<p>As per the Custom Element specification, the name of a Custom Element must always include a hyphen in order to differentiate Custom Elements from standard built-in elements like the <code>&lt;a&gt;</code> or <code>&lt;p&gt;</code> tags. Our example is the Synergy version of &quot;hello world&quot;, so let's go ahead and name our Custom Element <code>hello-world</code>.</p>
-<pre class="hljs"><code><span class="hljs-keyword">let</span> name = <span class="hljs-string">&quot;hello-world&quot;</span>
-</code></pre>
-<p>The second argument is a <em>factory function</em>, which is simply a function that returns an object to provide the data for our view.</p>
-<pre class="hljs"><code><span class="hljs-keyword">let</span> <span class="hljs-title function_">factory</span> = (<span class="hljs-params"></span>) =&gt; ({ <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;world&quot;</span> })
-</code></pre>
-<p>The third argument is the HTML template for our view. This can be a string, or an HTMLTemplateElement node. Let's just use a string for this example...</p>
-<pre class="hljs"><code><span class="hljs-keyword">let</span> template = <span class="hljs-string">&quot;&lt;p&gt;Hello {{ name }}!&lt;/p&gt;&quot;</span>
-</code></pre>
-<p>Now we can go ahead an pass those arguments to the <code>define</code> function in order to register our new Custom Element with the document.</p>
-<pre class="hljs"><code><span class="hljs-title function_">define</span>(name, factory, template)
-</code></pre>
-<p>You won't see anything on the page just yet, but we can now use our new Custom Element anywhere within the document body, just like any built-in HTML element.</p>
-<p>Let's give it a try by adding a <code>hello-world</code> element to the start of our document body.</p>
+<p>As you can see from the example above, Synergy exports the <code>define</code> function that we can use to create a new Custom Element.</p>
+<p>The Custom Element API is a standard Web API that allows us to extend HTML with our very own Custom Elements. Synergy wraps around the Custom Element API to make it significantly easier to work with by allowing us to express our Custom Elements using a combination of declarative HTML templates and plain Javascript objects.</p>
+<p>As per the Custom Element specification, the name of a Custom Element must always include a hyphen in order to differentiate Custom Elements from standard built-in elements like the <code>&lt;a&gt;</code> or <code>&lt;p&gt;</code> tags. A custom elements name is the first argument to the <code>define</code> function.</p>
+<p>The second argument to <code>define</code> is a <em>factory function</em>, which is simply a function that returns a plain object to provide the data for our element. Once defined, there can be one or many instances of our new Custom Element on the page at any time, and the humble factory function provides the simplest of mechanisms for us to ensure that each element instance has its very own data object and isolated state to work with.</p>
+<p>The third argument to <code>define</code> is the HTML template for our view. This can be provided as a string, or a <code>&lt;template&gt;</code> node. Using a template node has a few benefits, but the most immediate is the ability for us to harness our code editors built-in formatting and syntax highlighting capabilities by definining our HTML as HTML without any need for addition plugins.</p>
+<p>Now let's go ahead and put all of this together in order to create a very simple Custom Element that will render &quot;Hello World!&quot;.</p>
 <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">hello-world</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">hello-world</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;module&quot;</span>&gt;</span><span class="language-javascript">
@@ -137,12 +121,9 @@
   </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 </code></pre>
-<p>If you have followed the steps above, you should see that our Custom Element renders &quot;Hello world!&quot; inside its paragraph element.</p>
-<p>A Custom Element is very much like a standard HTML element in that it can be configured via its attributes and properties. Let's give that a try now by passing in a new name to our Custom Element.</p>
-<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">hello-world</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;you&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">hello-world</span>&gt;</span>
-</code></pre>
-<p>Once you've added the name attribute, save the file and refresh the page in your browser and you will see that our Custom Element now renders &quot;Hello you!&quot;.</p>
-<p>Great job! That's it for the first lesson. There will be more lessons coming very soon!</p>
+<p>You will now see that our Custom Element renders &quot;Hello world!&quot; on the page.</p>
+<p>Great job! We've created our first Custom Element using Synergy's <code>define</code> function, gave it a name, provided data for each instance of our new Custom Element via a factory function, and finally defined the markup for our Custom Element using a simple string template.</p>
+<p>That's it for the first lesson. In the following lessons we will learn more about how Synergy works as we add more functionality to our <code>hello-world</code> Element.</p>
 <blockquote>
 <p><strong>Help is available:</strong> If you get stuck, or have any ideas or feedback that you would like to share then you can reach out on <a href="https://github.com/defx/synergy/discussions/">Github Discussions</a></p>
 </blockquote>

@@ -2,7 +2,7 @@
 
 All you need to try Synergy out is a code editor and a browser.
 
-1. start by creating an HTML file and add a script so that you can import the Synergy library.
+Let's start by creating an HTML file and add a script so that we can import Synergy into our document.
 
 ```html
 <!DOCTYPE html>
@@ -19,41 +19,17 @@ All you need to try Synergy out is a code editor and a browser.
 </html>
 ```
 
-> You can also install Synergy as a project dependency using NPM or Yarn. For the purposes of this tutorial however we're just going to load Synergy directly from a CDN.
+As you can see from the example above, Synergy exports the `define` function that we can use to create a new Custom Element.
 
-The `define` function accepts four arguments, but for now, we'll just concentrate on the first three...
+The Custom Element API is a standard Web API that allows us to extend HTML with our very own Custom Elements. Synergy wraps around the Custom Element API to make it significantly easier to work with by allowing us to express our Custom Elements using a combination of declarative HTML templates and plain Javascript objects.
 
-```js
-define(/*name, factory, template*/)
-```
+As per the Custom Element specification, the name of a Custom Element must always include a hyphen in order to differentiate Custom Elements from standard built-in elements like the `<a>` or `<p>` tags. A custom elements name is the first argument to the `define` function.
 
-As per the Custom Element specification, the name of a Custom Element must always include a hyphen in order to differentiate Custom Elements from standard built-in elements like the `<a>` or `<p>` tags. Our example is the Synergy version of "hello world", so let's go ahead and name our Custom Element `hello-world`.
+The second argument to `define` is a _factory function_, which is simply a function that returns a plain object to provide the data for our element. Once defined, there can be one or many instances of our new Custom Element on the page at any time, and the humble factory function provides the simplest of mechanisms for us to ensure that each element instance has its very own data object and isolated state to work with.
 
-```js
-let name = "hello-world"
-```
+The third argument to `define` is the HTML template for our view. This can be provided as a string, or a `<template>` node. Using a template node has a few benefits, but the most immediate is the ability for us to harness our code editors built-in formatting and syntax highlighting capabilities by definining our HTML as HTML without any need for addition plugins.
 
-The second argument is a _factory function_, which is simply a function that returns an object to provide the data for our view.
-
-```js
-let factory = () => ({ name: "world" })
-```
-
-The third argument is the HTML template for our view. This can be a string, or an HTMLTemplateElement node. Let's just use a string for this example...
-
-```js
-let template = "<p>Hello {{ name }}!</p>"
-```
-
-Now we can go ahead an pass those arguments to the `define` function in order to register our new Custom Element with the document.
-
-```js
-define(name, factory, template)
-```
-
-You won't see anything on the page just yet, but we can now use our new Custom Element anywhere within the document body, just like any built-in HTML element.
-
-Let's give it a try by adding a `hello-world` element to the start of our document body.
+Now let's go ahead and put all of this together in order to create a very simple Custom Element that will render "Hello World!".
 
 ```html
 <body>
@@ -69,16 +45,10 @@ Let's give it a try by adding a `hello-world` element to the start of our docume
 </body>
 ```
 
-If you have followed the steps above, you should see that our Custom Element renders "Hello world!" inside its paragraph element.
+You will now see that our Custom Element renders "Hello world!" on the page.
 
-A Custom Element is very much like a standard HTML element in that it can be configured via its attributes and properties. Let's give that a try now by passing in a new name to our Custom Element.
+Great job! We've created our first Custom Element using Synergy's `define` function, gave it a name, provided data for each instance of our new Custom Element via a factory function, and finally defined the markup for our Custom Element using a simple string template.
 
-```html
-<hello-world name="you"></hello-world>
-```
-
-Once you've added the name attribute, save the file and refresh the page in your browser and you will see that our Custom Element now renders "Hello you!".
-
-Great job! That's it for the first lesson. There will be more lessons coming very soon!
+That's it for the first lesson. In the following lessons we will learn more about how Synergy works as we add more functionality to our `hello-world` Element.
 
 > **Help is available:** If you get stuck, or have any ideas or feedback that you would like to share then you can reach out on [Github Discussions](https://github.com/defx/synergy/discussions/)
