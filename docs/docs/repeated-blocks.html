@@ -1,31 +1,196 @@
-<!DOCTYPE html><html lang=en><head><meta charset=UTF-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><style>*{padding:0;margin:0;box-sizing:border-box}html{font-size:100%}:root{--scale:1.25;--s16:calc(var(--s15) * var(--scale));--s15:calc(var(--s14) * var(--scale));--s14:calc(var(--s13) * var(--scale));--s13:calc(var(--s12) * var(--scale));--s12:calc(var(--s11) * var(--scale));--s11:calc(var(--s10) * var(--scale));--s10:calc(var(--s9) * var(--scale));--s9:calc(var(--s8) * var(--scale));--s8:calc(var(--s7) * var(--scale));--s7:calc(var(--s6) * var(--scale));--s6:calc(var(--s5) * var(--scale));--s5:calc(var(--s4) * var(--scale));--s4:calc(var(--s3) * var(--scale));--s3:calc(var(--s2) * var(--scale));--s2:calc(var(--s1) * var(--scale));--s1:1rem}body *{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"}h1{font-size:var(--s4);font-weight:400;line-height:var(--s5);padding:var(--s1) 0;border-bottom:2px solid #eee;margin:var(--s2) 0}h2{font-size:var(--s3);font-weight:400;line-height:var(--s4);padding:var(--s1) 0;border-bottom:1px solid #ddd;margin:var(--s2) 0}h3{font-size:var(--s2);font-weight:400;line-height:var(--s2);padding:var(--s1) 0;border-bottom:2px solid #eee;margin:var(--s1) 0}blockquote{border-left:var(--s1) solid #6c3;padding-left:var(--s1);margin-top:var(--s3);margin-bottom:var(--s3);font-style:italic}html{height:-webkit-fill-available}body{min-height:100vh;min-height:-webkit-fill-available}ol,ul{margin-left:var(--s1)}blockquote,li,p,pre{margin-top:var(--s1)}body{line-height:var(--s3)}.flex-container{display:flex;justify-content:center;flex-direction:column}#left-column{display:flex;justify-content:space-evenly;align-items:center;padding:var(--s1)}#left-column x-menu{display:none}#middle-column{width:100%;max-width:40rem;padding:var(--s1);align-self:center}#right-column{display:none;font:none;width:256px}@media screen and (min-width:1024px){.flex-container{flex-direction:row}#left-column{display:block;height:100vh;position:sticky;top:0;width:256px;flex:1;overflow-y:scroll;text-align:right;padding:var(--s3)}#left-column x-menu{display:block}#right-column{display:block;height:100vh;position:sticky;top:0;overflow-y:scroll;flex:1}}.button-group{display:flex;flex-direction:row;justify-content:center}.button{padding:var(--s1)}.synergy{font-size:var(--s2);text-decoration:none;display:block;padding:var(--s2) 0}.github{display:block;padding:var(--s2) 0}.github svg{height:var(--s3)}.flex-list{list-style-type:none}x-home #middle-column{text-align:center}.hljs{border-radius:7px;background-color:#333!important}#right-column>x-headings{display:block;margin-top:var(--s9)}:root{--c1:rgb(242, 242, 242);--c2:rgb(230, 230, 230)}body{background-color:var(--c1)}#left-column{background-color:var(--c2)}#middle-column{background-color:var(--c1)}#right-column{background-color:var(--c2)}#left-column [aria-current=page]{background-color:var(--c1)}#right-column [aria-current=true]{background-color:var(--c1)}code:not(pre>code){padding:.1em .15em;border-radius:3px;background-color:var(--c2)}top-menu{display:block}top-menu ul{display:flex;list-style-type:none;margin-left:0}top-menu li{padding:var(--s1);margin-top:0}@media screen and (min-width:1024px){top-menu{display:none}}x-menu ul{list-style-type:none}x-menu a{display:block}x-headings ol{list-style-type:none}x-headings a{display:block}x-pager{display:flex;flex-direction:column;padding:var(--s3) 0}x-pager>*{flex:1}x-pager a{padding:var(--s3);border:1px solid #eaeaea}x-pager svg{stroke:currentColor;stroke-width:1px;margin-right:0 1rem;margin:auto 0}x-pager a{margin-top:0;text-decoration:none;vertical-align:center;font-size:var(--s2);color:#111}x-pager a:hover{border:1px solid #6c3;color:#6c3}x-pager a span{color:#222;display:block;font-size:var(--s1)}x-pager a:nth-of-type(2){text-align:right}x-pager a:nth-of-type(1){text-align:left}x-pager a:nth-of-type(2) svg{float:left}x-pager a:nth-of-type(1) svg{float:right}x-pager a:nth-of-type(1){margin-bottom:var(--s1)}@media screen and (min-width:1024px){x-pager{flex-direction:row-reverse}x-pager a:nth-of-type(1){margin-bottom:0}x-pager a:nth-of-type(2){margin-right:1rem}}</style><meta name=description content="Synergy.js - A JavaScript library for building Web Components"><meta property=og:title content="Repeated Blocks | Synergy: A JavaScript library for building Web Components"><meta property=og:url content=https://synergyjs.org/docs/repeated-blocks><title>Repeated Blocks | Synergy: A JavaScript library for building Web Components</title><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/a11y-dark.min.css integrity="sha512-1rzCaYWsg3l6uKvGbUT6rAZFOcVn0zeXAFlZudsnj8k2xcrU5asL8jfJUEijV9GPYMh0GnPToeCTJj6RXQnA8g==" crossorigin=anonymous></head><body><x-leaf><x-app><div class=flex-container><div id=left-column class=noflow><a href=/ class=synergy>synergy</a><top-menu><nav><ul><template each="section in sitemap.sections"><li><a class=section>{{ section.title }}</a></li></template><li><a class=section href=/learn>learn</a></li><li><a class=section href=/docs>docs</a></li></ul></nav></top-menu><x-menu><nav><ul><template each="section in sitemap.sections"><li><!-- <a
-          href="{{ section.pathname }}"
-          aria-current="{{ ariaCurrent(section.pathname) }}"
-          class="section"
-        > --> {{ section.title }}<!-- </a> --><ul><template each="page in section.pages"><li><a>{{ page.title }}</a></li></template></ul></li></template><li><!-- <a
-          href="{{ section.pathname }}"
-          aria-current="{{ ariaCurrent(section.pathname) }}"
-          class="section"
-        > -->learn<!-- </a> --><ul><template each="page in section.pages"><li><a>{{ page.title }}</a></li></template><li><a href=/learn/introduction>Introduction</a></li><li><a href=/learn/hello-world>Hello World!</a></li></ul></li><li><!-- <a
-          href="{{ section.pathname }}"
-          aria-current="{{ ariaCurrent(section.pathname) }}"
-          class="section"
-        > -->docs<!-- </a> --><ul><template each="page in section.pages"><li><a>{{ page.title }}</a></li></template><li><a href=/docs/install>Install</a></li><li><a href=/docs/api>API</a></li><li><a href=/docs/templates>Templates</a></li><li><a href=/docs/class-and-style>Class &amp; Style</a></li><li><a href=/docs/repeated-blocks aria-current=page>Repeated Blocks</a></li><li><a href=/docs/events>Events</a></li><li><a href=/docs/forms>Forms</a></li></ul></li></ul></nav></x-menu><a href=https://github.com/defx/synergy class=github aria-label="Synergy.js on GitHub" rel="noopener noreferrer" target=_blank><svg xmlns=http://www.w3.org/2000/svg viewBox="0 0 17 16" fill=none><g clip-path=url(githublogo)><path fill=currentColor fill-rule=evenodd d="M8.18391.249268C3.82241.249268.253906 3.81777.253906 8.17927c0 3.46933 2.279874 6.44313 5.451874 7.53353.3965.0991.49563-.1983.49563-.3965v-1.3878c-2.18075.4956-2.67638-.9912-2.67638-.9912-.3965-.8922-.89212-1.1895-.89212-1.1895-.69388-.4957.09912-.4957.09912-.4957.793.0992 1.1895.793 1.1895.793.69388 1.2887 1.88338.8922 2.27988.6939.09912-.4956.29737-.8921.49562-1.0904-1.78425-.1982-3.5685-.8921-3.5685-3.96496 0-.89212.29738-1.586.793-2.08162-.09912-.19825-.3965-.99125.09913-2.08163 0 0 .69387-.19825 2.18075.793.59475-.19825 1.28862-.29737 1.9825-.29737.69387 0 1.38775.09912 1.98249.29737 1.4869-.99125 2.1808-.793 2.1808-.793.3965 1.09038.1982 1.88338.0991 2.08163.4956.59475.793 1.28862.793 2.08162 0 3.07286-1.8834 3.66766-3.66764 3.86586.29737.3965.59474.8921.59474 1.586v2.1808c0 .1982.0991.4956.5948.3965 3.172-1.0904 5.4518-4.0642 5.4518-7.53353-.0991-4.3615-3.6676-7.930002-8.02909-7.930002z" clip-rule=evenodd></path></g><defs><clipPath id=githublogo><path fill=transparent d="M0 0h15.86v15.86H0z" transform="translate(.253906 .0493164)"></path></clipPath></defs></svg></a></div><div id=middle-column><main><h1>Repeated Blocks</h1><p>Repeat a block of HTML for each item in an array using a template element together with the <code>each</code> attribute.</p><p>Model:</p><pre class=hljs><code>{
-  <span class=hljs-attr>names</span>: [<span class=hljs-string>'kate'</span>, <span class=hljs-string>'kevin'</span>, <span class=hljs-string>'randall'</span>];
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:title" content="Repeated Blocks | Synergy: A JavaScript Library for building Web Components" />
+        <meta property="og:url" content="https://synergyjs.org/docs/repeated-blocks" />
+        <title>Repeated Blocks | Synergy: A JavaScript Library for building Web Components</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/base16/tomorrow.min.css" integrity="sha512-5D/fcZ3y3nuaeHSxDbFwWDEy1Fvj5qQKsU0tilD7bhWAA+IN/Jl9fzGdUotzvA7wgXtsnZmafcuunH+6nyuA0A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="/index.css"></link>
+      </head>
+      <body>
+      <div id="container">
+      <div id="first-column">
+      <a href="/" class="synergy">synergy</a>
+        <nav id="top-nav">
+          <ul>
+          <li><a href="/learn">learn</a></li><li><a href="/docs">docs</a></li></ul>
+        </nav>
+        <nav id="side-nav">
+          
+          <ul>
+          
+            <li>learn
+            <ul>
+              
+                <li><a href="/learn/introduction" >Introduction</a></li>
+              
+                <li><a href="/learn/hello-world" >Hello World!</a></li>
+              
+            </ul>
+            </li>
+          
+            <li>docs
+            <ul>
+              
+                <li><a href="/docs/getting-started" >Install</a></li>
+              
+                <li><a href="/docs/api" >API</a></li>
+              
+                <li><a href="/docs/templates" >Templates</a></li>
+              
+                <li><a href="/docs/class-and-style" >Class & Style</a></li>
+              
+                <li><a href="/docs/repeated-blocks" aria-current="page">Repeated Blocks</a></li>
+              
+                <li><a href="/docs/events" >Events</a></li>
+              
+                <li><a href="/docs/forms" >Forms</a></li>
+              
+            </ul>
+            </li>
+          
+
+          </ul>
+          
+        </nav>
+        <a
+            href="https://github.com/defx/synergy"
+            class="github"
+            aria-label="Synergy.js on GitHub"
+            rel="noopener noreferrer"
+            target="_blank"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 17 16"
+              fill="none"
+            >
+              <g clip-path="url(githublogo)">
+                <path
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  d="M8.18391.249268C3.82241.249268.253906 3.81777.253906 8.17927c0 3.46933 2.279874 6.44313 5.451874 7.53353.3965.0991.49563-.1983.49563-.3965v-1.3878c-2.18075.4956-2.67638-.9912-2.67638-.9912-.3965-.8922-.89212-1.1895-.89212-1.1895-.69388-.4957.09912-.4957.09912-.4957.793.0992 1.1895.793 1.1895.793.69388 1.2887 1.88338.8922 2.27988.6939.09912-.4956.29737-.8921.49562-1.0904-1.78425-.1982-3.5685-.8921-3.5685-3.96496 0-.89212.29738-1.586.793-2.08162-.09912-.19825-.3965-.99125.09913-2.08163 0 0 .69387-.19825 2.18075.793.59475-.19825 1.28862-.29737 1.9825-.29737.69387 0 1.38775.09912 1.98249.29737 1.4869-.99125 2.1808-.793 2.1808-.793.3965 1.09038.1982 1.88338.0991 2.08163.4956.59475.793 1.28862.793 2.08162 0 3.07286-1.8834 3.66766-3.66764 3.86586.29737.3965.59474.8921.59474 1.586v2.1808c0 .1982.0991.4956.5948.3965 3.172-1.0904 5.4518-4.0642 5.4518-7.53353-.0991-4.3615-3.6676-7.930002-8.02909-7.930002z"
+                  clip-rule="evenodd"
+                ></path>
+              </g>
+              <defs>
+                <clipPath id="githublogo">
+                  <path
+                    fill="transparent"
+                    d="M0 0h15.86v15.86H0z"
+                    transform="translate(.253906 .0493164)"
+                  ></path>
+                </clipPath>
+              </defs></svg
+          ></a>
+        </div>
+        <div id="middle-column">
+          <main><h1>Repeated Blocks</h1>
+<p>Repeated blocks work with Arrays and Objects.</p>
+<p>Repeat a block of HTML for each item in a collection using a template element together with the <code>each</code> attribute.</p>
+<p>Model:</p>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">names</span>: [<span class="hljs-string">&quot;kate&quot;</span>, <span class="hljs-string">&quot;kevin&quot;</span>, <span class="hljs-string">&quot;randall&quot;</span>]
 }
-</code></pre><p>Template:</p><pre class=hljs><code><span class=hljs-tag>&lt;<span class=hljs-name>ul</span>&gt;</span>
-  <span class=hljs-tag>&lt;<span class=hljs-name>template</span> <span class=hljs-attr>each</span>=<span class=hljs-string>"name in names"</span>&gt;</span>
-    <span class=hljs-tag>&lt;<span class=hljs-name>li</span>&gt;</span>Hello {{ name }}<span class=hljs-tag>&lt;/<span class=hljs-name>li</span>&gt;</span>
-  <span class=hljs-tag>&lt;/<span class=hljs-name>template</span>&gt;</span>
-<span class=hljs-tag>&lt;/<span class=hljs-name>ul</span>&gt;</span>
-</code></pre><p>You can also provide a second argument for the index of the current item.</p><pre class=hljs><code><span class=hljs-tag>&lt;<span class=hljs-name>ul</span>&gt;</span>
-  <span class=hljs-tag>&lt;<span class=hljs-name>template</span> <span class=hljs-attr>each</span>=<span class=hljs-string>"(todo, i) in todos"</span>&gt;</span>
-    <span class=hljs-tag>&lt;<span class=hljs-name>li</span>&gt;</span>todo {{ i }} of {{ todos.length }}<span class=hljs-tag>&lt;/<span class=hljs-name>li</span>&gt;</span>
-  <span class=hljs-tag>&lt;/<span class=hljs-name>template</span>&gt;</span>
-<span class=hljs-tag>&lt;/<span class=hljs-name>ul</span>&gt;</span>
-</code></pre><h2 id=keyed-arrays>Keyed Arrays</h2><p>Keys help Synergy identify which items in an array of objects have changed.</p><p>Using keys improves performance and avoids unexpected behaviour when re-rendering so it's always best to use them.</p><p>By default, Synergy assumes the <code>id</code> property (if there is one) to be the key.</p><p>If you need to nominate another property then you can do so with the <code>key</code> attribute. The best way to pick a key is to use a primitive value that is unique to that item within the array.</p><pre class=hljs><code><span class=hljs-tag>&lt;<span class=hljs-name>ul</span>&gt;</span>
-  <span class=hljs-tag>&lt;<span class=hljs-name>template</span> <span class=hljs-attr>each</span>=<span class=hljs-string>"person in people"</span> <span class=hljs-attr>key</span>=<span class=hljs-string>"foo"</span>&gt;</span>
-    <span class=hljs-tag>&lt;<span class=hljs-name>li</span>&gt;</span>Hello {{ person.name }}<span class=hljs-tag>&lt;/<span class=hljs-name>li</span>&gt;</span>
-  <span class=hljs-tag>&lt;/<span class=hljs-name>template</span>&gt;</span>
-<span class=hljs-tag>&lt;/<span class=hljs-name>ul</span>&gt;</span>
-</code></pre></main><x-pager><a href=/docs/events><span>NEXT</span>Events<svg width=10 height=16 viewBox="0 0 10 16" xmlns=http://www.w3.org/2000/svg aria-hidden=true><polyline fill=none vector-effect=non-scaling-stroke points="2,2 8,8 2,14"></polyline></svg> </a><a href=/docs/class-and-style><span>PREVIOUS</span>Class &amp; Style<svg width=10 height=16 viewBox="0 0 10 16" xmlns=http://www.w3.org/2000/svg aria-hidden=true><polyline fill=none vector-effect=non-scaling-stroke points="8,2 2,8 8,14"></polyline></svg></a></x-pager></div><div id=right-column><x-headings><ol><template each="heading in items"><li><a>{{ heading.text }}</a><x-headings></x-headings></li></template><li><a href=#keyed-arrays aria-current=false>Keyed Arrays</a><x-headings><ol><template each="heading in items"><li><a>{{ heading.text }}</a><x-headings></x-headings></li></template></ol></x-headings></li></ol></x-headings></div></div></x-app></x-leaf><script type=module>import("/hydrate.js").then(e=>e.default).then(e=>e({"x-headings":{0:{$initData:{items:[{level:"2",text:"Keyed Arrays",slug:"keyed-arrays",children:[]}]},$subscribe:["click"],meta:{2:{index:2,listId:3,blockData:[{}]},3:{index:4,listId:3,blockIndex:0},4:{index:5},5:{index:6},6:{index:7}}},1:{$initData:{items:[]},$subscribe:["click"],meta:{2:{index:2,listId:4,blockData:[]}}}}}))</script><script type=module>import{define}from"/synergy.js";["x-headings"].forEach(e=>{import("/components/"+e+"/index.js").then(t=>{let n=t.default;define(e,n,document.querySelector("template#"+e))})})</script></body></html>
+</code></pre>
+<p>Template:</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">each</span>=<span class="hljs-string">&quot;name in names&quot;</span>&gt;</span>Hello {{ name }}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</code></pre>
+<p>You can use parentheses to access both the key and the value.</p>
+<p>Template:</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">each</span>=<span class="hljs-string">&quot;(index, todo) in todos&quot;</span>&gt;</span>
+    todo {{ index }} of {{ todos.length }}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</code></pre>
+<p>Property access via the identifier is optional, you can also access directly like so...</p>
+<p>Model:</p>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">bars</span>: [
+    {
+      <span class="hljs-attr">x</span>: <span class="hljs-number">0</span>,
+      <span class="hljs-attr">y</span>: <span class="hljs-number">0</span>,
+      <span class="hljs-attr">width</span>: <span class="hljs-number">32</span>,
+      <span class="hljs-attr">height</span>: <span class="hljs-number">16</span>,
+      <span class="hljs-attr">fill</span>: <span class="hljs-string">&quot;hsl(100, 50%, 50%)&quot;</span>,
+    },
+    {
+      <span class="hljs-attr">x</span>: <span class="hljs-number">0</span>,
+      <span class="hljs-attr">y</span>: <span class="hljs-number">16</span>,
+      <span class="hljs-attr">width</span>: <span class="hljs-number">64</span>,
+      <span class="hljs-attr">height</span>: <span class="hljs-number">16</span>,
+      <span class="hljs-attr">fill</span>: <span class="hljs-string">&quot;hsl(200, 50%, 50%)&quot;</span>,
+    },
+    <span class="hljs-comment">//...</span>
+  ]
+}
+</code></pre>
+<p>Template:</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">svg</span>
+  <span class="hljs-attr">viewBox</span>=<span class="hljs-string">&quot;0 0 128 128&quot;</span>
+  <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/2000/svg&quot;</span>
+&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">rect</span>
+    <span class="hljs-attr">each</span>=<span class="hljs-string">&quot;bars&quot;</span>
+    <span class="hljs-attr">:x</span>
+    <span class="hljs-attr">:y</span>
+    <span class="hljs-attr">:width</span>
+    <span class="hljs-attr">:height</span>
+    <span class="hljs-attr">:fill</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bar&quot;</span>
+  /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+</code></pre>
+<p>...when accessing properties in this way, Synergy will first check to see if the property is defined on the current item within the iteration, and will otherwise try the same property against the viewmodel itself.</p>
+<h2>Keyed Arrays</h2>
+<p>Keys help Synergy identify which items in an collection of objects
+have changed.</p>
+<p>Using keys improves performance and
+avoids unexpected behaviour when re-rendering so it's always best to use them.</p>
+<p>By default, Synergy assumes the <code>id</code> property (if there is one) to be the key.</p>
+<p>If you need to nominate another property then you can do so with the <code>key</code> attribute. The best way to pick a key is to use a primitive value that is unique to that item within the array.</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">each</span>=<span class="hljs-string">&quot;person in people&quot;</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;foo&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Hello {{ person.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</code></pre>
+</main>
+          <div id="pager"><a href="/docs/events"><span>NEXT</span>Events
+  <svg
+    width="10"
+    height="16"
+    viewBox="0 0 10 16"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <polyline
+      fill="none"
+      vector-effect="non-scaling-stroke"
+      points="2,2 8,8 2,14"
+    ></polyline>
+  </svg>
+</a><a href="/docs/class-and-style"><span>PREV</span>Class & Style
+  <svg
+    width="10"
+    height="16"
+    viewBox="0 0 10 16"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <polyline
+      fill="none"
+      vector-effect="non-scaling-stroke"
+      points="8,2 2,8 8,14"
+    ></polyline>
+  </svg>
+</a></div>
+        </div>
+       <div id="last-column"></div>
+      </body>
+    </html>
