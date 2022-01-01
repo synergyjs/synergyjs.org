@@ -183,7 +183,7 @@ have changed.</p>
 avoids unexpected behaviour when re-rendering so it's always best to use them.</p>
 <p>List keys are specified using the <code>key</code> attribute and should be a primitive value that is unique to that item within the collection.</p>
 <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">each</span>=<span class="hljs-string">&quot;person in people&quot;</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;foo&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">each</span>=<span class="hljs-string">&quot;person in people&quot;</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Hello {{ person.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
