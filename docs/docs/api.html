@@ -101,11 +101,8 @@
 spec, an elements name must include a hyphen.</p>
 </li>
 <li>
-<p><code>factory</code> (function) - A factory function that will be called whenever a new instance of your Custom Element is created. It will be provided with one argument which is the Custom Element node itself.</p>
+<p><code>factory</code> (function) - A factory function that will be called whenever a new instance of your Custom Element is created. It will be provided with one argument which is the Custom Element node itself. The factory function returns a plain object or a Promise that resolves to a plain object to provide the data for your Custom Element.</p>
 </li>
-</ul>
-<p>Returns a plain object or a Promise that resolves to a plain object to provide the data for your Custom Element.</p>
-<ul>
 <li>
 <p><code>template</code> (HTMLTemplateElement | string) - The HTML for your view.</p>
 </li>
@@ -136,25 +133,24 @@ spec, an elements name must include a hyphen.</p>
 <p>Properties use camel case whereas attributes use kebab case. Always use camel case properties on your view model and Synergy will translate these accordingly to/from your Custom Element attributes.</p>
 <h3>Lifecycle Callbacks</h3>
 <p>This section lists all of the lifecycle callbacks that you can define on your model.</p>
-<pre class="hljs"><code>;({
-  <span class="hljs-title function_">connectedCallback</span>(<span class="hljs-params">model</span>) {
-    <span class="hljs-comment">/* Invoked each time the custom 
-    element is appended into a document-
-    connected element */</span>
+<pre class="hljs"><code>{
+  <span class="hljs-title function_">connectedCallback</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">/**
+     * Invoked each time the custom element is appended into a
+     * document-connected element
+     */</span>
   },
-  <span class="hljs-title function_">updatedCallback</span>(<span class="hljs-params">model, previousState</span>) {
-    <span class="hljs-comment">/* Invoked each time the model is 
-    updated. This method is not called 
-    after the initial render. prevState is 
-    an object representing the state of 
-    the model prior to the last update */</span>
+  <span class="hljs-title function_">updatedCallback</span>(<span class="hljs-params">previousState</span>) {
+    <span class="hljs-comment">/**
+     * Invoked each time the view is updated. This method is not called after the initial render. previousState is an object representing the model state prior to the last update
+     */</span>
   },
   <span class="hljs-title function_">disconnectedCallback</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-comment">/* Invoked each time the custom 
-    element is disconnected from the 
-    DOM */</span>
+    <span class="hljs-comment">/**
+     * Invoked each time the custom element is disconnected from the document
+     */</span>
   },
-})
+}
 </code></pre>
 </main>
           <div id="pager"><a href="/docs/templates"><span>NEXT</span>Templates

@@ -2,7 +2,7 @@ import fetch from "node-fetch"
 import fs from "fs-extra"
 import glob from "glob"
 
-const OUT_DIR = "./output"
+const OUT_DIR = "./docs"
 
 glob("./pages/**/*.md", async (err, files) => {
   let routes = files
