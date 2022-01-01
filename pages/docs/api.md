@@ -21,9 +21,7 @@ define(tagName, factory, template, options)
 - `tagName` (string) - Name for the new Custom Element. As per the Custom Element
   spec, an elements name must include a hyphen.
 
-- `factory` (function) - A factory function that will be called whenever a new instance of your Custom Element is created. It will be provided with one argument which is the Custom Element node itself.
-
-Returns a plain object or a Promise that resolves to a plain object to provide the data for your Custom Element.
+- `factory` (function) - A factory function that will be called whenever a new instance of your Custom Element is created. It will be provided with one argument which is the Custom Element node itself. The factory function returns a plain object or a Promise that resolves to a plain object to provide the data for your Custom Element.
 
 - `template` (HTMLTemplateElement | string) - The HTML for your view.
 
@@ -62,23 +60,22 @@ Properties use camel case whereas attributes use kebab case. Always use camel ca
 This section lists all of the lifecycle callbacks that you can define on your model.
 
 ```js
-;({
-  connectedCallback(model) {
-    /* Invoked each time the custom 
-    element is appended into a document-
-    connected element */
+{
+  connectedCallback() {
+    /**
+     * Invoked each time the custom element is appended into a
+     * document-connected element
+     */
   },
-  updatedCallback(model, previousState) {
-    /* Invoked each time the model is 
-    updated. This method is not called 
-    after the initial render. prevState is 
-    an object representing the state of 
-    the model prior to the last update */
+  updatedCallback(previousState) {
+    /**
+     * Invoked each time the view is updated. This method is not called after the initial render. previousState is an object representing the model state prior to the last update
+     */
   },
   disconnectedCallback() {
-    /* Invoked each time the custom 
-    element is disconnected from the 
-    DOM */
+    /**
+     * Invoked each time the custom element is disconnected from the document
+     */
   },
-})
+}
 ```

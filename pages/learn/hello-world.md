@@ -13,7 +13,7 @@ Let's start by creating an HTML file and add a script so that we can import Syne
   </head>
   <body>
     <script type="module">
-      import { define } from "https://unpkg.com/synergy@7.0.0"
+      import { define } from "https://unpkg.com/synergy@7.0.1"
     </script>
   </body>
 </html>
@@ -35,7 +35,7 @@ Now let's go ahead and put all of this together in order to create a very simple
 <body>
   <hello-world></hello-world>
   <script type="module">
-    import { define } from "https://unpkg.com/synergy@7.0.0"
+    import { define } from "https://unpkg.com/synergy@7.0.1"
     define(
       "hello-world",
       () => ({ name: "world" }),
