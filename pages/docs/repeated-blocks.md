@@ -130,8 +130,6 @@ List keys are specified using the `key` attribute and should be a primitive valu
 
 ```html
 <ul>
-  <template each="person in people" key="id">
-    <li>Hello {{ person.name }}</li>
-  </template>
+  <li each="person in people" key="id">Hello {{ person.name }}</li>
 </ul>
 ```
