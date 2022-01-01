@@ -111,7 +111,7 @@ Template:
 
 ```html
 <dl>
-  <template each="cryptid in cryptids">
+  <template each="cryptids">
     <dt>{{ title }}</dt>
     <dd>{{ description }}</dd>
   </template>
