@@ -37,7 +37,7 @@ Model:
 ```js
 {
   textColor: 'gold',
-};
+}
 ```
 
 Template:
@@ -61,7 +61,7 @@ Model:
 ```js
 {
   classes: ["pt-6", "space-y-4"],
-};
+}
 ```
 
 Template:
@@ -87,7 +87,7 @@ Model:
   width: "100%",
   height: "100%",
   fill: "black"
-};
+}
 ```
 
 Template:
@@ -99,7 +99,7 @@ Template:
 Output:
 
 ```html
-<p class="pt-6 space-y-4">ok</p>
+<rect width="100%" height="100%" fill="black" />
 ```
 
 ## Boolean attributes
