@@ -30,7 +30,7 @@ Output:
 
 ## Attributes
 
-Attributes that you want to bind to properties of your viewmodel must be prefixed with a `:`.
+Attributes that you want to bind to properties of your viewmodel must be prefixed with the colon mark (`:`).
 
 Model:
 
@@ -132,7 +132,7 @@ Output:
 
 Some ARIA attributes accept the string values
 "true" and "false". These aren't boolean
-attributes but you can still bind to boolean values and these will be applied as strings.
+attributes but you can still bind them to booleans and Synergy will apply them as string values.
 
 Model:
 
@@ -160,7 +160,7 @@ Output:
 ## Logical NOT (!)
 
 As per the examples above, you can prefix boolean
-properties with the exclamation mark to convert a
+properties with an exclamation mark to convert a
 truthy value to a falsy value, and vice versa.
 
 Model:

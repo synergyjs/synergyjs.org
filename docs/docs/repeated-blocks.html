@@ -88,8 +88,8 @@
         </div>
         <div id="middle-column">
           <main><h1>Repeated Blocks</h1>
-<p>Repeated blocks work with Arrays and Objects.</p>
-<p>Repeat a block of HTML for each item in a collection using a template element together with the <code>each</code> attribute.</p>
+<p>Repeated blocks work with both Arrays and Objects.</p>
+<p>Repeat a block of HTML for each item in a collection using a the <code>each</code> attribute.</p>
 <p>Model:</p>
 <pre class="hljs"><code>{
   <span class="hljs-attr">names</span>: [<span class="hljs-string">&quot;kate&quot;</span>, <span class="hljs-string">&quot;kevin&quot;</span>, <span class="hljs-string">&quot;randall&quot;</span>]
@@ -100,7 +100,8 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">each</span>=<span class="hljs-string">&quot;name in names&quot;</span>&gt;</span>Hello {{ name }}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
 </code></pre>
-<p>You can use parentheses to access both the key and the value.</p>
+<h2>Iteration Keys</h2>
+<p>You can use parentheses to access the key as well as the value.</p>
 <p>Template:</p>
 <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">each</span>=<span class="hljs-string">&quot;(index, todo) in todos&quot;</span>&gt;</span>
@@ -108,6 +109,7 @@
   <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
 </code></pre>
+<h2>Implicit scope</h2>
 <p>Property access via the identifier is optional, you can also access directly like so...</p>
 <p>Model:</p>
 <pre class="hljs"><code>{
@@ -147,13 +149,39 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
 </code></pre>
 <p>...when accessing properties in this way, Synergy will first check to see if the property is defined on the current item within the iteration, and will otherwise try the same property against the viewmodel itself.</p>
+<h2>Multiple top-level nodes</h2>
+<p>If you want to have more than one top-level element, then you can wrap your repeated block in a template like so:</p>
+<p>Model:</p>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">cryptids</span>: [{
+    <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Beast of Bodmin&quot;</span>,
+    <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;A large feline inhabiting Bodmin Moor.&quot;</span>
+  },
+  {
+    <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Morgawr&quot;</span>,
+    <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;A sea serpent.&quot;</span>
+  }
+  {
+    <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Owlman&quot;</span>,
+    <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;A giant owl-like creature.&quot;</span>
+  }
+]
+}
+</code></pre>
+<p>Template:</p>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">dl</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">each</span>=<span class="hljs-string">&quot;cryptid in cryptids&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>{{ title }}<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>{{ description }}<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dl</span>&gt;</span>
+</code></pre>
 <h2>Keyed Arrays</h2>
 <p>Keys help Synergy identify which items in an collection of objects
 have changed.</p>
 <p>Using keys improves performance and
 avoids unexpected behaviour when re-rendering so it's always best to use them.</p>
-<p>By default, Synergy assumes the <code>id</code> property (if there is one) to be the key.</p>
-<p>If you need to nominate another property then you can do so with the <code>key</code> attribute. The best way to pick a key is to use a primitive value that is unique to that item within the array.</p>
+<p>List keys are specified using the <code>key</code> attribute and should be a primitive value that is unique to that item within the collection.</p>
 <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">each</span>=<span class="hljs-string">&quot;person in people&quot;</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;foo&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Hello {{ person.name }}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>

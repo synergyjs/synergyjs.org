@@ -1,8 +1,8 @@
 # Repeated Blocks
 
-Repeated blocks work with Arrays and Objects.
+Repeated blocks work with both Arrays and Objects.
 
-Repeat a block of HTML for each item in a collection using a template element together with the `each` attribute.
+Repeat a block of HTML for each item in a collection using a the `each` attribute.
 
 Model:
 
@@ -20,7 +20,9 @@ Template:
 </ul>
 ```
 
-You can use parentheses to access both the key and the value.
+## Iteration Keys
+
+You can use parentheses to access the key as well as the value.
 
 Template:
 
@@ -31,6 +33,8 @@ Template:
   </li>
 </ul>
 ```
+
+## Implicit scope
 
 Property access via the identifier is optional, you can also access directly like so...
 
@@ -79,6 +83,41 @@ Template:
 
 ...when accessing properties in this way, Synergy will first check to see if the property is defined on the current item within the iteration, and will otherwise try the same property against the viewmodel itself.
 
+## Multiple top-level nodes
+
+If you want to have more than one top-level element, then you can wrap your repeated block in a template like so:
+
+Model:
+
+```js
+{
+  cryptids: [{
+    title: "Beast of Bodmin",
+    description: "A large feline inhabiting Bodmin Moor."
+  },
+  {
+    title: "Morgawr",
+    description: "A sea serpent."
+  }
+  {
+    title: "Owlman",
+    description: "A giant owl-like creature."
+  }
+]
+}
+```
+
+Template:
+
+```html
+<dl>
+  <template each="cryptid in cryptids">
+    <dt>{{ title }}</dt>
+    <dd>{{ description }}</dd>
+  </template>
+</dl>
+```
+
 ## Keyed Arrays
 
 Keys help Synergy identify which items in an collection of objects
@@ -87,9 +126,7 @@ have changed.
 Using keys improves performance and
 avoids unexpected behaviour when re-rendering so it's always best to use them.
 
-By default, Synergy assumes the `id` property (if there is one) to be the key.
-
-If you need to nominate another property then you can do so with the `key` attribute. The best way to pick a key is to use a primitive value that is unique to that item within the array.
+List keys are specified using the `key` attribute and should be a primitive value that is unique to that item within the collection.
 
 ```html
 <ul>
