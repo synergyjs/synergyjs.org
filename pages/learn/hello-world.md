@@ -35,7 +35,7 @@ Now let's go ahead and put all of this together in order to create a very simple
 <body>
   <hello-world></hello-world>
   <script type="module">
-    import { define } from "https://unpkg.com/synergy@7.0.2"
+    import { define } from "https://unpkg.com/synergy@7.0.3"
     define(
       "hello-world",
       () => ({ name: "world" }),

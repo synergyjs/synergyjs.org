@@ -8,7 +8,7 @@ The quickest way to get started is to import the Synergy package directly from a
 
 ```html
 <script type="module">
-  import { define } from "https://unpkg.com/synergy@7.0.2";
+  import { define } from "https://unpkg.com/synergy@7.0.3";
 </script>
 ```
 
