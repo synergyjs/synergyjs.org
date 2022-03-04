@@ -45,6 +45,10 @@ export const navigation = [
         label: "Forms",
         href: "/docs/forms",
       },
+      {
+        label: "Hydration",
+        href: "/docs/hydration",
+      },
     ],
   },
 ];

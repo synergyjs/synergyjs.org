@@ -4,9 +4,9 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta property="og:title" content="learn | Synergy: A JavaScript Library for building Web Components" />
-        <meta property="og:url" content="https://synergyjs.org/learn" />
-        <title>learn | Synergy: A JavaScript Library for building Web Components</title>
+        <meta property="og:title" content="Hydration | Synergy: A JavaScript Library for building Web Components" />
+        <meta property="og:url" content="https://synergyjs.org/docs/hydration" />
+        <title>Hydration | Synergy: A JavaScript Library for building Web Components</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/base16/tomorrow.min.css" integrity="sha512-5D/fcZ3y3nuaeHSxDbFwWDEy1Fvj5qQKsU0tilD7bhWAA+IN/Jl9fzGdUotzvA7wgXtsnZmafcuunH+6nyuA0A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="/index.css"></link>
       </head>
@@ -49,7 +49,7 @@
               
                 <li><a href="/docs/forms" >Forms</a></li>
               
-                <li><a href="/docs/hydration" >Hydration</a></li>
+                <li><a href="/docs/hydration" aria-current="page">Hydration</a></li>
               
             </ul>
             </li>
@@ -89,15 +89,11 @@
           ></a>
         </div>
         <div id="middle-column">
-          <main>
-        <div class="category-listing">
-      <h1>learn</h1>
-      <ul>
-        <li><a href="/learn/introduction">Introduction</a></li><li><a href="/learn/hello-world">Hello World!</a></li>
-      </ul>
-      </div>
-    </main>
-          <div id="pager"><a href="/learn/introduction"><span>NEXT</span>Introduction
+          <main><h1>Hydration</h1>
+<p>Synergy components serialise their data inside a script element  each time that their viewmodel changes and merge any deserialised data back into their viewmodel during instantion. This allows you to capture the current state of one or more components in a page at any point in time and then reload that into a browser later to effectively resume from where you left off.</p>
+<p>Just remember that data serialisation can increase the size of your page significantly, so if you have a large number of components that need to be prerendered but <em>not</em> rehydrated (e.g., components that have no event bindings and never need to update after the first render), then you should strip out both the data scripts and the component definitions for those particular components to achieve the best possible performance.</p>
+</main>
+          <div id="pager"><a href="/docs/forms"><span>PREV</span>Forms
   <svg
     width="10"
     height="16"
@@ -108,7 +104,7 @@
     <polyline
       fill="none"
       vector-effect="non-scaling-stroke"
-      points="2,2 8,8 2,14"
+      points="8,2 2,8 8,14"
     ></polyline>
   </svg>
 </a></div>
